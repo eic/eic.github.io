@@ -14,17 +14,12 @@ layout: default
 
 BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 
-**<font color="blue">Latest version 1.01.04</font>**
+**[Latest version 1.01.04](https://gitlab.in2p3.fr/BeAGLE/BeAGLE)**
 
 <left>
 {% include images/image.md name='beagle' width='400' %}
 </left>
 
-
-**Currently hosted at**
-``
-https://gitlab.in2p3.fr/BeAGLE/BeAGLE
-``
 
 **Contacts:**
 * Mark Baker <mdbaker@bnl.gov>
