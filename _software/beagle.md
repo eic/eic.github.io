@@ -243,7 +243,8 @@ STOP
 The ``USERSET`` are defined as in this [link.](https://gitlab.in2p3.fr/BeAGLE/BeAGLE/-/blob/master/src/dpmjet3.0-5F-new.f?expanded=true&viewer=simple#L2386) Be patient, it will need 30 secs to load the source code. For example, ``USERSET==16`` is to save the information of the Deuteron wavefunction. 
 
 
-**<font size="5">PYTHIA Control Card</font>**
+<font size="5">PYTHIA Control Card</font>
+
 
 The format of the PY-INPUT file is similar to the Pythia input file, which is not really documented elsewhere, but is fairly self-explanatory due to the comments.
 ```yaml
