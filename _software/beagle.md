@@ -245,7 +245,7 @@ The ``USERSET`` are defined as in this [link.](https://gitlab.in2p3.fr/BeAGLE/Be
 
 <font size="5">PYTHIA Control Card</font>
 
-The format of the PY-INPUT file is similar to the Pythia input file, which is not really documented elsewhere, but is fairly self-explanatory due to the comments.
+The format of the PY-INPUT file is similar to the Pythia input file, which is not really documented elsewhere, but is fairly self-explanatory due to the comments. See below.
 
 ```yaml
 line 1:    output file name for the textfile
