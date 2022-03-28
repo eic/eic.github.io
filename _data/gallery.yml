@@ -13,8 +13,8 @@
   title: 'BeAGLE generator concept'
   type: diagram
 
-- name: beagle
-  path: '/assets/images/software/beagle.png'
+- name: beagleAsciiLogo
+  path: '/assets/images/software/beagleAsciiLogo.png'
   title: 'BeAGLE printout'
   type: diagram
 

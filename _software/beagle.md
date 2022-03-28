@@ -17,7 +17,7 @@ BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 **[Latest version 1.01.04](https://gitlab.in2p3.fr/BeAGLE/BeAGLE)**
 
 <left>
-{% include images/image.md name='beagle' width='400' %}
+{% include images/image.md name='beagleAsciiLogo' width='400' %}
 </left>
 
 
@@ -132,7 +132,7 @@ running the executable from central directory, one runs from here locally. See l
 **<font size="5">Running the code</font>**
 
 Copy your own input files, there are at least two of them are necessary,
-BeAGLE input control card, *.inp, and Pythia/Rapgap input control card, S*, e.g, S3ALL003
+BeAGLE input control card, \*.inp, and Pythia/Rapgap input control card, S\*, e.g, S3ALL003
 ````
 cp -rf /gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/inputFiles ./ 
 cp /gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/S* ./
