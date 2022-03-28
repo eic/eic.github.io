@@ -12,6 +12,12 @@
   path: '/assets/images/software/DpmjetHybrid_MonteCarlo_generator_design.png'
   title: 'BeAGLE generator concept'
   type: diagram
+
+- name: beagleAsciiLogo
+  path: '/assets/images/software/beagleAsciiLogo.png'
+  title: 'BeAGLE printout'
+  type: diagram
+
 - name: east_logo
   path: '/assets/images/software/east/east-logo.jpg'
   title: 'Project eAST Logo'

@@ -6,7 +6,6 @@ layout: default
 ---
 
 {% include layouts/title.md %}
-`
 * TOC
 {:toc}
 
@@ -15,12 +14,14 @@ layout: default
 
 BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 
-**This documentation is currently under construction**
+**[Latest version 1.01.04](https://gitlab.in2p3.fr/BeAGLE/BeAGLE)**
 
-Currently hosted at
-https://gitlab.in2p3.fr/BeAGLE/BeAGLE
+<left>
+{% include images/image.md name='beagleAsciiLogo' width='400' %}
+</left>
 
-Contacts:
+
+**Contacts:**
 * Mark Baker <mdbaker@bnl.gov>
 * Kong Tu <zhoudunming@bnl.gov>
 
@@ -71,7 +72,119 @@ At the moment, there are many simplifying assumptions for the multinucleon mode,
 > We assume that the full shadowing effect is due to multinucleon collisions with no modification of individual nucleons.
 
 #### How to run BeAGLE, step-by-step instructions
-**UNDER CONSTRUCTION. Existing documentation focuses on the RCF version, more general ones coming soon**
+*<font color="blue">Contact persons: Mark Baker (mdbaker@bnl.gov), Kong Tu(zhoudunming@bnl.gov)</font>*
+
+
+**<font size="5">Overview</font>**
+
+There are two central managed directory/repo stored at BNL,
+* PACKAGES:
+````
+/afs/rhic/eic/PACKAGES/BeAGLE
+````
+* Gitstore:
+````
+/afs/rhic/eic/gitstore/BeAGLE
+````
+
+Never run BeAGLE from these two directories and please follow the instructions below. These two directories are kept exactly identical. The ``PACKAGES`` is the official version, while the gitstore version could be updated by the developers from time to time.
+
+**<font size="5">Users only</font>**
+
+Make a new directory, e.g., run-BeAGLE-Name,
+````
+mkdir run-BeAGLE-Kong 
+cd run-BeAGLE-Kong
+````
+
+Copy the fluka nuclear data file:
+````
+cp /afs/rhic/eic/PACKAGES/BeAGLE/nuclear.bin . (for BNL)
+cp /u/group/ldgeom/PACKAGES/BeAGLE/nuclear.bin . (for JLAB)
+````
+
+Source setup_BeAGLE to setup your environment variable $BEAGLESYS, which will point to the BeAGLE directory, e.g., the PACKAGES directory. One can also source the same thing under the gitstore version.
+````
+source /afs/rhic/eic/PACKAGES/BeAGLE/setup_BeAGLE (for BNL) 
+source /u/group/ldgeom/PACKAGES/BeAGLE/setup_BeAGLE (for JLAB)
+````
+when done, ``$BEAGLESYS/BeAGLE`` will be the executable.
+
+**<font size="5">Developers</font>**
+
+Make a new directory, e.g., BeAGLE-dev-Name-Date,
+````
+mkdir BeAGLE-dev-Kong-2020-01-29 
+cd BeAGLE-dev-Kong-2020-01-29
+````
+
+git clone the developer's area,
+````
+git clone /afs/rhic/eic/gitstore/BeAGLE
+cd BeAGLE
+cp /afs/rhic/eic/gitstore/BeAGLE/RAPGAP-3.302/lib/*.a ./RAPGAP-3.302/lib/
+make all
+````
+
+The executable will be under the main directory, called "BeAGLE". So instead of
+running the executable from central directory, one runs from here locally. See later on ``running instructions.``
+
+**<font size="5">Running the code</font>**
+
+Copy your own input files, there are at least two of them are necessary,
+BeAGLE input control card, \*.inp, and Pythia/Rapgap input control card, S\*, e.g, S3ALL003
+````
+cp -rf /gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/inputFiles ./ 
+cp /gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/S* ./
+````
+
+Create your own output directory,
+````
+mkdir outForPythiaMode
+````
+
+Copy and paste the macro to convert text output to root output, e.g.,
+````
+cp /gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/BuildIt.C ./
+````
+
+To run BeAGLE, do this following command under the main directory,
+* for users running:
+````
+$BEAGLESYS/BeAGLE < inputFiles/yourinput.inp > log_file_name.txt
+````
+* for developers running locally:
+````
+./BeAGLE < inputFiles/yourinput.inp > log_file_name.txt
+````
+the output will be under outForPythiaMode, with a common name. Overwrite the name to xxx.txt.
+
+Go back to main directory, and run:
+````
+root -b -q 'BuildIt.C("xxx.txt")'
+````
+the root file will have the same name as the txt file.
+
+
+To analyze the root file, one can loop over events AND particles
+and do analysis. One example macro is provided under
+````
+/gpfs02/eic/ztu/BeAGLE/BeAGLE_examples-2022-01-11/runEICTree.C
+````
+
+Grab necessary parts for what's needed.
+Then simply do:
+````
+root -l runEICTree.C+\(\"filename\"\) 
+````
+
+The filename is without the .root extension.
+Note: In order to access EventBeagle (which is defined under EventPythia.h), and besides to setup eic_cshrc, one needs to setup include path to /afs/rhic.bnl.gov/eic/include, For example, if one is not sure, open root, and try,
+````
+gSystem->GetIncludePath()
+````
+See if ``-I/afs/rhic.bnl.gov/eic/include`` was added. If not, you need to add the include path.
+
 
 #### BeAGLE Control Card
 Note: This input file (originally from DPMJET) is very particular about the spacing of a lot of the numbers so make sure that you leave the starting space the same when you change numbers. In particular, the input format is: A10, 6E10.0, A8
@@ -100,24 +213,35 @@ FERMI    - First # means: -1 = no Fermi motion at all
                            1 = DPMJET Fermi motion, but Pythia subevent neglects it (DPMJetHybrid mode)
                            2 = Fermi motion added to Pythia subevent after the fact
                            3 = Pythia subevent used correct Fermi motion (Not Yet Implemented)
-           Second #: "Scale factor" for Fermi momentum distribution in GeV   
-           Third #: Fermi momentum distribution 0 (D) = DPMJET distribution
+           Second #: "Scale factor" for Fermi momentum distribution in GeV (0.62 is default, don't touch it unless instructed to do so)  
+           Third #: Fermi momentum distribution 0 (D) = Most recommended distribution
            Fourth #: Post-processing flag:  (Not Yet Implemented)
                            0 (D) = no post-processing
                            1     = Fix energy non-conservation in ion frame (for small nuclei)
+FSEED     - Uncomment/comment this line for debugging/production
 OUTLEVEL  - First 4 #s are verbosity flags -1=quiet, >=1 increasing verbosity
             Fifth # is the number of events to print out and in some cases to be verbose about
 PYVECTORS - Allowed Pythia vector mesons for diffraction: 0(D)=all, 1=rho, 2=omega, 3=phi, 4=J/psi
 USERSET   = First # specifies the meaning of the variables User1,User2,User3 (detailed below)
             Second # specifies the maximum excitation energy in GeV handed to Fluka (D=9.0)
                       Note: This should not come into play, but it protects against infinite loops.
+PHOINPUT  - Any options explained in the PHOJET-manual can be used in between
+            the "PHOINPUT" and "ENDINPUT" cards.
+PROCESS   -       1 1 1 1 1 1 1 1
+ENDINPUT  -
+
 The last two cards should be:
 START     = First # specifies the # of events to run
             Second # should be 0 (or missing)
 STOP
 ```
+The ``USERSET`` are defined as in this [link.](https://gitlab.in2p3.fr/BeAGLE/BeAGLE/-/blob/master/src/dpmjet3.0-5F-new.f?expanded=true&viewer=simple#L2386) Be patient, it will need 30 secs to load the source code. For example, ``USERSET==16`` is to save the information of the Deuteron wavefunction. 
 
-The format of the PY-INPUT file is similar to the Pythia input file, which is not really documented elsewhere, but is fairly self-explanatory due to the comments.
+
+<font size="5">PYTHIA Control Card</font>
+
+The format of the PY-INPUT file is similar to the Pythia input file, which is not really documented elsewhere, but is fairly self-explanatory due to the comments. See below.
+
 ```yaml
 line 1:    output file name for the textfile
 line 2:    xmin and xmax
