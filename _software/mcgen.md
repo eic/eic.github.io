@@ -14,6 +14,7 @@ layout: default
 * {% include navigation/pagelink.md folder=site.software name='rapgap' tag='RAPGAP' %}
 * {% include navigation/pagelink.md folder=site.software name='pepsi' tag='PEPSI' %}
 * {% include navigation/pagelink.md folder=site.software name='elspectro' tag='elSpectro' %}
-* <p>{% include navigation/findlink.md name='topeg' tag='TOPEG (Orsay Perugia) (external link)' html="1" %}
-* <p>{% include navigation/findlink.md name='estarlight' tag='eSTARlight (external link)' html="1" %}
-* <p>{% include navigation/findlink.md name='sartre' tag='Sartre (external link)'  html="1" %}<p/>
+* <p>{% include navigation/findlink.md name='epic' tag='EpIC (Pawel Sznajder)' html="1" %}
+* <p>{% include navigation/findlink.md name='topeg' tag='TOPEG (Orsay Perugia)' html="1" %}
+* <p>{% include navigation/findlink.md name='estarlight' tag='eSTARlight' html="1" %}
+* <p>{% include navigation/findlink.md name='sartre' tag='Sartre'  html="1" %}<p/>

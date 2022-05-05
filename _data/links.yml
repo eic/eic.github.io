@@ -123,3 +123,7 @@
 
 - name: pepsi_paper
   url: 'https://wiki.bnl.gov/eic/upload/PEPSI.paper.pdf'
+
+- name: epic
+  url: 'https://pawelsznajder.github.io/epic/'
+

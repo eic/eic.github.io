@@ -18,7 +18,7 @@
 * [{{ tag }}]({{ found_link }}){:target="_blank"}
 {%- else -%}
 {% if include.html %}
-<a href="{{ found_link }}" target="_blank">{{ tag }}</a>
+<a href="{{ found_link }}" target="_blank">{{ tag }}&nbsp;<img src="{{ site.external_icon | relative_url }}" height="16" width="16"></a>
 {%- else -%}
 [{{ tag }}]({{ found_link }}){:target="_blank"}
 {%- endif -%}
