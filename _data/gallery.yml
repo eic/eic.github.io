@@ -22,3 +22,8 @@
   path: '/assets/images/software/east/east-logo.jpg'
   title: 'Project eAST Logo'
   type: logo
+
+- name: principles
+  path: '/assets/images/software/principles.png'
+  title: 'Statement of Software Principles Title'
+  type: logo

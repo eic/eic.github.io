@@ -121,6 +121,9 @@
     - name: eoi
       full: Expression of Interest
 
+    - name: principles
+      full: Statement of Software Principles
+
     - name: ucd
       full: User-Centered Design
       
