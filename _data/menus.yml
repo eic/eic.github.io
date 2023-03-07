@@ -13,38 +13,6 @@
 - name: software
   full: Software
   submenus:
-    - name: overview
-      full: Overview
-      exclude: yes
-      submenus:
-        - name: test
-          full: testing
-          link: https://www.bnl.gov/eic/
-
-    - name: tools_and_frameworks
-      label: yes
-      full: Frameworks and Tools
-
-    - name: escalate_1
-      full: ESCalate
-
-    - name: escalate_singularity_1
-      full: ESCalate on HPC Clusters (Singularity)
-
-    - name: eicsmear_1
-      full: EIC-smear
-      div: yes
-
-    - name: eicsmear_generators_singularity
-      full: EIC-smear and Generators (Singularity)
-
-    - name: fun4all_tutorial_1
-      full: Fun4All
-      div: yes
-
-    - name: fun4all_singularity
-      full: Fun4All in Singularity
-      link: https://github.com/eic/Singularity/blob/master/README.md
 
 ### Simulations
 #
@@ -59,14 +27,6 @@
     - name: east
       full: Project eAST
 
-    - name: other
-      label: yes
-      full: Other Software
-      div: yes
-    
-    - name: beast_magnetic_field
-      full: BeAST Magnetic Field
-
     - name: infrastructure
       label: yes
       full: Infrastructure
@@ -74,13 +34,6 @@
     - name: github
       full: GitHub for the EICUG
     
-    - name: doxygen
-      full: Doxygen
-      link: https://eic.github.io/doxygen/
-    
-    - name: lxr
-      full: LXR Code Browser
-
 ### Resources
 #
 # note that submenus do not include a few of the *.md stubs found in the folder
@@ -107,9 +60,6 @@
     - name: storage
       full: NextCloud/S3
 
-    - name: petrel
-      full: Petrel/Globus
-
 ### Activities
 #
 - name: activities
@@ -132,31 +82,37 @@
 - name: organization
   full: Organization
   submenus:
-    - name: swg
-      full: Software Working Group
+  #  - name: swg
+  #    full: Software Working Group
 
-    - name: communication
-      full: Communication
+  #  - name: communication
+  #    full: Communication
 
-    - name: events
-      full: Meetings and Events
+  #  - name: events
+  #    full: Meetings and Events
 
     - name: youtube
       full: Our YouTube Channel
       link: https://www.youtube.com/channel/UCXc9WfDKdlLXoZMGrotkf7w
 
-    - name: join
-      full: Get Involved
-      div: yes
+#   - name: join
+#     full: Get Involved
+#       div: yes
+
+### Documentation
+#
+- name: documentation
+  full: Get Started
+  submenus:
+    - name: start
+      full: Get Started
+
 ### About
 #
 - name: about
   full: About
   right: yes
   submenus:
-    - name: contact
-      full: Contact
-
     - name: site
       full: Website Information
       exclude: yes

@@ -1,9 +1,9 @@
 #
 #
 #
-name: The EIC Software Group Website
-title: The EIC Software Group Website
-description: The EIC Software Group Website
+name: The EIC Software Website
+title: The EIC Software Website
+description: The EIC Software Website
 url: https://eic.github.io
 #
 excerpt_separator: <!--more-->
@@ -40,9 +40,10 @@ external_icon: /assets/images/site/icons/external-link-32.png
 
 software_icon: /assets/images/site/icons/console-32.png
 resources_icon: /assets/images/site/icons/cog-32.png
-activities_icon: /assets/images/site/icons/today-32.png
+#activities_icon: /assets/images/site/icons/today-32.png
+activities_icon: /assets/images/site/icons/light-bulb-5-32.png
 organization_icon: /assets/images/site/icons/flow-chart-32.png
-literature_icon: /assets/images/site/icons/literature-32.png
+documentation_icon: /assets/images/site/icons/literature-32.png
 about_icon: /assets/images/site/icons/light-bulb-5-32.png
 
 
@@ -68,6 +69,9 @@ collections:
   organization:
     output: true
     permalink: /organization/:title.html
+documentation:
+    output: true
+    permalink: /documentation/:title.html
   about:
     output: true
     permalink: /about/:title.html
