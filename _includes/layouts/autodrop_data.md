@@ -4,6 +4,7 @@
 {% when "resources" %}   {% assign theCollection=site.resources %}   {% assign icon=site.resources_icon %}
 {% when "activities" %}  {% assign theCollection=site.activities %}  {% assign icon=site.activities_icon %}
 {% when "organization" %}{% assign theCollection=site.organization %}{% assign icon=site.organization_icon %}
+{% when "documentation" %}{% assign theCollection=site.documentation %}{% assign icon=site.documentation_icon %}
 {% when "about" %}       {% assign theCollection=site.about %}            {% assign icon=site.about_icon %}
 
 {% endcase %}
