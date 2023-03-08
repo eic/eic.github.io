@@ -107,6 +107,18 @@
     - name: start
       full: Get Started
 
+    - name: README
+      full: ePIC Landing Page
+
+    - name: useful_resource
+      full: Useful Resource
+
+    - name: FAQ
+      full: FAQ
+
+
+
+
 ### About
 #
 - name: about
