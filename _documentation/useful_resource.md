@@ -1,3 +1,10 @@
+---
+title: Useful Resource
+description: Useful Resource
+name: useful_resource
+layout: default
+---
+
 # Useful Links and Resources
 
 ePIC Tutorial 1
@@ -13,7 +20,7 @@ ePIC Tutorial 2
 
 EIC-recon
 -------------------------------------
-[eic\_recon page with exampke is here](https://eic.github.io/EICrecon/#/):
+[eic\_recon page with example is here](https://eic.github.io/EICrecon/#/):
 
 
 
