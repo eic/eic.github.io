@@ -22,9 +22,6 @@ EIC-recon
 -------------------------------------
 [eic\_recon page with example is here](https://eic.github.io/EICrecon/#/):
 
-
-
-
 ---------------------
 
 Github
@@ -36,18 +33,3 @@ ROOT
 ePIC Wiki
 ---------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--::: lumache-->
