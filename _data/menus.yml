@@ -104,20 +104,12 @@
 - name: documentation
   full: Get Started
   submenus:
-    - name: start
-      full: Get Started
 
-    - name: README
-      full: ePIC Landing Page
+    - name: landingpage
+      full: Landing Page
 
-    - name: useful_resource
-      full: Useful Resource
-
-    - name: FAQ
+    - name: faq
       full: FAQ
-
-
-
 
 ### About
 #
