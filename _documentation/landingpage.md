@@ -11,7 +11,7 @@ The purpose of the **ePIC Landing Page** is to serve as a collection of tutorial
 
 The landing page doesn't host any new material or content.
 
-It only contains links to other tutorials and the [FAQ](https://eic.github.io/documentation/FAQ.html).
+It only contains links to other tutorials and the [FAQ](https://eic.github.io/documentation/faq.html).
 
 ##### Tutorials 
 
