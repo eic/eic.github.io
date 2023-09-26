@@ -7,6 +7,10 @@ layout: default
 
 {% include layouts/title.md %}
 
+[![Get Started](../assets/images/support/Get-Started-Now-Button-PNG-Clipart.png){: width="45%" }](https://example.com) 
+[![Get Started](../assets/images/support/Get-Started-Now-Button-PNG-Clipart.png){: width="45%" }](https://example.com) 
+
+
 The purpose of the **ePIC Landing Page** is to serve as a collection of tutorials and other resources for the ePIC collaboration and to help users get started.
 
 It contains links to other tutorials and the [FAQ](https://eic.github.io/documentation/faq.html).

@@ -27,3 +27,9 @@
   path: '/assets/images/software/principles.png'
   title: 'Statement of Software Principles Title'
   type: logo
+
+- name: gettingstarted
+  path: 'assets/images/support/Get-Started-Now-Button-PNG-Clipart.png'
+  title: 'Get Started'
+  type: logo
+  
