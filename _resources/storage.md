@@ -1,11 +1,37 @@
 ---
-title: NextCloud and S3
-description: NextCloud
+title: Distributed Storage
+description: Storage
 name: storage
 layout: default
 ---
 
 {% include layouts/title.md %}
+
+#### S3
+The main storage for EIC-related files is on S3 interface, for EIC use.
+
+This storage is accessed via the "MinIO" client - named *"mc"* - available for download from the MinIO site on its
+{% include navigation/findlink.md name='minio_download' tag='download page' %}, or installed on the farms and inside `eic-shell`.
+Please obtain the read-only access key from the ePIC mattermost channel. Then, in a bash-like environment add 
+```
+export S3_ACCESS_KEY=[ask in mattermost]
+export S3_SECRET_KEY=[ask in mattermost]
+```
+to your initialization file (e.g. `.bashrc`), or
+```
+setenv S3_ACCESS_KEY [ask in mattermost]
+setenv S3_SECRET_KEY [ask in mattermost]
+```
+to your equivalent init file (e.g. `.cshrc`).
+You then run 
+```
+mc config host add S3 https://eics3.sdcc.bnl.gov:9000 $S3_ACCESS_KEY $S3_SECRET_KEY
+```
+and from then on you can use commands like
+```
+mc ls S3/eictest/EPIC/Tutorials
+```
+
 
 ##### NextCloud/BNLbox: pre-generaged event datasets
 
@@ -56,12 +82,3 @@ data and make it accessible to the whole community!
 
 <hr/>
 
-#### S3
-In addition to the NextCloud-based service described above, BNL SDCC has deployed
-substantial amount storage equipped with the S3 interface, for EIC use.
-
-In the initial testing stage
-access to this storage is via the "MinIO" client - named *"mc"* - available for download from the MinIO site on its
-{% include navigation/findlink.md name='minio_download' tag='download page' %}. Please contact
-Kolja Kauder, kkauder_at_bnl.gov, for more information regarding the setup and getting authorized
-for access.
