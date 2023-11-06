@@ -9,9 +9,9 @@ layout: default
 
 Welcome to the **ePIC Landing Page**! 
 
-[![Get Started](../assets/images/support/GetStartedClick.png){: width="45%" }](https://eic.github.io/documentation/getstarted.html)
-[![ePIC Tutorials](../assets/images/support/TutorialClick.png){: width="45%" }](https://eic.github.io/documentation/tutorials.html)
+[![Get Started](../assets/images/support/GetStartedClick.png){: width="45%" }](./getstarted.html)
+[![ePIC Tutorials](../assets/images/support/TutorialClick.png){: width="45%" }](./tutorials.html)
 [![HEP Software Training Center](../assets/images/support/HEPClick.png){: width="45%" }](https://hepsoftwarefoundation.org/training/center.html)
-[![FAQ](../assets/images/support/faqClick.png){: width="45%" }](https://eic.github.io/documentation/faq.html)
+[![FAQ](../assets/images/support/faqClick.png){: width="45%" }](./faq.html)
 
 
