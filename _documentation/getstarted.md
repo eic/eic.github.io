@@ -7,8 +7,6 @@ layout: default
 
 {% include layouts/title.md %}
 
-##### Get Started:
-
-* Join GitHub: [https://gitlab.com/eic](https://gitlab.com/eic)
-* Join Mattermost: [https://chat.epic-eic.org/](https://chat.epic-eic.org/)
-* Link to ePIC Software Tutorials
+1. Join GitHub: [https://gitlab.com/eic](https://gitlab.com/eic)
+1. Join Mattermost: [https://chat.epic-eic.org/](https://chat.epic-eic.org/)
+1. [ePIC Software Tutorials](./tutorials.html)
