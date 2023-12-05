@@ -10,7 +10,7 @@ layout: default
 Welcome to the **Get Started** section. This page will guide you through the steps to get setup for contributing and working in our software framework. 
 
 1. Join GitHub: [https://gitlab.com/eic](https://gitlab.com/eic)
-* We use GitHub to maintain our code under the eic organization
+* We use GitHub to maintain our code under the eic organization.
 * Contact for read access: [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eicug-software-conveners@eicug.org) **eicug-software-conveners@eicug.org** from your institutional email address. In your email, please state your GitHub username and whether you or your sponsor/advisor is a member of the EICUG.
 * For write access to select repositories, you may request to join variou GitHub teams.
 
@@ -26,4 +26,4 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 * [Detector Subsystems](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
 * [Software Working Group](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
 
-1. Refer back to the [landing page](./landpage.html) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
+1. Refer back to the [landing page](./landingpage.html) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
