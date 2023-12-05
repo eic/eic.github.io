@@ -8,7 +8,7 @@ layout: default
 {% include layouts/title.md %}
 
 Welcome to the **Frequently Asked Questions** page!
-Please use the [Helpdesk](https://eic.cloud.mattermost.com/main/channels/helpdesk) on Mattermost
+Please use the [Helpdesk](https://eic.cloud.mattermost.com/main/channels/helpdesk) on Mattermost for urgent correspondence.
 
 Submit new questions and comments by email: [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:epic-sc-faq-l@lists.bnl.gov)
 
