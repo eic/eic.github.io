@@ -7,6 +7,12 @@ layout: default
 
 {% include layouts/title.md %}
 
+#### Submit feedback on the Jan. 2024 tutorials [here](https://forms.gle/wrWXrRt7q7un2ecy9)
+
+#### Future tutorials & schedule: Check back soon!
+
+---
+
 ##### [Setting up an environment](https://eic.github.io/tutorial-setting-up-environment)
 [![EnvSS](/assets/images/tutorials/SetupEnvSS.png){: width="60%" }](https://eic.github.io/tutorial-setting-up-environment)
 [![video1](/assets/images/tutorials/Vid1Env.png){: width="18%" }](https://www.youtube.com/watch?v=Y0Mg24XLomY)
