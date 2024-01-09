@@ -34,7 +34,7 @@ layout: default
 [![video2](/assets/images/tutorials/RecVid2.png){: width="18%" }](https://youtu.be/Ly2Zh1AGUEc https://youtu.be/9blKFZS-qMk)
 
 ##### [Analysis_tutorial](https://eic.github.io/tutorial-analysis/)
-[![AnalysisTutSS](/assets/images/tutorials/AnalysisTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis/)
+[![AnalysisTutSS](/assets/images/tutorials/AnaTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis/)
 
 ##### [Python_analysis bootcamp](https://github.com/eic/python-analysis-bootcamp)
 [![AnaBootcampSS](/assets/images/tutorials/AnaBootcampSS.png){: width="50%" }](https://github.com/eic/python-analysis-bootcamp)
