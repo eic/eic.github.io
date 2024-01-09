@@ -18,6 +18,18 @@ layout: default
 [![video1](/assets/images/tutorials/Vid1Env.png){: width="18%" }](https://www.youtube.com/watch?v=Y0Mg24XLomY)
 [![video2](/assets/images/tutorials/Vid2Env.png){: width="18%" }](https://www.youtube.com/watch?v=5HmzFnYW4W4)
 
+##### [Analysis and working with the simulation output](https://eic.github.io/tutorial-analysis)
+[![AnaTutSS](/assets/images/tutorials/AnaTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis)
+
+##### [Modifying geometry, digitization, and anything else](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
+[![ModGeoTutSS](/assets/images/tutorials/ModGeoTutSS.png){: width="60%" }](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
+
+##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
+[![ReconAlgTutSS](/assets/images/tutorials/ReconAlgTutSS.png){: width="60%" }](https://eic.github.io/tutorial-reconstruction-algorithms)
+
+##### [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks)
+[![BenchmarkTutSS](/assets/images/tutorials/BenchmarkTutSS.png){: width="60%" }](https://eic.github.io/tutorial-developing-benchmarks)
+
 ##### [Geometry within dd4hep](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
 [![GeoDevSS](/assets/images/tutorials/GeoDevSS.png){: width="60%" }](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
 [![video1](/assets/images/tutorials/GeoVid1.png){: width="18%" }](https://www.youtube.com/watch?v=Bj2L4JuCuRk)
