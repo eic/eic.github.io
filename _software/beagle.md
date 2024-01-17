@@ -15,6 +15,7 @@ layout: default
 BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 
 **The source code of BeAGLE can be found [here](https://gitlab.in2p3.fr/BeAGLE/BeAGLE)**
+
 **[Latest version can be found in the most recent tag](https://gitlab.in2p3.fr/BeAGLE/BeAGLE/-/tags)**
 
 <left>
