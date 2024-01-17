@@ -14,7 +14,9 @@ layout: default
 
 BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 
-**[Latest version 1.01.04](https://gitlab.in2p3.fr/BeAGLE/BeAGLE)**
+**The source code of BeAGLE can be found [here](https://github.com/eic/BeAGLE)**
+
+**[Latest version can be found in the most recent tag](https://github.com/eic/BeAGLE/tags)**
 
 <left>
 {% include images/image.md name='beagleAsciiLogo' width='400' %}
