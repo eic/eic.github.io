@@ -99,6 +99,16 @@
 #     full: Get Involved
 #       div: yes
 
+### Policies
+#
+- name: policies
+  full: Policies
+  submenus:
+    - name: simulation_production_strategy
+      full: Simulation Production Strategy
+    - name: source_code_management
+      full: Source Code Management
+
 ### Documentation
 #
 - name: documentation
