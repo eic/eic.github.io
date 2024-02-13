@@ -24,7 +24,6 @@ BeAGLE - **B**enchmark **eA** **G**enerator for **LE**ptoproduction
 
 
 **Contacts:**
-* Mark Baker <mdbaker@bnl.gov>
 * Kong Tu <zhoudunming@bnl.gov>
 
 
