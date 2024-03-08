@@ -108,6 +108,8 @@
       full: Simulation Production Strategy
     - name: source_code_management
       full: Source Code Management
+    - name: data_privacy_collaboration
+      full: Data Privacy and Security
 
 ### Documentation
 #
