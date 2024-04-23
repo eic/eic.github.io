@@ -21,7 +21,7 @@ layout: default
 ##### [Analysis and working with the simulation output](https://eic.github.io/tutorial-analysis)
 [![AnaTutSS](/assets/images/tutorials/AnaTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis)
 
-##### [Simulating detectors and their readout]](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
+##### [Simulating detectors and their readout](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
 [![GeoDevSS](/assets/images/tutorials/GeoDevSS.png){: width="60%" }](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
 [![video1](/assets/images/tutorials/GeoVid1.png){: width="18%" }](https://www.youtube.com/watch?v=Bj2L4JuCuRk)
 [![video2](/assets/images/tutorials/GeoVid2.png){: width="18%" }](https://www.youtube.com/watch?v=RJAHnEW9cYk)
