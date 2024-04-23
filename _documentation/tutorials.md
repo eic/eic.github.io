@@ -7,7 +7,7 @@ layout: default
 
 {% include layouts/title.md %}
 
-#### Submit feedback on the Jan. 2024 tutorials [here](https://forms.gle/wrWXrRt7q7un2ecy9)
+#### Submit feedback on the Apr. 2024 tutorials [here](https://forms.gle/bZHyncp3ePt4t6w88)
 
 #### Future tutorials & schedule: Check back soon!
 
@@ -21,6 +21,11 @@ layout: default
 ##### [Analysis and working with the simulation output](https://eic.github.io/tutorial-analysis)
 [![AnaTutSS](/assets/images/tutorials/AnaTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis)
 
+##### [Simulating detectors and their readout]](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
+[![GeoDevSS](/assets/images/tutorials/GeoDevSS.png){: width="60%" }](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
+[![video1](/assets/images/tutorials/GeoVid1.png){: width="18%" }](https://www.youtube.com/watch?v=Bj2L4JuCuRk)
+[![video2](/assets/images/tutorials/GeoVid2.png){: width="18%" }](https://www.youtube.com/watch?v=RJAHnEW9cYk)
+
 ##### [Modifying geometry, digitization, and anything else](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 [![ModGeoTutSS](/assets/images/tutorials/ModGeoTutSS.png){: width="60%" }](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 
@@ -29,11 +34,6 @@ layout: default
 
 ##### [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks)
 [![BenchmarkTutSS](/assets/images/tutorials/BenchmarkTutSS.png){: width="60%" }](https://eic.github.io/tutorial-developing-benchmarks)
-
-##### [Geometry within dd4hep](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
-[![GeoDevSS](/assets/images/tutorials/GeoDevSS.png){: width="60%" }](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
-[![video1](/assets/images/tutorials/GeoVid1.png){: width="18%" }](https://www.youtube.com/watch?v=Bj2L4JuCuRk)
-[![video2](/assets/images/tutorials/GeoVid2.png){: width="18%" }](https://www.youtube.com/watch?v=RJAHnEW9cYk)
 
 ##### [Simulations using ddsim and geant4](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/)
 [![SimTutSS](/assets/images/tutorials/SimTutSS.png){: width="60%" }](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/)
