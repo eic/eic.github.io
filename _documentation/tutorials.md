@@ -20,17 +20,19 @@ layout: default
 
 ##### [Analysis and working with the simulation output](https://eic.github.io/tutorial-analysis)
 [![AnaTutSS](/assets/images/tutorials/AnaTutSS.png){: width="60%" }](https://eic.github.io/tutorial-analysis)
+[![video1](/assets/images/tutorials/AnalysisThumbVid.png){: width="18%" }](https://youtu.be/O7lPhc7Z3bM)
 
 ##### [Simulating detectors and their readout](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
 [![GeoDevSS](/assets/images/tutorials/GeoDevSS.png){: width="60%" }](https://eic.github.io/tutorial-geometry-development-using-dd4hep/)
-[![video1](/assets/images/tutorials/GeoVid1.png){: width="18%" }](https://www.youtube.com/watch?v=Bj2L4JuCuRk)
-[![video2](/assets/images/tutorials/GeoVid2.png){: width="18%" }](https://www.youtube.com/watch?v=RJAHnEW9cYk)
+[![video1](/assets/images/tutorials/GeomThumbVid.png){: width="18%" }](https://youtu.be/k9Egs602GuM)
 
 ##### [Modifying geometry, digitization, and anything else](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 [![ModGeoTutSS](/assets/images/tutorials/ModGeoTutSS.png){: width="60%" }](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 
 ##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
 [![ReconAlgTutSS](/assets/images/tutorials/ReconAlgTutSS.png){: width="60%" }](https://eic.github.io/tutorial-reconstruction-algorithms)
+[![video1](/assets/images/tutorials/algThumbVidpt1.png){: width="18%" }](https://youtu.be/Fjs8pyS47_A)
+[![video2](/assets/images/tutorials/algThumbVidpt2.png){: width="18%" }](https://youtu.be/WkePQZZVufc)
 
 ##### [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks)
 [![BenchmarkTutSS](/assets/images/tutorials/BenchmarkTutSS.png){: width="60%" }](https://eic.github.io/tutorial-developing-benchmarks)

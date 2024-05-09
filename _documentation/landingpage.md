@@ -9,7 +9,7 @@ layout: default
 
 [![Get Started](/assets/images/support/GetStartedClick.png){: width="48%" }](./getstarted.html)
 [![ePIC Tutorials](/assets/images/support/TutorialClick.png){: width="48%" }](./tutorials.html)
-[![HEP Software Training Center](/assets/images/support/HEPClick.png){: width="48%" }](https://hepsoftwarefoundation.org/training/center.html)
+[![HEP Software Training Center](/assets/images/support/HEPClick.png){: width="48%" }](https://hsf-training.org/training-center)
 [![FAQ](/assets/images/support/faqClick.png){: width="48%" }](./faq.html)
 
 Welcome to the **ePIC Landing Page**!
