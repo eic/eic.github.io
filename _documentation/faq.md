@@ -103,3 +103,28 @@ A: **TODO:** Yes, but not well organized and more is better.
 
 A: [https://indico.bnl.gov/event/18373/](https://indico.bnl.gov/event/18373/) has some, so does the dRICH tutorial. **TODO:** Needs more example code.
 
+**Q: How do I disable a certain particle decay during the detector simulation?**
+
+A: You can disable/modify a decay by changing its branching ratio. Create a ddsim/npsim steering file with contents like
+```python
+from DDSim.DD4hepSimulation import DD4hepSimulation
+SIM = DD4hepSimulation()
+SIM.ui.commandsConfigure = [
+    "/particle/select lambda",
+    # dump before
+    "/particle/property/decay/dump",
+    # proton pi-
+    "/particle/property/decay/select 0",
+    "/particle/property/decay/br 0",
+    # neutron pi0
+    "/particle/property/decay/select 1",
+    "/particle/property/decay/br 1",
+    # dump after
+    "/particle/property/decay/dump",
+]
+SIM.ui.commandsInitialize = []
+SIM.ui.commandsPostRun = []
+SIM.ui.commandsPreRun = []
+SIM.ui.commandsTerminate = []
+```
+and pass it via `--macroFile` option in your ddsim/npsim invocation.
