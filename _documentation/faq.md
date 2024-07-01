@@ -87,6 +87,8 @@ A: **TODO:** Things like ``InclusiveKinematicsDA.cc`` are part of EicRecon, but 
 
 **Q: How can we access hadron and electron PID data?**
 
+A: You can access a sampled hypothesis via `PDG` field of the `ReconstructedParticle`. The `particleIDs` relation will contain all of the available hypotheses (for expert use).
+
 **Q: How do we navigate from reconstructed to truth information?**
 
 A: Needs a refreshed tutorial; needs example code
