@@ -130,3 +130,18 @@ SIM.ui.commandsPreRun = []
 SIM.ui.commandsTerminate = []
 ```
 and pass it via `--macroFile` option in your ddsim/npsim invocation.
+
+**Q: How do I obtain the generated cross-section for a simulated dataset?**
+
+Information of generated events can be found in the .hepmc3.tree.root files in /work/eic/EPIC/EVGEN. Here is an example on how to print out the cross section stored in the ROOT tree:
+```
+root -l -b -q root://dtn-eic.jlab.org//work/eic2/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root -e 'hepmc3_tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, hepmc3_tree->GetEntries()-1)'
+```
+Or: 
+```
+TFile* file = TFile::Open("root://dtn-eic.jlab.org//work/eic2/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root");
+
+TTreeReader tree_reader("hepmc3_tree", file);
+tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, tree->GetEntries()-1);
+```
+The “1” at the end of the file name indicates that these events are used in work/eic2/EPIC/RECO/24.06.0/epic_craterlake/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.xxxx.hepmc3.tree.root
