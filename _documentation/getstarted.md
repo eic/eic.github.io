@@ -1,4 +1,4 @@
-s---
+---
 title: Get Started
 description: Get Started
 name: getstarted
