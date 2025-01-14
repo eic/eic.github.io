@@ -145,3 +145,13 @@ TTreeReader tree_reader("hepmc3_tree", file);
 tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, tree->GetEntries()-1);
 ```
 The “1” at the end of the file name indicates that these events are used in work/eic2/EPIC/RECO/24.06.0/epic_craterlake/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.xxxx.hepmc3.tree.root
+
+**Q: How do I make new python packages available in eic-shell container environment?** 
+
+A user might need to add a new python package or update the version of a package available in the eic-shell container. The following steps would be needed:
+1) [Create a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository) in [github](https://www.github.com/eic). Choose "eic" as the owner when prompted and use an open license as shown [here](https://github.com/eic/eic_rucio_policy_package/blob/main/LICENSE). For example: [eic_rucio_policy_package](https://github.com/eic/eic_rucio_policy_package)
+2) Create an automated workflow to make PyPi releases with tagged github releases of the form ```v*.*.*```. Need to create a [project.toml](https://github.com/eic/eic_rucio_policy_package/blob/main/pyproject.toml) file and a github [actions.yml](https://github.com/eic/eic_rucio_policy_package/blob/main/.github/workflows/pypi-publish.yml). N.B. If using a different format for version tagging, make sure to update the above files accordingly.  
+3) When you [tag a new release](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository) in github, the workflow on completion will create a PyPi release. Get the SHA256 hash of the latest release of the package. For example: [eic_rucio_policy_package-0.0.5](https://pypi.org/project/eic-rucio-policy-package/#eic_rucio_policy_package-0.0.5.tar.gz). Create or modify the [package.py](https://github.com/eic/eic-spack/blob/develop/packages/py-eic-rucio-policy-package/package.py) in eic-spack to the append the repository information and latest version information.
+4) Now grab the [latest commit hash](https://github.com/eic/eic-spack/commits/develop/) in eic-spack and update the eic-container repo as shown [here](https://eicweb.phy.anl.gov/containers/eic_container/-/merge_requests/1073).
+
+Once the all the above changes are merged, the package with the latest version should be available after the next possible nightly relase of eic-shell. 
