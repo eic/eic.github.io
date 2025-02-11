@@ -7,9 +7,14 @@ layout: default
 
 {% include layouts/title.md %}
 
-#### Submit feedback on the Apr. 2024 tutorials [here](https://forms.gle/bZHyncp3ePt4t6w88)
+#### Future tutorials schedule: 
 
-#### Future tutorials & schedule: Check back soon!
+* "Understanding the Simulation Output", Shujie Li, 21st February 2025, 11:00-14:00 Eastern (GMT-5)
+* "Analysis and working with the simulation output", Stephen Kay, 28th February 2025, 08:30-11:30 Eastern (GMT-5)
+
+#### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
+
+#### Note that the tutorials as presented below are not intended to be followed in a strict sequence. New users should start with the "Setting up an enviornment" tutorial.  eyond this, we encourage users to pick and choose the tutorials on topics they want to explore.
 
 ---
 
