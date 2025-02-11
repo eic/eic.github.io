@@ -14,7 +14,7 @@ layout: default
 
 #### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
 
-#### Note that the tutorials as presented below are not intended to be followed in a strict sequence. New users should start with the "Setting up an enviornment" tutorial.  eyond this, we encourage users to pick and choose the tutorials on topics they want to explore.
+#### Note that the tutorials as presented below are not intended to be followed in a strict sequence. New users should start with the "Setting up an enviornment" tutorial.  Beyond this, we encourage users to pick and choose the tutorials on topics they want to explore.
 
 ---
 
