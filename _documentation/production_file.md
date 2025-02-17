@@ -1,107 +1,90 @@
-From production campaign 25.01.1 , there are following two changes.
+# Production Files Access
 
-1. Files are now written to different location. Previous location /work/eic2 -> New location /volatile/eic. And all the old files are transferred to this new location.
+Starting from production campaign 25.01.1 onwards. Now files are registred to a catalog in Rucio (Data Mangement Software).
+All old files will be registred to rucio, notification to follow
 
-    with this you can use following way to access the procution files.
-    
-    A. To list the files:
-    ```shell
-    xrdfs root://dtn-eic.jlab.org
-    ls /volatile/eic/EPIC
-    ```
-    B. To copy the file to local destination:
-    ```shell
-    xrdcp root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/23.12.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root <local destination>
-    ```
-    
-    C. To directly use file to root TFile::Open:
-    ```c++
-    auto f = TFile::Open("root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/23.12.0/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root")
-    ```
+To see what files are available and how to access it use Rucio.
 
-2. File are registered to Rucio (data manageent system).
-    
-    Rucio client is now available on eic-shell as:
-
+- Files are now registered with Rucio, the Data Management System.
+- Access Rucio client from `eic-shell`:
     ```shell
     $ ./eic-shell
     $ rucio whoami
     ```
 
-    Files are registered to rucio in a format which is same as xrootd format except for base path (/volatile/eic/EPIC)
-    In rucio we have data identifier (DID) as unit which is `scope:name` . For epic scope is always `epic` aresulting in DIDs
+- Files are registered in Rucio with a format similar to xrootd, excluding the base path `/volatile/eic/EPIC`.
+- Data Identifiers (DID) are structured as `scope:name`. For "epic," the scope is always `epic`, resulting in DIDs like:
+    - `epic:/EVGEN/...` for EVEGEN files
+    - `epic:/FULL/...` for FULL simulation files
+    - `epic:/RECO/...` for Reconstructed output files
+    - `epic:/LOGS/...` for Log files
 
-    
-    - epic:/EVGEN/...   -> EVEGEN files
-    - epic: /FULL/...   -> FULL simulation files
-    - epic:/RECO/...    -> Reconstructed output files
-    - epic:/LOGS/...    -> Log files
+## Step by step guide.
+### First find the location of files.
 
-    DID are divided into dataset and files. Each dataset contains files.
-
-    To the dataset for a compaign :
+- **List datasets for a campaign** :
     ```shell
-    $ rucio list-dids epic:/RECO/25.01.1/*
+    $ rucio list-dids --short epic:/RECO/25.01.1/*
+
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=100
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10
+    epic:/RECO/25.01.1/epic_craterlake/BACKGROUNDS/SYNRAD/dataprod_rel_1.0.0/18x275
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=10
+    ....
     ```
-    Output (truncated) looks like:
-    ```
-    rucio list-dids epic:/RECO/25.01.1/*
-    +-------------------------------------------------------------------------------------+--------------+
-    | SCOPE:NAME                                                                          | [DID TYPE]   |
-    |-------------------------------------------------------------------------------------+--------------|
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10                           | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=10                           | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=100                          | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/EXCLUSIVE/DVCS_ABCONV/10x100                     | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/EXCLUSIVE/DVCS_ABCONV/18x275                     | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1000                         | DATASET      |
-    | epic:/RECO/25.01.1/epic_craterlake/EXCLUSIVE/TCS_ABCONV/10x100/hel_minus            | DATASET      |
-    ```
-    To see the files in a dataset:
+    Note: The list shown above is truncated for preview.
+    Replace `25.01.1` with any other campaign.
+
+- **List files within a dataset**:
     ```shell
-    $ rucio list-content epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10
+    $ rucio list-content --short epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10
+
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1105.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1106.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1107.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1108.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1109.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1110.eicrecon.tree.edm4eic.root
+    epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1111.eicrecon.tree.edm4eic.root
     ```
-    ```
-    +----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+
-    | SCOPE:NAME                                                                                                                                               | [DID TYPE]   |
-    |----------------------------------------------------------------------------------------------------------------------------------------------------------+--------------|
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0259.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0258.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0251.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0254.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0253.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0256.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0250.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0252.eicrecon.tree.edm4eic.root | FILE         |
-    | epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0257.eicrecon.tree.edm4eic.root | FILE         |
+     Note: The list shown above is truncated for preview.
+
+- **Find location of files**:
+    ```shell
+     $ rucio list-file-replicas --pfns  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
+
+    root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC//RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
     ```
 
-    To see the location of files: (AP: rewrite after root potocol is allowed)
-    ```shell
-    $ rucio list-file-replicas  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
-    ```
-    ```
-    rucio list-file-replicas  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
-    +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+------------+-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-    | SCOPE   | NAME                                                                                                                                                | FILESIZE   | ADLER32   | RSE: REPLICA                                                                                                                                                                                                   |
-    |---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+------------+-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | epic    | /RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root | 133.673 MB | 95e961ad  | EIC-XRD: https://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root |
-    +---------+-----------------------------------------------------------------------------------------------------------------------------------------------------+------------+-----------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+#### Access methods for production files include:
 
-    ```
-    to get the files you can use:
+- **Copying with `xrdcp`:**
     ```shell
-    xrdcp --allow-http https://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local_destination>
+    xrdcp root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local destination>
     ```
 
-    or
+- **Copying with `gfal-copy`:**
     ```shell
-    gfal-copy https://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local_destination>
+    gfal-copy root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local destination>
     ```
 
-    or replace https with root protocol
-    ```shell
-    xrdcp root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local_destination>
+- **Opening directly with ROOT:**
+    ```c++
+    auto f = TFile::Open("root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root")
+    ```
+    or using Python
+    ```python
+    import uproot
+    file_path = "root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root"
+    root_file = uproot.open(file_path)
+    ```
+
+    ```python
+    import ROOT
+    file_path = "root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root"
+    file = ROOT.TFile.Open(file_path, "READ")
     ```
 
