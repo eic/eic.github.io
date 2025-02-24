@@ -8,8 +8,6 @@ layout: default
 {% include layouts/title.md %}
 
 #### Future tutorials schedule: 
-
-* "Understanding the Simulation Output", Shujie Li, 21st February 2025, 11:00-14:00 Eastern (GMT-5)
 * "Analysis and working with the simulation output", Stephen Kay, 28th February 2025, 08:30-11:30 Eastern (GMT-5)
 
 #### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
@@ -33,6 +31,9 @@ layout: default
 
 ##### [Modifying geometry, digitization, and anything else](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 [![ModGeoTutSS](/assets/images/tutorials/ModGeoTutSS.png){: width="60%" }](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
+
+##### [Understand the Simulation Outout](https://github.com/eic/tutorial-understanding-sim-output)
+[![UnderSimOutTutSS](/assets/images/tutorials/UnderSimOutTutSS.png){: width="60%" }]([https://eic.github.io/tutorial-modifying-geometry-digitization-etc](https://github.com/eic/tutorial-understanding-sim-output)))
 
 ##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
 [![ReconAlgTutSS](/assets/images/tutorials/ReconAlgTutSS.png){: width="60%" }](https://eic.github.io/tutorial-reconstruction-algorithms)
