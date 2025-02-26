@@ -23,6 +23,7 @@ To see what files are available and how to access it use Rucio.
 ### First find the location of files.
 
 - **List datasets for a campaign** :
+    command: `rucio list-dids --short <dids>`
     ```shell
     $ rucio list-dids --short epic:/RECO/25.01.1/*
 
@@ -39,6 +40,7 @@ To see what files are available and how to access it use Rucio.
     Replace `25.01.1` with any other campaign.
 
 - **List files within a dataset**:
+    command: `rucio list-content --short <did>`
     ```shell
     $ rucio list-content --short epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10
 
@@ -53,8 +55,9 @@ To see what files are available and how to access it use Rucio.
      Note: The list shown above is truncated for preview.
 
 - **Find location of files**:
+    command: `rucio list-file-replicas --protocol root --pfns <did>`
     ```shell
-     $ rucio list-file-replicas --pfns  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
+     $ rucio list-file-replicas --protocol root --pfns  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
 
     root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC//RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
     ```
