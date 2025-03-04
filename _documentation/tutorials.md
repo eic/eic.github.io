@@ -32,7 +32,7 @@ layout: default
 ##### [Modifying geometry, digitization, and anything else](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 [![ModGeoTutSS](/assets/images/tutorials/ModGeoTutSS.png){: width="60%" }](https://eic.github.io/tutorial-modifying-geometry-digitization-etc)
 
-##### [Understand the Simulation Output](https://github.com/eic/tutorial-understanding-sim-output)
+##### [Understanding the Simulation Output](https://eic.github.io/tutorial-understanding-sim-output)
 [![UnderSimOutTutSS](/assets/images/tutorials/UnderSimOutTutSS.png){: width="60%" }](https://eic.github.io/tutorial-understanding-sim-output/)
 
 ##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
