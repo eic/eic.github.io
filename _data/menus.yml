@@ -120,6 +120,9 @@
     - name: landingpage
       full: Landing Page
 
+    - name: tutorials
+      full: Tutorials
+
     - name: faq
       full: FAQ
 
