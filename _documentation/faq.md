@@ -15,24 +15,24 @@ Submit new questions and comments by email: [![emailicon](../assets/images/site/
 ------------------------
 **Q: How can we browse the simulation output from a specific campaign and locate certain output files?**
 
-A: Visit the [epicprod website](https://eic.github.io/epic-prod/campaigns/campaigns_reco.html) to view the list of avaiable campaigns. Pick a campaign that you want to view in detail. For example: [23.12.0](https://eic.github.io/epic-prod/RECO/23.12.0/). Here, you will find the output directories listed in a nested tree structure. The directory nomenclature usually follows the pattern:
+A: Visit the [epicprod website](https://eic.github.io/epic-prod/campaigns/campaigns_reco.html) to view the list of avaiable campaigns. Pick a campaign that you want to view in detail. For example: [25.01.1](https://eic.github.io/epic-prod/RECO/25.01.1/). Here, you will find the output directories listed in a nested tree structure. The directory nomenclature usually follows the pattern:
 
 ```<base directory>/<campaign tag>/<detector config>/<physics processes>/<generator release tag if available>/<electron momentum>x<proton momentum>/<q2 range>/```
 
 The preferred method to list the files in a directory is to use the xrdfs interface within eic-shell container. For example:
 ```
     xrdfs root://dtn-eic.jlab.org   
-    ls /work/eic2/EPIC/RECO/23.09.1/epic_craterlake/DIS/NC/18x275/minQ2=1000
+    ls /volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000
 ```
 See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
 
 **Q: What input datasets are used in a particular production campaign and where can I find them?**
 
-A: The directory structure of the input datasets mimic the directory structure of the output files from `<physics processes>` onwards. Consider, the output files under `root://dtn-eic.jlab.org//work/eic2/EPIC/RECO/23.12.0/epic_craterlake/DIS/NC/10x100/minQ2=1`. The corresponding input datasets can be found in the following manner:
+A: The directory structure of the input datasets mimic the directory structure of the output files from `<physics processes>` onwards. Consider, the output files under `root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1`. The corresponding input datasets can be found in the following manner:
 
 ```
 xrdfs root://dtn-eic.jlab.org
-ls /work/eic2/EPIC/EVGEN/DIS/NC/10x100/minQ2=1
+ls /volatile/eic/EPIC/EVGEN/DIS/NC/10x100/minQ2=1
 ```
 
 **Q: What is the procedure to introduce a new dataset into a production campaign or replace an existing one?**
@@ -43,7 +43,7 @@ A: Follow the input dataset creation [guidelines](https://eic.github.io/epic-pro
 
 A: Enter the full file path including server address using root TFile::Open. For example:
 ```
-    auto f = TFile::Open("root://dtn-eic.jlab.org//work/eic2/EPIC/RECO/23.12.0/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root")
+    auto f = TFile::Open("root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root")
 ```
 See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
 
@@ -51,12 +51,12 @@ See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
 
 A: Use xrdcp with full path and local destination directory. For example:
 ```
-xrdcp root://dtn-eic.jlab.org//work/eic2/EPIC/RECO/23.12.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root <local destination>
+xrdcp root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root <local destination>
 ```
 
 **Q: What is included in the campaign, and what are the major changes compared to before?**
 
-A: We version track the [epic](https://github.com/eic/epic/releases) and [eicrecon](https://github.com/eic/eicrecon/releases) repositories and the new features introduced in a campaign are tracked in the release notes. For example: [epic-23.12.0](https://github.com/eic/epic/releases/tag/23.12.0) and [eicrecon-1.9.0](https://github.com/eic/eicrecon/releases/tag/1.9.0) represent the software changes introduced in December campaign. As of December, 2023 we have also began enforcing version tracking on our input datasets. 
+A: We version track the [epic](https://github.com/eic/epic/releases) and [eicrecon](https://github.com/eic/eicrecon/releases) repositories and the new features introduced in a campaign are tracked in the release notes. For example: [epic-25.01.1](https://github.com/eic/epic/releases/tag/25.01.1) and [eicrecon-1.21.0](https://github.com/eic/eicrecon/releases/tag/v1.21.0) represent the software changes introduced in January, 2025 campaign. Version tracking is also enforced for input datasets.
 
 **Q: How can we effectively use the information stored in EICRecon rootfile outputs, such as matching reconstructed particles to their MC particles?**
 
@@ -135,13 +135,13 @@ and pass it via `--macroFile` option in your ddsim/npsim invocation.
 
 Information of generated events can be found in the .hepmc3.tree.root files in /work/eic/EPIC/EVGEN. Here is an example on how to print out the cross section stored in the ROOT tree:
 ```
-root -l -b -q root://dtn-eic.jlab.org//work/eic2/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root -e 'hepmc3_tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, hepmc3_tree->GetEntries()-1)'
+root -l -b -q root://dtn-eic.jlab.org//volatile/eic/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root -e 'hepmc3_tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, hepmc3_tree->GetEntries()-1)'
 ```
 Or: 
 ```
-TFile* file = TFile::Open("root://dtn-eic.jlab.org//work/eic2/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root");
+TFile* file = TFile::Open("root://dtn-eic.jlab.org//volatile/eic/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root");
 
 TTreeReader tree_reader("hepmc3_tree", file);
 tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, tree->GetEntries()-1);
 ```
-The “1” at the end of the file name indicates that these events are used in work/eic2/EPIC/RECO/24.06.0/epic_craterlake/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.xxxx.hepmc3.tree.root
+The “1” at the end of the file name indicates that these events are used in /volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.xxxx.hepmc3.tree.root
