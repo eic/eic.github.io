@@ -64,6 +64,21 @@ To see what files are available and how to access it use Rucio.
 
 #### Access methods for production files include:
 
+- **Download all files in a dataset at once with `rucio download <dataset>`**
+    ```shell
+    rucio download epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=100
+    ```
+
+    or multiple datasets at once
+    ```shell
+    rucio download <dataset1> <dataset2>
+    ```
+
+- **Download single file with `rucio download <file_did>`**
+    ```shell
+    rucio download epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.1105.eicrecon.tree.edm4eic.root
+    ```
+
 - **Copying with `xrdcp`:**
     ```shell
     xrdcp root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root <local destination>
