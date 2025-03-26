@@ -1,3 +1,12 @@
+---
+title: Production Files Access
+description: production_file
+name: production_file
+layout: default
+---
+
+{% include layouts/title.md %}
+
 # Production Files Access
 
 Starting from production campaign 25.01.1 onwards. Now files are registred to a catalog in Rucio (Data Mangement Software).
