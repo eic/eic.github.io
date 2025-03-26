@@ -8,7 +8,7 @@ layout: default
 {% include layouts/title.md %}
 
 #### Future tutorials schedule: 
-* "Getting Started with a Physics Analysis Tutorial", Alexander Jentsch, 18th March 2025, 10:00-13:00 Eastern Daylight Time (GMT-4)
+* "Inclusive Kinematics Reconstruction ", Stephen Maple, 7th April 2025, 09:30-11:30 Eastern Daylight Time (GMT-4)
 
 #### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
 
