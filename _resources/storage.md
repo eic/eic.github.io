@@ -7,32 +7,6 @@ layout: default
 
 {% include layouts/title.md %}
 
-#### S3
-The main storage for EIC-related files is on S3 interface, for EIC use.
-
-This storage is accessed via the "MinIO" client - named *"mc"* - available for download from the MinIO site on its
-{% include navigation/findlink.md name='minio_download' tag='download page' %}, or installed on the farms and inside `eic-shell`.
-Please obtain the read-only access key from the ePIC mattermost channel. Then, in a bash-like environment add 
-```
-export S3_ACCESS_KEY=[ask in mattermost]
-export S3_SECRET_KEY=[ask in mattermost]
-```
-to your initialization file (e.g. `.bashrc`), or
-```
-setenv S3_ACCESS_KEY [ask in mattermost]
-setenv S3_SECRET_KEY [ask in mattermost]
-```
-to your equivalent init file (e.g. `.cshrc`).
-You then run 
-```
-mc config host add S3 https://eics3.sdcc.bnl.gov:9000 $S3_ACCESS_KEY $S3_SECRET_KEY
-```
-and from then on you can use commands like
-```
-mc ls S3/eictest/EPIC/Tutorials
-```
-
-
 ##### NextCloud/BNLbox: pre-generaged event datasets
 
 The EIC group at BNL has a large amount (13 TB and growing) of
@@ -43,7 +17,6 @@ Kolja Kauder, kkauder_at_bnl.gov, and request a guest account.
 You will receive an invitation where you can choose your password. From then on, you can log into
 https://bnlbox.sdcc.bnl.gov
 and find everything in the ```EIC_Data``` directory via the web interface.
-
 
 ##### Download from the command line
 
@@ -71,7 +44,6 @@ This way, you can (with a suitably configured .netrc) use something like:
 ```bash
 curl -O -n ${eicdataurl}/copy_bnl_box.rb
 ```
-
 
 ##### Adding to the collection
 There is more than enough space available to fulfill all storage needs
