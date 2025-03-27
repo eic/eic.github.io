@@ -24,7 +24,7 @@ The preferred method to list the files in a directory is to use the xrdfs interf
     xrdfs root://dtn-eic.jlab.org   
     ls /volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000
 ```
-See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
+See more details [here](https://eic.github.io/epic-prod/documentation/faq.html) and in the resources section under [Production Files Access](https://eic.github.io/resources/production_file.html).
 
 **Q: What input datasets are used in a particular production campaign and where can I find them?**
 
