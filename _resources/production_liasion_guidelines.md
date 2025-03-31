@@ -7,6 +7,7 @@ layout: default
 
 {% include layouts/title.md %}
 
+---
 # Getting User Accounts
 
 The following steps assume that you have an account on one or more of the access points (APs) at JeffersonLab, Open Science Grid, or Brookhaven National Lab. The instructions to get accounts on each of the access points can be found in the links below:
@@ -43,8 +44,8 @@ ssh <username>@ssh.sdcc.bnl.gov -Y
 
 If you are having trouble with account access, email RT-RACF-UserAccounts@bnl.gov.
 
----
 
+---
 # Getting Write Access to Jefferson Lab Rucio Storage Endpoint (RSE)
 ### Getting a Certificate from CILogon
 
@@ -61,7 +62,7 @@ You will need to obtain your user certificate using the CILogon web UI. Follow t
 5. Enter a password that is at least 12 characters long and then click on the **Get New Certificate** button.
 6. Click **Download Your Certificate** to download your certificate in `.p12` format. The certificate will be protected by the password you created.
 
----
+
 
 ### Generating User Keys
 
@@ -84,7 +85,7 @@ You will need to obtain your user certificate using the CILogon web UI. Follow t
     chmod 600 ~/.globus/userkey.pem
     ```
 
----
+
 
 ### Installing voms-client
 
@@ -95,7 +96,7 @@ sudo apt-get install voms-clients-java
 ```
 All the access points should already have the `voms-client` installed. So, you can skip this step if you are already on one. 
 
----
+
 
 ### Running voms-proxy-init
 
@@ -107,7 +108,7 @@ voms-proxy-init --hours 1460
 
 This will create an X.509 proxy certificate in your `/tmp` directory. You can rename it as `x509_user_proxy` and use it for production or uploading files to the Jefferson Lab storage system.
 
----
+
 
 ### Send Information
 
@@ -117,3 +118,23 @@ Run the following command and email the output to `panta@jlab.org`:
 voms-proxy-info | grep "issuer" | awk -F":" '{print $2}'
 ```
 You only need to do this once. 
+
+---
+# Integrating a New Dataset in Production
+
+Run eic-shell and set the rucio variables
+```bash
+./eic-shell
+export RUCIO_CONFIG=/opt/campaigns/hepmc3/scripts/rucio.cfg
+export X509_USER_PROXY=x509_user_proxy
+```
+
+Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). An example is shown here:
+```
+python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
+-f "/work/eic3/users/sjdkay/Mar2025_Campaign_Input/Afterburner_Output/kaonLambda/10on130/DEMPgen-v1.2.3_K+LambdaDEMP_10on130_q2_20_35.hepmc3.tree.root" \
+-d "/EVGEN/EXCLUSIVE/DEMP/DEMPgen-1.2.3/10x130/q2_20_35/K+Lambda/DEMPgen-1.2.3_10x130_K+Lambda_q2_20_35_hiAcc.hepmc3.tree.root" \
+-s epic -r EIC-XRD
+```
+
+Once they are uploaded, create a PR similar to [this](https://eicweb.phy.anl.gov/EIC/campaigns/datasets/-/merge_requests/89/diffs) on the [datasets repository](https://github.com/eic/simulation_campaign_datasets/) with csv file catalogues for the respective datasets and integration line in the config.yml file. 
