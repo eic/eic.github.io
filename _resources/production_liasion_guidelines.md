@@ -45,7 +45,8 @@ If you are having trouble with account access, email RT-RACF-UserAccounts@bnl.go
 
 ---
 
-# Getting a Certificate from CILogon
+# Getting Write Access to Jefferson Lab Rucio Storage Endpoint (RSE)
+### Getting a Certificate from CILogon
 
 You will need to obtain your user certificate using the CILogon web UI. Follow the steps below to get a user certificate:
 
@@ -62,7 +63,7 @@ You will need to obtain your user certificate using the CILogon web UI. Follow t
 
 ---
 
-# Generating User Keys
+### Generating User Keys
 
 1. Open `eic-shell`:
     ```bash
@@ -85,7 +86,7 @@ You will need to obtain your user certificate using the CILogon web UI. Follow t
 
 ---
 
-# Installing voms-client
+### Installing voms-client
 
 You will need the `voms-client` on a Linux machine. If you are on your local Linux machine, then do:
 
@@ -96,7 +97,7 @@ All the access points should already have the `voms-client` installed. So, you c
 
 ---
 
-# Running voms-proxy-init
+### Running voms-proxy-init
 
 Run the following command to generate a voms proxy certificate with a validity of at least 2 months (1460 hours):
 
@@ -108,10 +109,11 @@ This will create an X.509 proxy certificate in your `/tmp` directory. You can re
 
 ---
 
-# Send Information
+### Send Information
 
 Run the following command and email the output to `panta@jlab.org`:
 
 ```bash
 voms-proxy-info | grep "issuer" | awk -F":" '{print $2}'
 ```
+You only need to do this once. 
