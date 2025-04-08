@@ -8,7 +8,6 @@ layout: default
 {% include layouts/title.md %}
 
 #### Future tutorials schedule: 
-* "Inclusive Kinematics Reconstruction ", Stephen Maple, 7th April 2025, 09:30-11:30 Eastern Daylight Time (GMT-4)
 
 #### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
 
@@ -34,6 +33,11 @@ layout: default
 
 ##### [Understanding the Simulation Output](https://eic.github.io/tutorial-understanding-sim-output)
 [![UnderSimOutTutSS](/assets/images/tutorials/UnderSimOutTutSS.png){: width="60%" }](https://eic.github.io/tutorial-understanding-sim-output/)
+
+##### [Getting Started With a Physics Analysis](https://indico.bnl.gov/event/27123/)
+
+##### [Inclusive Kinematics Reconstruction](https://eic.github.io/tutorial-kinematic-reconstruction/)
+[![UnderSimOutTutSS](/assets/images/tutorials/InclusiveKinRecTutSS.png){: width="60%" }](https://eic.github.io/tutorial-kinematic-reconstruction/))
 
 ##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
 [![ReconAlgTutSS](/assets/images/tutorials/ReconAlgTutSS.png){: width="60%" }](https://eic.github.io/tutorial-reconstruction-algorithms)
