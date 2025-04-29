@@ -11,8 +11,33 @@ layout: default
 
 #### Please join the [Mattermost Software Tutorials](https://chat.epic-eic.org/main/channels/software-tutorials) channel for updates/announcements and questions about tutorials.
 
-#### Note that the tutorials as presented below are not intended to be followed in a strict sequence. New users should start with the "Setting up an enviornment" tutorial.  Beyond this, we encourage users to pick and choose the tutorials on topics they want to explore.
+#### Note that the tutorials as presented below are not intended to be followed in a strict sequence. New users should start with the "Setting up an enviornment" tutorial.  Beyond this, we encourage users to pick and choose the tutorialson topics they want to explore.
 
+| Tutorial | Difficulty | Tags | Description | Resources |
+| --- | --- | --- | --- | --- |
+| [Setting up an environment](https://eic.github.io/tutorial-setting-up-environment) | Beginner | \[Setup\] \[Environment\] | Get started with the ePIC software environment | [Video 1](https://www.youtube.com/watch?v=Y0Mg24XLomY) • [Video 2](https://www.youtube.com/watch?v=5HmzFnYW4W4) |
+| [Analysis and simulation output](https://eic.github.io/tutorial-analysis) | Beginner/Advanced | \[Analysis\] \[Data\] | Learn how to analyze simulation data | [Video](https://youtu.be/O7lPhc7Z3bM) |
+| [Simulating detectors](https://eic.github.io/tutorial-geometry-development-using-dd4hep/) | Expert | \[Simulation\] \[Detector\] \[DD4hep\] | Development of detector geometry using DD4hep | [Video](https://youtu.be/k9Egs602GuM) |
+| [Modifying geometry and digitization](https://eic.github.io/tutorial-modifying-geometry-digitization-etc) | Advanced | \[Geometry\] \[Digitization\] | Learn to customize detector configurations | \- |
+| [Understanding simulation output](https://eic.github.io/tutorial-understanding-sim-output) | Advanced | \[Simulation\] \[Data\] | Deep dive into simulation data structure | \- |
+| [Getting started with physics analysis](https://indico.bnl.gov/event/27123/) | Advanced | \[Physics\] \[Analysis\] | Physics analysis introduction | \- |
+| [Inclusive kinematics reconstruction](https://eic.github.io/tutorial-kinematic-reconstruction/) | Advanced | \[Reconstruction\] \[Kinematics\] | Learn kinematics reconstruction techniques | \- |
+| [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms) | Expert | \[Algorithms\] \[Reconstruction\] | Study different reconstruction approaches | [Video 1](https://youtu.be/Fjs8pyS47_A) • [Video 2](https://youtu.be/WkePQZZVufc) |
+| [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks) | Expert | \[Benchmarking\] \[Performance\] | Learn to create performance benchmarks | \- |
+| [Simulations with ddsim and geant4](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/) | Advanced | \[Simulation\] \[Geant4\] \[ddsim\] | Run simulations with different frameworks | [Video 1](https://www.youtube.com/watch?v=QjjD1_wjLIw) • [Video 2](https://www.youtube.com/watch?v=WqSQ4m_esUw) |
+| [Reconstruction framework](https://eic.github.io/tutorial-jana2/) | Expert | \[Framework\] \[JANA2\] \[Reconstruction\] | Working with the JANA2 reconstruction framework | [Video 1](https://www.youtube.com/watch?v=Ly2Zh1AGUEc) • [Video 2](https://youtu.be/9blKFZS-qMk) |
+| [Analysis bootcamp](https://github.com/eic/python-analysis-bootcamp) | Advanced | \[Python\] \[Analysis\] \[Bootcamp\] | Python-based analysis techniques | \- |
+
+### Tutorial Categories
+
+You can filter tutorials by tags:
+
+*   **Setup**: Environment configuration and basic setup
+*   **Simulation**: Creating and running simulations
+*   **Analysis**: Working with and analyzing data
+*   **Reconstruction**: Techniques for event reconstruction
+*   **Geometry**: Detector geometry specification and modification
+*   **Framework**: Software framework components and usage
 ---
 
 ##### [Setting up an environment](https://eic.github.io/tutorial-setting-up-environment)
@@ -37,7 +62,7 @@ layout: default
 ##### [Getting Started With a Physics Analysis](https://indico.bnl.gov/event/27123/)
 
 ##### [Inclusive Kinematics Reconstruction](https://eic.github.io/tutorial-kinematic-reconstruction/)
-[![UnderSimOutTutSS](/assets/images/tutorials/InclusiveKinRecTutSS.png){: width="60%" }](https://eic.github.io/tutorial-kinematic-reconstruction/))
+[![UnderSimOutTutSS](/assets/images/tutorials/InclusiveKinRecTutSS.png){: width="60%" }](https://eic.github.io/tutorial-kinematic-reconstruction/)
 
 ##### [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms)
 [![ReconAlgTutSS](/assets/images/tutorials/ReconAlgTutSS.png){: width="60%" }](https://eic.github.io/tutorial-reconstruction-algorithms)

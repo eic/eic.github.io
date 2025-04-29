@@ -53,6 +53,10 @@
     - name: simulations
       full: Accelerator and Beam Conditions
 
+    - name: image_browser
+      full: ePIC Image Browser
+      link: https://eic.jlab.org/epic/image_browser.html
+
     - name: storage
       label: yes
       full: Storage
@@ -61,7 +65,7 @@
       full: NextCloud/S3
   
     - name: production_file
-      full: Production Files Access 
+      full: Production Files Access
 
 ### Activities
 #
