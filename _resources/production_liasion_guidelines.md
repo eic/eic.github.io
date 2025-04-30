@@ -12,7 +12,7 @@ layout: default
 
 The following steps assume that you have an account on one or more of the access points (APs) at JeffersonLab, Open Science Grid, or Brookhaven National Lab. The instructions to get accounts on each of the access points can be found in the links below:
 1. [Jefferson Lab Account Access](https://misportal.jlab.org/jlabAccess/)
-2. [Open Science Grid Account Access](https://portal.osg-htc.org/application)
+2. [Open Science Grid Account Access](https://https://www.ci-connect.net/signup)
 3. [Brookhaven Lab Account Access](https://www.sdcc.bnl.gov/information/getting-started/new-user-account)
 
 Follow the instructions in the respective links to get your account and then log in to the access point.
