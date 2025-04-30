@@ -47,45 +47,19 @@ If you are having trouble with account access, email RT-RACF-UserAccounts@bnl.go
 
 ---
 # Getting Write Access to Jefferson Lab Rucio Storage Endpoint (RSE)
-### Getting a Certificate from CILogon
+### Getting a Certificate and Key
 
-You will need to obtain your user certificate using the CILogon web UI. Follow the steps below to get a user certificate:
+1. If you have a jlab account, file a ticket with [Service Now](https://jlab.servicenowservices.com/) asking for a certificate to be able access ePIC Rucio in the context of OSG job submission. If you don't have a jlab account, contact the [production WG](https://eic.github.io/epic-prod/about/contact.html) to file a ticket on your behalf.
 
-1. Open the [CILogon page](https://cilogon.org) in your browser.
-2. Search for your institution or scroll through the list and select it.
-   
-   **Warning:**  
-   Do not use Google, GitHub, or ORCID as providers since they are not widely supported in the OSG. If your institution is not on the list, contact your institution's IT support to check if they can support CILogon.
-
-3. Click the "Log On" button and enter your institutional credentials if prompted.
-4. After successfully entering your credentials, click on the **Create Password-Protected Certificate** link.
-5. Enter a password that is at least 12 characters long and then click on the **Get New Certificate** button.
-6. Click **Download Your Certificate** to download your certificate in `.p12` format. The certificate will be protected by the password you created.
-
-
-
-### Generating User Keys
-
-1. Open `eic-shell`:
+2. You will receive an email from support@cert-manager.com with the instruction to download your .cer file.
+​
+3. Once you have received this .cer file, transfer this to the access point you will be using. Please request the production WG to provide you with the key corresponding to your .cer file. Your key will be placed in the access point according to your request (BNL, JLAB or OSG). 
+​
+4. Move certificates and keys to a desired location and change the permissions.
     ```bash
-    curl -L https://github.com/eic/eic-shell/raw/main/install.sh | bash
-    ./eic-shell
+    chmod 600 usercert.cer
+    chmod 600 userkey.key
     ```
-2. Generate the keys. You will be prompted to enter the import password you used when generating the certificate. Then, exit out of the container:
-    ```bash
-    openssl pkcs12 -in usercred.p12 -out usercert.pem -clcerts -nokeys -legacy
-    openssl pkcs12 -in usercred.p12 -out userkey.pem -nocerts -nodes -legacy
-    exit
-    ```
-3. Move certificates and keys to the `.globus` folder:
-    ```bash
-    mkdir ~/.globus
-    mv user* ~/.globus
-    chmod 600 ~/.globus/usercert.pem
-    chmod 600 ~/.globus/userkey.pem
-    ```
-
-
 
 ### Installing voms-client
 
@@ -96,26 +70,22 @@ sudo apt-get install voms-clients-java
 ```
 All the access points should already have the `voms-client` installed. So, you can skip this step if you are already on one. 
 
-
-
 ### Running voms-proxy-init
 
 Run the following command to generate a voms proxy certificate with a validity of at least 2 months (1460 hours):
 
 ```bash
-voms-proxy-init --hours 1460
+voms-proxy-init -cert=usercert.cer -key=userkey.key -out=x509_user_proxy -hours=1460
 ```
 
-This will create an X.509 proxy certificate in your `/tmp` directory. You can rename it as `x509_user_proxy` and use it for production or uploading files to the Jefferson Lab storage system.
-
-
+This will create an proxy certificate in your current directory. 
 
 ### Send Information
 
 Run the following command and email the output to `panta@jlab.org`:
 
 ```bash
-voms-proxy-info | grep "issuer" | awk -F":" '{print $2}'
+voms-proxy-info -file=x509_user_proxy | grep "issuer" | awk -F":" '{print $2}'
 ```
 You only need to do this once. 
 
