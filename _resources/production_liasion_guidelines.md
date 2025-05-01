@@ -10,18 +10,28 @@ layout: default
 ---
 # Getting User Accounts
 
-The following steps assume that you have an account on one or more of the access points (APs) at JeffersonLab, Open Science Grid, or Brookhaven National Lab. The instructions to get accounts on each of the access points can be found in the links below:
+You should get a computing user account on JeffersonLab, Open Science Grid, or Brookhaven National Lab. The instructions to get accounts on each of the sites can be found in the links below:
 1. [Jefferson Lab Account Access](https://misportal.jlab.org/jlabAccess/)
-2. [Open Science Grid Account Access](https://https://www.ci-connect.net/signup)
+2. [Open Science Grid Account Access](https://www.ci-connect.net/signup)
 3. [Brookhaven Lab Account Access](https://www.sdcc.bnl.gov/information/getting-started/new-user-account)
 
-Follow the instructions in the respective links to get your account and then log in to the access point.
+Obtaining access to multiple sites is good for redundancy. 
+
+
+# Getting Approved for OSG Access Points (APs)
 
 ### Jefferson Lab
 ```bash
 ssh <username>@scilogin.jlab.org -Y
 # Use your 2-factor Safenet password
 ```
+
+You have to setup the 2-factor Safenet password by calling the helpdesk at +1(757)2697155 after your account creation is done. You will receive the relevant links on your [JLab email](https://webmail.jlab.org/) which can be accessed by your regular JLab password. 
+
+Once you have access to the JLab login node, file a ticket with [JLab Service Now](https://jlab.servicenowservices.com) to gain access to osg-eic access point. 
+
+Mention in the ticket that you will be submitting simulation jobs to OSG on behalf of the ePIC experiment. Once approved, you will be able to login to osg-eic after logging into the JLab login node. 
+
 ```bash
 ssh <username>@osg-eic -Y
 # Use your 2-factor Safenet password
@@ -42,8 +52,13 @@ If you are having trouble with account access, email support@osg-htc.org.
 ssh <username>@ssh.sdcc.bnl.gov -Y
 ```
 
-If you are having trouble with account access, email RT-RACF-UserAccounts@bnl.gov.
+Once you have access to the sdcc login node, file a ticket with RT-RACF-UserAccounts@bnl.gov to get access to the osgsub01 node and mention that that you will be using it to submit jobs on behalf of the ePIC collaboration. Once approved, you can log onto the access point after logging onto the sdcc login node.  
 
+```bash
+ssh <username>@osgsub01 -Y
+```
+
+Report any difficulties to the above-mentioned email for filing tickets. 
 
 ---
 # Getting Write Access to Jefferson Lab Rucio Storage Endpoint (RSE)
