@@ -11,6 +11,7 @@ layout: default
 [![ePIC Tutorials](/assets/images/support/TutorialClick.png){: width="48%" }](./tutorials.html)
 [![HEP Software Training Center](/assets/images/support/HEPClick.png){: width="48%" }](https://hsf-training.org/training-center)
 [![FAQ](/assets/images/support/faqClick.png){: width="48%" }](./faq.html)
+[![ePIC Image Viewer](/assets/images/support/ImageViewerClick.png){: width="48%" }](https://eic.jlab.org/epic/image_browser.html)
 
 Welcome to the **ePIC Landing Page**!
 
