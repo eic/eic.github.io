@@ -114,7 +114,7 @@ export RUCIO_CONFIG=/opt/campaigns/hepmc3/scripts/rucio.cfg
 export X509_USER_PROXY=x509_user_proxy
 ```
 
-Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). An example is shown here:
+Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). Make sure that the dataset can be traced to a version controlled github repo before this transfer happens because you will need the version tag for the directory structure and nomenclature. An example of the transfer is shown here:
 ```
 python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
 -f "/work/eic3/users/sjdkay/Mar2025_Campaign_Input/Afterburner_Output/kaonLambda/10on130/DEMPgen-v1.2.3_K+LambdaDEMP_10on130_q2_20_35.hepmc3.tree.root" \
