@@ -62,7 +62,7 @@
       full: Storage
 
     - name: storage
-      full: NextCloud/S3
+      full: NextCloud
   
     - name: production_file
       full: Production Files Access
