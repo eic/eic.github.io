@@ -34,7 +34,7 @@ To see what files are available and how to access it use Rucio.
 - **List datasets for a campaign** :
     command: `rucio list-dids --short <dids>`
     ```shell
-    $ rucio list-dids --short epic:/RECO/25.01.1/*
+    $ rucio list-dids --short epic:/RECO/25.01.1/\*
 
     epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=100
     epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1
