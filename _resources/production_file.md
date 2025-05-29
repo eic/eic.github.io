@@ -66,12 +66,11 @@ To see what files are available and how to access it use Rucio.
 - **Find location of files**:
     command: `rucio list-file-replicas --protocol root --pfns <did>`
     ```shell
-     $ rucio list-file-replicas --protocol root --pfns  epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
+     $ rucio list-file-replicas --protocol root --pfns --rses isopen epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
 
-    root://sca2302.jlab.org:10940//mss/eic/EPIC//RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
     root://dtn-rucio.jlab.org:1094//volatile/eic/EPIC//RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10/pythia8NCDIS_10x100_minQ2=10_beamEffects_xAngle=-0.025_hiDiv_5.0255.eicrecon.tree.edm4eic.root
     ```
-    Here, the first entry is a tape replica and is not externally accessible. The second URI is pointing to the on-disk XRootD. `rucio download` will automatically pick accessible entry.
+    If you see multiple replicas you can use any one of those. You can check using `rucio list-rses --rses isopen` for a full list of RSE's.
 
 #### Access methods for production files include:
 
