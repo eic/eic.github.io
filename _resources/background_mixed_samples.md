@@ -14,7 +14,7 @@ layout: default
 A run is a collection of events and each event represents a 2000 nano second long integration frame. 
 
 ## Representation of a "Run" with 5 "Events"
-If we assume a signal frequency of 500 kHz, each event contains atleast 1 signal contribution. The background contributions get allocated per event based on their sampling frequency. Processes with less than 500 kHz sampling frequency are not guaranteed a contribution in every event. 
+If we assume a signal frequency of 500 kHz, each event contains at least 1 signal contribution. The background contributions get allocated per event based on their sampling frequency. Processes with less than 500 kHz sampling frequency are not guaranteed a contribution in every event. 
 
 | **Event**   | **signal**   | **synrad** | **ebrems** | **etouschek** | **ecoloumb** | **p.b.gas**|
 | ----------- | -----------  | -----------| ---------  | ------------  | -----------  | -----------  | 
