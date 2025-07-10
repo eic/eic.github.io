@@ -40,13 +40,13 @@ If we assume a signal frequency of 500 kHz, each event contains atleast 1 signal
 **Simulation Output** 
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ²=1/
+root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
 ```
 
 **Reconstructed Output**
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ²=1/
+root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
 ```
 
 N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstructed output is available for every campaign but simulation output is not always preserved to save storage resources.
