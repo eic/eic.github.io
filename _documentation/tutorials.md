@@ -26,7 +26,7 @@ layout: default
 | [Inclusive kinematics reconstruction](https://eic.github.io/tutorial-kinematic-reconstruction/) | Advanced | \[Reconstruction\] \[Kinematics\] | Learn kinematics reconstruction techniques | [Video](https://york-ac-uk.zoom.us/rec/share/611M8rfKm1SZookd8JyyqcoRVLiDoajy7m3hwOo7SqSK9Lu2b8Gr_nsJ1LIbt7z0.G5HvcdHCGNEmyA2O) (Z09g&#6A) |
 | [Reconstruction algorithms](https://eic.github.io/tutorial-reconstruction-algorithms) | Expert | \[Algorithms\] \[Reconstruction\] | Study different reconstruction approaches | [Video 1](https://youtu.be/Fjs8pyS47_A) • [Video 2](https://youtu.be/WkePQZZVufc) |
 | [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks) | Expert | \[Benchmarking\] \[Performance\] | Learn to create performance benchmarks | \- |
-| [Simulations with npsim and geant4](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/) | Advanced | \[Simulation\] \[Geant4\] \[npsim\] | Run simulations with different frameworks | [Video 1](https://www.youtube.com/watch?v=QjjD1_wjLIw) • [Video 2](https://www.youtube.com/watch?v=WqSQ4m_esUw) |
+| [Simulations with npsim and geant4](https://eic.github.io/tutorial-simulations-using-npsim-and-geant4/) | Advanced | \[Simulation\] \[Geant4\] \[npsim\] | Run simulations with different frameworks | [Video 1](https://www.youtube.com/watch?v=QjjD1_wjLIw) • [Video 2](https://www.youtube.com/watch?v=WqSQ4m_esUw) |
 | [Reconstruction framework](https://eic.github.io/tutorial-jana2/) | Expert | \[Framework\] \[JANA2\] \[Reconstruction\] | Working with the JANA2 reconstruction framework | [Video 1](https://www.youtube.com/watch?v=Ly2Zh1AGUEc) • [Video 2](https://youtu.be/9blKFZS-qMk) |
 | [Analysis bootcamp](https://github.com/eic/python-analysis-bootcamp) | Advanced | \[Python\] \[Analysis\] \[Bootcamp\] | Python-based analysis techniques | \- |
 
@@ -73,8 +73,8 @@ layout: default
 ##### [Developing benchmarks](https://eic.github.io/tutorial-developing-benchmarks)
 [![BenchmarkTutSS](/assets/images/tutorials/BenchmarkTutSS.png){: width="60%" }](https://eic.github.io/tutorial-developing-benchmarks)
 
-##### [Simulations using npsim and geant4](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/)
-[![SimTutSS](/assets/images/tutorials/SimTutSS.png){: width="60%" }](https://eic.github.io/tutorial-simulations-using-ddsim-and-geant4/)
+##### [Simulations using npsim and geant4](https://eic.github.io/tutorial-simulations-using-npsim-and-geant4/)
+[![SimTutSS](/assets/images/tutorials/SimTutSS.png){: width="60%" }](https://eic.github.io/tutorial-simulations-using-npsim-and-geant4/)
 [![video1](/assets/images/tutorials/SimVid1.png){: width="18%" }](https://www.youtube.com/watch?v=QjjD1_wjLIw)
 [![video2](/assets/images/tutorials/SimVid2.png){: width="18%" }](https://www.youtube.com/watch?v=WqSQ4m_esUw)
 
