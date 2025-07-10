@@ -31,8 +31,8 @@ If we assume a signal frequency of 500 kHz, each event contains at least 1 signa
 | 🔴 | **signal** | DIS NC 18x275 Q²>1 (Deep inelastic scattering neutral current) | 500 | 0
 | ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
 | 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟢 | **etouschek** | Electron Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Electron Coulomb scattering processes | 0.72 | 5000
 | 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
 ## Location of files
@@ -76,8 +76,8 @@ A run is a collection of events and each event represents a 2000 nano second lon
 | 🔴 | **signal** | SIDIS pythia6 18x275 Q²<1 (Deep inelastic scattering neutral current)  | 500 | 0
 | ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
 | 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟢 | **etouschek** | Electron Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Electron Coulomb scattering processes | 0.72 | 5000
 | 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
 ## Location of files
@@ -120,8 +120,8 @@ A run is a collection of events and each event represents a 2000 nano second lon
 |--------|---------|-------------| ------------------| --------------------- |
 | ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
 | 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟢 | **etouschek** | Electron Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Electron Coulomb scattering processes | 0.72 | 5000
 | 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
 
