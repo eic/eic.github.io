@@ -147,9 +147,39 @@ N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstr
 
 # Analyzing the output
 
-It's possible to separate the contribution from signal and background sources that are simulated by using cuts on the generatorStatus. 
+It's possible to separate the contribution from signal and background sources that are simulated by using cuts on the [status codes](https://arxiv.org/pdf/1912.08005.pdf) which are represented by the MCParticles.generatorStatus in the edm4hep output file.
 
-<img width="970" height="515" alt="image" src="https://github.com/user-attachments/assets/d06ccafe-81de-40c6-9e20-f3a1edaec926" />
+| Status code | Meaning                     | Usage                             |
+|-------------|-----------------------------|----------------------------------|
+| 0           | Not defined (null entry)     | Not a meaningful status           |
+| 1           | Undecayed physical particle | Recommended for all cases         |
+| 2           | Decayed physical particle   | Recommended for all cases         |
+| 3           | Documentation line          | Often used to indicate in/out particles in hard process |
+| 4           | Incoming beam particle      | Recommended for all cases         |
+| 5–10        | Reserved for future standards | Should not be used              |
+| 11–200      | Generator-dependent         | For generator usage               |
+| 201–        | Simulation-dependent        | For simulation software usage    |
+
+N.B.: By default, DD4hep takes primary particles (status code 1, 2) 
+and also custom status code provided with
+
+```
+--physics.alternativeStableStatuses="1001 2001 …" --physics.alternativeDecayStatuses="xxxx yyy  "
+```
+
+**Example: Minimal ROOT script to view counts of processes by status codes**
+
+```
+TChain *T=new TChain("events");
+T->Add("root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/*010*");
+T->Draw("MCParticles.generatorStatus", "MCParticles.generatorStatus>0");
+gPad->SetLogy();
+```
+<img width="488" height="402" alt="image" src="https://github.com/user-attachments/assets/040ccb77-e18c-4311-9a71-9a9a8ee2646a" />
+
+
+
+**Example: Charged Primary Particle Distribution in Eta**
 
 <img width="488" height="402" alt="image" src="https://github.com/user-attachments/assets/cd439c91-38b4-4df8-adfe-aa1f2ae66a61" />
 
