@@ -1,5 +1,5 @@
 ---
-title: Understanding production samples containing signals mixed with backgrounds
+title: Mixed Signal and Background Samples
 description: background_mixed_samples
 name: background_mixed_samples
 layout: default
