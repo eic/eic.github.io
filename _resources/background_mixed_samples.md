@@ -11,28 +11,29 @@ layout: default
 ---
 # Case 1: At least 1 Signal in Every Event of a Run
 
-A run is a collection of events and each event represents a 2000 nano second long integration frame. If we assume a signal frequency of 500 kHz, each event contains atleast 1 signal contribution.
+A run is a collection of events and each event represents a 2000 nano second long integration frame. 
 
 ## Representation of a "Run" with 5 "Events"
+If we assume a signal frequency of 500 kHz, each event contains atleast 1 signal contribution. The background contributions get allocated per event based on their sampling frequency. Processes with less than 500 kHz sampling frequency are not guaranteed a contribution in every event. 
 
-| **Event**   | **Processes**   |
-| ----------- | --------------  | 
-| **Event 1** | 🔴 🔵 🟢 🟡   | 
-| **Event 2** | 🔴 🔵 ⚪ 🟡   | 
-| **Event 3** | 🔴 🟢 🔵 🟣   | 
-| **Event 4** | 🔴 ⚪ 🟡 🟣   | 
-| **Event 5** | 🔴 🔵 🟢 ⚪   | 
+| **Event**   | **signal**   | **synrad** | **ebrems** | **etouschek** | **ecoloumb** | **p.b.gas**|
+| ----------- | -----------  | -----------| ---------  | ------------  | -----------  | -----------  | 
+| **Event 1** | 🔴           | ⚪⚪⚪⚪ | 🔵      |               |              |            |
+| **Event 2** | 🔴           | ⚪⚪⚪⚪ |         |               | 🟡           |  🟣          | 
+| **Event 3** | 🔴           | ⚪⚪⚪   |       |     🟢        |              |            |
+| **Event 4** | 🔴           | ⚪⚪⚪    | 🔵        |               |               |  🟣          | 
+| **Event 5** | 🔴           | ⚪⚪⚪ ⚪   | 🔵      |               |               |            | 
 
 ## Legend
 
-| Symbol | Process | Description | Status Code Shift |
-|--------|---------|-------------| ------------------|
-| 🔴 | **signal** | DIS NC 18x275 Q²>1 (Deep inelastic scattering neutral current) | 0
-| ⚪ | **synrad**  | Synchrotron Radiation  | 2000
-| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 5000
-| 🟣 | **p.b.gas** | Proton beam gas interactions | 6000
+| Symbol | Process | Description | Sampling Frequency (kHz) | Status Code Shift |
+|--------|---------|-------------| ------------------| --------------------- |
+| 🔴 | **signal** | DIS NC 18x275 Q²>1 (Deep inelastic scattering neutral current) | 500 | 0
+| ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
+| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
+| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
 ## Location of files
 
@@ -60,24 +61,24 @@ A run is a collection of events and each event represents a 2000 nano second lon
 
 ## Representation of a "Run" with 5 "Events"
 
-| **Event**   | **Processes**   |
-| ----------- | --------------  | 
-| **Event 1** |    🔵 🟢 🟡   | 
-| **Event 2** |    🔵 ⚪ 🟡   | 
-| **Event 3** |    🟢 🔵 🟣   | 
-| **Event 4** |    ⚪ 🟡 🟣   | 
-| **Event 5** | 🔴 🔵 🟢 ⚪   | 
+| **Event**   | **signal**   | **synrad** | **ebrems** | **etouschek** | **ecoloumb** | **p.b.gas**|
+| ----------- | -----------  | -----------| ---------  | ------------  | -----------  | -----------  | 
+| **Event 1** |            | ⚪⚪⚪⚪ | 🔵      |               |              |            |
+| **Event 2** |            | ⚪⚪⚪⚪ |         |               | 🟡           |  🟣          | 
+| **Event 3** | 🔴           | ⚪⚪⚪   |       |     🟢        |              |            |
+| **Event 4** |            | ⚪⚪⚪    | 🔵        |               |               |  🟣          | 
+| **Event 5** |            | ⚪⚪⚪ ⚪   | 🔵      |               |               |            | 
 
 ## Legend
 
-| Symbol | Process | Description | Status Code Shift |
-|--------|---------|-------------| -------------|
-| 🔴 | **Signal** | SIDIS pythia6 18x275 Q²<1 (Deep inelastic scattering neutral current) | 0
-| ⚪ | **synrad**  | Synchrotron Radiation | 2000
-| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 5000
-| 🟣 | **p.b.gas** | Proton beam gas interactions | 6000
+| Symbol | Process | Description | Sampling Frequency (kHz) | Status Code Shift |
+|--------|---------|-------------| ------------------| --------------------- |
+| 🔴 | **signal** | SIDIS pythia6 18x275 Q²<1 (Deep inelastic scattering neutral current)  | 500 | 0
+| ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
+| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
+| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
 ## Location of files
 
@@ -105,23 +106,24 @@ A run is a collection of events and each event represents a 2000 nano second lon
 
 ## Representation of a "Run" with 5 "Events"
 
-| **Event**   | **Processes**   |
-| ----------- | --------------  | 
-| **Event 1** |    🔵 🟢 🟡   | 
-| **Event 2** |    🔵 ⚪ 🟡   | 
-| **Event 3** |    🟢 🔵 🟣   | 
-| **Event 4** |    ⚪ 🟡 🟣   | 
-| **Event 5** |  🔵 🟢 ⚪   | 
+| **Event**   | **signal**   | **synrad** | **ebrems** | **etouschek** | **ecoloumb** | **p.b.gas**|
+| ----------- | -----------  | -----------| ---------  | ------------  | -----------  | -----------  | 
+| **Event 1** |            | ⚪⚪⚪⚪ | 🔵      |               |              |            |
+| **Event 2** |            | ⚪⚪⚪⚪ |         |               | 🟡           |  🟣          | 
+| **Event 3** |           | ⚪⚪⚪   |       |     🟢        |              |            |
+| **Event 4** |            | ⚪⚪⚪    | 🔵        |               |               |  🟣          | 
+| **Event 5** |            | ⚪⚪⚪ ⚪   | 🔵      |               |               |            | 
 
 ## Legend
 
-| Symbol | Process | Description | Status Code Shift |
-|--------|---------|-------------| -------------|
-| ⚪ | **synrad**  | Synchrotron Radiation | 2000
-| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 3000
-| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 4000
-| 🟡 | **ecoulomb** | Coulomb scattering processes | 5000
-| 🟣 | **p.b.gas** | Proton beam gas interactions | 6000
+| Symbol | Process | Description | Sampling Frequency (kHz) | Status Code Shift |
+|--------|---------|-------------| ------------------| --------------------- |
+| ⚪ | **synrad**  | Synchrotron Radiation  | 14000 | 2000
+| 🔵 | **ebrems** | Electron bremsstrahlung radiation | 316.94 | 3000
+| 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 1.3 | 4000
+| 🟡 | **ecoulomb** | Coulomb scattering processes | 0.72 | 5000
+| 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
+
 
 ## Location of files
 
