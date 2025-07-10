@@ -35,6 +35,8 @@ If we assume a signal frequency of 500 kHz, each event contains at least 1 signa
 | 🟡 | **ecoulomb** | Electron Coulomb scattering processes | 0.72 | 5000
 | 🟣 | **p.b.gas** | Proton beam gas interactions | 22.5 | 6000
 
+N.B.: The sampling frequencies in this example are taken from the [ePIC Background Wiki Page](https://wiki.bnl.gov/EPIC/index.php?title=Background) 
+
 ## Location of files
 
 **Simulation Output** 
