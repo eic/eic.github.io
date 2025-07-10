@@ -27,7 +27,7 @@ A run is a collection of events and each event represents a 2000 nano second lon
 
 | Symbol | Process | Description | Status Code Shift |
 |--------|---------|-------------| ------------------|
-| 🔴 | **signal** | DIS NC 18x275 q²>1 (Deep inelastic scattering neutral current) | 0
+| 🔴 | **signal** | DIS NC 18x275 Q²>1 (Deep inelastic scattering neutral current) | 0
 | ⚪ | **synrad**  | Synchrotron Radiation  | 2000
 | 🔵 | **ebrems** | Electron bremsstrahlung radiation | 3000
 | 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 4000
@@ -39,13 +39,13 @@ A run is a collection of events and each event represents a 2000 nano second lon
 **Simulation Output** 
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
+root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ²=1/
 ```
 
 **Reconstructed Output**
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
+root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ²=1/
 ```
 
 N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstructed output is available for every campaign but simulation output is not always preserved to save storage resources.
@@ -56,7 +56,7 @@ N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstr
 ---
 # Case 2: Realistic Signal Contribution Per Event of a Run
 
-A run is a collection of events and each event represents a 2000 nano second long integration frame. For the SIDIS pythia6 18x275 q²<1, the signal frequency is 83 kHz which would result in 1 signal contribution every ~5 events.
+A run is a collection of events and each event represents a 2000 nano second long integration frame. For the SIDIS pythia6 18x275 Q²<1, the signal frequency is 83 kHz which would result in 1 signal contribution every ~5 events.
 
 ## Representation of a "Run" with 5 "Events"
 
@@ -72,7 +72,7 @@ A run is a collection of events and each event represents a 2000 nano second lon
 
 | Symbol | Process | Description | Status Code Shift |
 |--------|---------|-------------| -------------|
-| 🔴 | **Signal** | SIDIS pythia6 18x275 q²<1 (Deep inelastic scattering neutral current) | 0
+| 🔴 | **Signal** | SIDIS pythia6 18x275 Q²<1 (Deep inelastic scattering neutral current) | 0
 | ⚪ | **synrad**  | Synchrotron Radiation | 2000
 | 🔵 | **ebrems** | Electron bremsstrahlung radiation | 3000
 | 🟢 | **etouschek** | Touschek scattering (intrabeam scattering) | 4000
