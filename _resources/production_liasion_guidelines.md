@@ -97,7 +97,7 @@ This will create an proxy certificate in your current directory.
 
 ### Send Information
 
-Run the following command and email the output to `panta@jlab.org`:
+Run the following command and update your ticket on jlab service now with the output:
 
 ```bash
 voms-proxy-info -file=x509_user_proxy | grep "issuer" | awk -F":" '{print $2}'
