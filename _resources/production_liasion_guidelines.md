@@ -123,3 +123,37 @@ python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
 -s epic -r EIC-XRD
 ```
 Once all your input files are uploaded, create a PR similar to [this](https://eicweb.phy.anl.gov/EIC/campaigns/datasets/-/merge_requests/94/diffs) on the [datasets repository](https://github.com/eic/simulation_campaign_datasets/) with csv file catalogues for the respective datasets and integration line in the config.yml file. 
+
+
+---
+# Backing up Campaign Logs Post Campaign
+
+Once a campaign has been completed, the logs from that campaign need to be backed up to tape. This should only be done by 1 person. Don't do this unless instructed by the production WG conveners. 
+
+They are located in 
+```
+/w/eic-scshelf2104/EPIC/LOGS/LOG
+```
+
+Compress the campaign directory to a zip folder
+```
+cd /w/eic-scshelf2104/EPIC/LOGS/LOG
+tar YY.MM.P.tar.gz YY.MM.P
+```
+
+Upload them to log folder
+```
+ python $SCRIPT_DIR/register_to_rucio.py \
+    -f "/w/eic-scshelf2104/EPIC/LOGS/LOG/YY.MM.P.tar.gz" \
+    -d "/COMBINED_LOG/YY.MM.P.tar.gz" \
+    -s epic -r EIC-XRD-LOG 
+```
+
+Add rucio rule
+```
+rucio rule add --rses JLAB-TAPE-SE --copies 1 <dataset_did>
+```
+
+
+
+
