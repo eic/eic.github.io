@@ -116,10 +116,10 @@ export X509_USER_PROXY=x509_user_proxy
 
 Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). Make sure that the dataset can be traced to a version controlled github repo before this transfer happens because you will need the version tag for the directory structure and nomenclature. An example of the transfer is shown here:
 ```
+timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
 python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
--f "/work/eic3/users/sjdkay/Mar2025_Campaign_Input/Afterburner_Output/kaonLambda/10on130/DEMPgen-v1.2.3_K+LambdaDEMP_10on130_q2_20_35.hepmc3.tree.root" \
--d "/EVGEN/EXCLUSIVE/DEMP/DEMPgen-1.2.3/10x130/q2_20_35/K+Lambda/DEMPgen-1.2.3_10x130_K+Lambda_q2_20_35_hiAcc.hepmc3.tree.root" \
+-f "test.hepmc3.tree.root" \
+-d "/EVGEN/Test/test-${timestamp}.hepmc3.tree.root" \
 -s epic -r EIC-XRD
 ```
-
-Once they are uploaded, create a PR similar to [this](https://eicweb.phy.anl.gov/EIC/campaigns/datasets/-/merge_requests/94/diffs) on the [datasets repository](https://github.com/eic/simulation_campaign_datasets/) with csv file catalogues for the respective datasets and integration line in the config.yml file. 
+Once all your input files are uploaded, create a PR similar to [this](https://eicweb.phy.anl.gov/EIC/campaigns/datasets/-/merge_requests/94/diffs) on the [datasets repository](https://github.com/eic/simulation_campaign_datasets/) with csv file catalogues for the respective datasets and integration line in the config.yml file. 
