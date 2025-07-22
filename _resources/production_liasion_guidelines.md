@@ -110,14 +110,15 @@ You only need to do this once.
 Run eic-shell and set the rucio variables
 ```bash
 ./eic-shell
-export RUCIO_CONFIG=/opt/campaigns/hepmc3/scripts/rucio.cfg
+export SCRIPT_DIR=/opt/campaigns/hepmc3/scripts
+export RUCIO_CONFIG=${SCRIPT_DIR}/rucio.cfg
 export X509_USER_PROXY=x509_user_proxy
 ```
 
 Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). Make sure that the dataset can be traced to a version controlled github repo before this transfer happens because you will need the version tag for the directory structure and nomenclature. An example of the transfer is shown here:
 ```
 timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
-python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
+python ${SCRIPT_DIR}/register_to_rucio.py \
 -f "test.hepmc3.tree.root" \
 -d "/EVGEN/Test/test-${timestamp}.hepmc3.tree.root" \
 -s epic -r EIC-XRD
@@ -132,18 +133,21 @@ Once a campaign has been completed, the logs from that campaign need to be backe
 
 They are located in 
 ```
-/w/eic-scshelf2104/EPIC/LOGS/LOG
+/work/eic3/EPIC/LOGS/LOG
 ```
 
 Compress the campaign directory to a zip folder
 ```
 cd /w/eic-scshelf2104/EPIC/LOGS/LOG
-tar YY.MM.P.tar.gz YY.MM.P
+tar -czf YY.MM.P.tar.gz YY.MM.P
 ```
 
 Upload them to log folder
 ```
- python $SCRIPT_DIR/register_to_rucio.py \
+export SCRIPT_DIR=/opt/campaigns/hepmc3/scripts
+export RUCIO_CONFIG=${SCRIPT_DIR}/rucio.cfg
+export X509_USER_PROXY=x509_user_proxy
+python ${SCRIPT_DIR}/register_to_rucio.py \
     -f "/w/eic-scshelf2104/EPIC/LOGS/LOG/YY.MM.P.tar.gz" \
     -d "/COMBINED_LOG/YY.MM.P.tar.gz" \
     -s epic -r EIC-XRD-LOG 
