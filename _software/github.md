@@ -34,7 +34,7 @@ available for free on the Git website.
 
 ##### GitHub Organization {#organization}
 
-The {% include navigation/findlink.md name='github' tag='EIC GitHub Organization' %} is available for the whole EICUG. For membership, please send your GitHub username to [eicug-computing-infrastructure-support@eicug.org](mailto:eicug-computing-infrastructure-support@eicug.org?subject=GitHub%20Account)
+The {% include navigation/findlink.md name='github' tag='EIC GitHub Organization' %} is available for the whole EICUG. For membership, please send your GitHub username to [eic-software-l-request@lists.bnl.gov](mailto:eic-software-l-request@lists.bnl.gov?subject=GitHub%20Account)
 
 ##### GitHub Guidelines {#guidelines}
 
