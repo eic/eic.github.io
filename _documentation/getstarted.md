@@ -11,7 +11,7 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 
 1. Join GitHub: [https://github.com/eic](https://github.com/eic)
 * GitHub serves as a central platform for version control, code review, issue tracking, and documentation. We maintain the EIC organization on GitHub for collaborative development of all software related to the EIC.
-* **Read Access:** Contact [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-software-l-request@lists.bnl.gov) **eic-software-l-request@lists.bnl.gov** from your institutional email address. Include in your email your GitHub username and confirmation of whether you or your sponsor/advisor is a member of the EICUG or ePIC. 
+* **Read Access:** Contact [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-software-l-request@lists.bnl.gov) **eic-software-l-request@lists.bnl.gov** from your institutional email address. Include in your email your GitHub username and confirmation of whether you or your sponsor/advisor is a member of the EICUG or ePIC. Make sure that your GitHub profile displays your full name and affiliation.
 * **Write Access:** For access to specific repositories, you can request to join various GitHub teams. For example, join 'EPIC Devs’ for software development within the ePIC collaboration. 
 
 1. Join Mattermost: [https://chat.epic-eic.org/](https://chat.epic-eic.org/)
