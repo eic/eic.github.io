@@ -15,6 +15,6 @@ Google Groups are used to manage mailing lists. Please contact the <a href="mail
 <tr><td>The EICUG Software Group</td><td><a href="mailto:eicug-software@eicug.org">eicug-software@eicug.org</a></td></tr>
 <tr><td>The Core Team</td><td><a href="mailto:eicug-software-core@eicug.org">eicug-software-core@eicug.org</a></td></tr>
 <tr><td>Software support</td><td><a href="mailto:software-support@eicug.org">software-support@eicug.org</a></td></tr>
-<tr><td>Infrastructure support</td><td><a href="mailto:eicug-computing-infrastructure-support@eicug.org">eicug-computing-infrastructure-support@eicug.org</a></td></tr>
+<tr><td>Infrastructure support</td><td><a href="mailto:eic-software-l-request@lists.bnl.gov">eic-software-l-request@lists.bnl.gov</a></td></tr>
 </table>
 

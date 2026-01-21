@@ -8,7 +8,7 @@ layout: default
 This site is work in progress. Contributions and suggestions from the EICUG members will be appreciated.
 
 For questions regarding contributions to this site and its functionality please contact
-<a href="mailto:eicug-computing-infrastructure-support@eicug.org">
-eicug-computing-infrastructure-support@eicug.org</a>
+<a href="mailto:eic-software-l-request@lists.bnl.gov">
+eic-software-l-request@lists.bnl.gov</a>
 
 Webmaster: <a href="mailto:potekhin@bnl.gov">Maxim Potekhin</a>
