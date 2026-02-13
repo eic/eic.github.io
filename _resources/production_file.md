@@ -10,7 +10,7 @@ layout: default
 # Production Files Access
 
 Starting from production campaign 25.01.1 onwards. Now files are registred to a catalog in Rucio (Data Mangement Software).
-All old files will be registred to rucio, notification to follow
+All old files will be registred to rucio, notification to follow.
 
 To see what files are available and how to access it use Rucio.
 
@@ -32,9 +32,9 @@ To see what files are available and how to access it use Rucio.
 ### First find the location of files.
 
 - **List datasets for a campaign** :
-    command: `rucio list-dids --short <dids>`
+    command: `rucio did list --short <dids>`
     ```shell
-    $ rucio list-dids --short epic:/RECO/25.01.1/\*
+    $ rucio did list --short epic:/RECO/25.01.1/\*
 
     epic:/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=100
     epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1
@@ -48,6 +48,8 @@ To see what files are available and how to access it use Rucio.
     Note: The list shown above is truncated for preview.
     Replace `25.01.1` with any other campaign.
 
+  **As a reminder, campaigns follow a YY.MM.Ver formatting - E.g. 25.01.1 is January 2025, version 1. Campaigns more than 6 months old may not be readily accessible.**
+  
 - **List files within a dataset**:
     command: `rucio list-content --short <did>`
     ```shell
