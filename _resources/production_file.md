@@ -51,7 +51,7 @@ To see what files are available and how to access it use Rucio.
   **As a reminder, campaigns follow a YY.MM.Ver formatting - E.g. 25.01.1 is January 2025, version 1. Campaigns more than 6 months old may not be readily accessible.**
   
 - **List files within a dataset**:
-    command: `rucio list-content --short <did>`
+    command: `rucio did content list --short <did>`
     ```shell
     $ rucio list-content --short epic:/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=10
 
@@ -85,6 +85,7 @@ To see what files are available and how to access it use Rucio.
     ```shell
     rucio download <dataset1> <dataset2>
     ```
+** Note that in general, there is no need to download a dataset in full. Full datasets can be very large. Carefully consider whether you need to download a full dataset before doing so!**
 
 - **Download single file with `rucio download <file_did>`**
     ```shell
