@@ -85,7 +85,7 @@ To see what files are available and how to access it use Rucio.
     ```shell
     rucio download <dataset1> <dataset2>
     ```
-** Note that in general, there is no need to download a dataset in full. Full datasets can be very large. Carefully consider whether you need to download a full dataset before doing so!**
+**Note that in general, there is no need to download a dataset in full. Full datasets can be very large. Carefully consider whether you need to download a full dataset before doing so!**
 
 - **Download single file with `rucio download <file_did>`**
     ```shell
