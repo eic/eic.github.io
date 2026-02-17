@@ -21,9 +21,9 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 * Collaboration mailing list ([subscribe here](https://lists.bnl.gov/mailman/listinfo/eic-projdet-collab-l)): [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-collab-l@lists.bnl.gov) **eic-projdet-collab-l@lists.bnl.gov** 
 * Software mailing list ([subscribe here](https://lists.bnl.gov/mailman/listinfo/eic-projdet-compsw-l)): [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-compsw-l@lists.bnl.gov) **eic-projdet-compsw-l@lists.bnl.gov** 
 
-1. Join a project! Checkout the [ePIC wiki](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration) to get involved:
-* [Physics Working Group](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
-* [Detector Subsystems](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
-* [Software Working Group](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
+1. Join a project! Checkout the [ePIC wiki](https://www.epic-eic.org/) to get involved:
+* [Physics Working Group](https://www.epic-eic.org/physics/analysis_coordination.html)
+* [Detector Subsystems](https://www.epic-eic.org/detector/dsc.html)
+* [Software Working Group](https://www.epic-eic.org/sc/sc_overview.html)
 
 1. Refer back to the [landing page](https://eic.github.io/) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
