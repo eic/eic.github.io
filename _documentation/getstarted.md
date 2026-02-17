@@ -26,4 +26,4 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 * [Detector Subsystems](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
 * [Software Working Group](https://wiki.bnl.gov/EPIC/index.php?title=Collaboration)
 
-1. Refer back to the [landing page](./home.html) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
+1. Refer back to the [landing page](https://eic.github.io/) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
