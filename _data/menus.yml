@@ -124,8 +124,8 @@
   full: Get Started
   submenus:
 
-    - name: landingpage
-      full: Landing Page
+    #- name: landingpage
+      #full: Landing Page
 
     - name: tutorials
       full: Tutorials
