@@ -89,7 +89,7 @@ To see what files are available and how to access it use Rucio.
 
 - **Download single file with `rucio download <file_did>`**
     ```shell
-    rucio download epic:/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg
+    rucio download epic:/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root
     ```
 
 - **Copying with `xrdcp`:**
