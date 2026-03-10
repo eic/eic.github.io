@@ -16,7 +16,7 @@ layout: default
 
 ##### Learning Git {#learning}
 
-Test {% include navigation/findlink.md name='git' tag='Git' %} is a
+{% include navigation/findlink.md name='git' tag='Git' %} is a
 distributed version-control system for tracking changes in source
 code. It has been designed to handle everything from small to very
 large projects with speed and efficiency and is widely used in science
