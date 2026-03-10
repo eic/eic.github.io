@@ -139,7 +139,11 @@ To see what files are available and how to access it use Rucio.
     # Get one replica PFN for each file in the dataset
     file_paths = [
         next(iter(replica['pfns']))  # Get first PFN URL (dict keys are the URLs)
-        for replica in client.list_replicas(dids, rse_expression='isopenaccess=true')
+        for replica in client.list_replicas(
+            dids,
+            schemes=["root"],
+          rse_expression="isopenaccess=true",
+      )
         if replica['pfns']
     ]
     
