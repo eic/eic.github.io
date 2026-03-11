@@ -7,7 +7,7 @@
 {% when "policies" %}    {% assign theCollection=site.policies %}    {% assign icon=site.policies_icon %}
 {% when "documentation" %}{% assign theCollection=site.documentation %}{% assign icon=site.documentation_icon %}
 {% when "about" %}       {% assign theCollection=site.about %}            {% assign icon=site.about_icon %}
-{% when "tutorials" %}   {% assign icon=site.documentation_icon %}
+{% when "tutorials" %}   {% assign icon=site.tutorials_icon %}
 
 {% endcase %}
 
