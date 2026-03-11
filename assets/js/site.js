@@ -169,7 +169,6 @@
       }
 
       setStatus("Loading search index...");
-      inputElement.disabled = true;
 
       loadPromise = window
         .fetch(searchConfig.dataUrl, { credentials: "same-origin" })
@@ -233,9 +232,6 @@
         .catch(function resetFailedLoad(error) {
           loadPromise = null;
           throw error;
-        })
-        .finally(function finishLoad() {
-          inputElement.disabled = false;
         });
 
       return loadPromise;
@@ -343,7 +339,8 @@
       const terms = normalizeTerms(trimmedQuery);
 
       if (!trimmedQuery) {
-        renderResults("", []);
+        clearResults();
+        closePanel();
         return;
       }
 
@@ -351,30 +348,32 @@
       renderResults(trimmedQuery, matches);
     }, 80);
 
-    function prepareSearch() {
+    function warmSearchIndex() {
+      loadDocuments().catch(function ignoreWarmupFailure() {
+        return null;
+      });
+    }
+
+    inputElement.addEventListener("input", function onInput(event) {
+      if (!event.target.value.trim()) {
+        clearResults();
+        closePanel();
+        return;
+      }
+
       openPanel();
       loadDocuments()
         .then(function afterLoad() {
-          if (inputElement.value.trim()) {
-            runSearch(inputElement.value);
-            return;
-          }
-
-          setStatus("Start typing to search the site.");
+          runSearch(inputElement.value);
         })
         .catch(function onError() {
           clearResults();
           openPanel();
           setStatus("Search is unavailable right now.");
         });
-    }
-
-    inputElement.addEventListener("input", function onInput(event) {
-      runSearch(event.target.value);
     });
 
-    inputElement.addEventListener("focus", prepareSearch);
-    inputElement.addEventListener("click", prepareSearch);
+    inputElement.addEventListener("focus", warmSearchIndex);
 
     inputElement.addEventListener("keydown", function onInputKeyDown(event) {
       if (event.key !== "Escape") {
@@ -405,7 +404,7 @@
         event.preventDefault();
         inputElement.focus();
         inputElement.select();
-        prepareSearch();
+        warmSearchIndex();
       });
     }
 
