@@ -3,10 +3,25 @@ title: Home
 layout: home
 ---
 
-[![Get Started](/assets/images/support/GetStartedClick.png){: width="48%" }](./documentation/getstarted)
-[![ePIC Tutorials](/assets/images/support/TutorialClick.png){: width="48%" }](./documentation/tutorials)
-[![HEP Software Training Center](/assets/images/support/HEPClick.png){: width="48%" }](https://hsf-training.org/training-center)
-[![FAQ](/assets/images/support/faqClick.png){: width="48%" }](./documentation/faq)
+<div class="row justify-content-center text-center g-4 my-4">
+  <div class="col-md-5 d-grid">
+    <a class="btn btn-lg portal-btn" href="./documentation/getstarted">Get Started</a>
+  </div>
+
+  <div class="col-md-5 d-grid">
+    <a class="btn btn-lg portal-btn" href="./documentation/tutorials">ePIC Tutorials</a>
+  </div>
+
+  <div class="col-md-5 d-grid">
+    <a class="btn btn-lg portal-btn" href="https://hsf-training.org/training-center">
+      HEP Software Training Center
+    </a>
+  </div>
+
+  <div class="col-md-5 d-grid">
+    <a class="btn btn-lg portal-btn" href="./documentation/faq">FAQ</a>
+  </div>
+</div>
 
 Welcome to the **EIC Home Page**!
 

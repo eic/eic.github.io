@@ -17,12 +17,21 @@
     padding-left: 0;
 }
 
+.portal-btn {
+    background-color: var(--site-navbar-gray);
+    border-color: var(--site-navbar-gray);
+    color: white;
+    font-size: 1.75rem;
+    padding: 1.5rem 0;
+}
+
 /* ---------------------------- */
 /* BLOCKQUOTES */
-blockquote{
+blockquote {
     padding: .5em .5em .5em .75em;
     color: #000;
-    background-color: #EEEEEE; /*  background: #FFEBCD; color: #8B4513; */
+    background-color: #EEEEEE;
+    /*  background: #FFEBCD; color: #8B4513; */
     word-wrap: normal;
     border-left: 0.5em solid #AAA;
     border-right: 0.5em solid #AAA;
@@ -42,7 +51,7 @@ blockquote::before {
 
 /* for nested paragraphs in block quotes */
 blockquote p {
-  display: inline;
+    display: inline;
 }
 
 /* OTHER STUFF */
@@ -70,7 +79,9 @@ td {
     padding: 8px;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 /* ---------------------------- */
 .site-navbar {
@@ -132,7 +143,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         transform: none !important;
     }
 }
-      
+
 .dropdown-submenu {
     position: relative;
 }
