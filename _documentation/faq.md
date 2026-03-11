@@ -20,7 +20,7 @@ A: Visit the [epicprod website](https://eic.github.io/epic-prod/campaigns/campai
 ```<base directory>/<campaign tag>/<detector config>/<physics processes>/<generator release tag if available>/<electron momentum>x<proton momentum>/<q2 range>/```
 
 The preferred method to list the files in a directory is to use the xrdfs interface within eic-shell container. For example:
-```
+```bash
     xrdfs root://dtn-eic.jlab.org   
     ls /volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000
 ```
@@ -30,19 +30,19 @@ See more details [here](https://eic.github.io/epic-prod/documentation/faq.html) 
 
 A: The directory structure of the input datasets mimic the directory structure of the output files from `<physics processes>` onwards. Consider, the output files under `root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/10x100/minQ2=1`. The corresponding input datasets can be found in the following manner:
 
-```
+```bash
 xrdfs root://dtn-eic.jlab.org
 ls /volatile/eic/EPIC/EVGEN/DIS/NC/10x100/minQ2=1
 ```
 
 **Q: What is the procedure to introduce a new dataset into a production campaign or replace an existing one?**
 
-A: Follow the input dataset creation [guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html) listed in the epic-prod website.
+A: Follow the input dataset creation [guidelines](/epic-prod/documentation/input_preprocessing.html) listed in the epic-prod website.
 
 **Q: How can we load files into ROOT directly from xrootd?**
 
 A: Enter the full file path including server address using root TFile::Open. For example:
-```
+```c++
     auto f = TFile::Open("root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root")
 ```
 See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
@@ -50,7 +50,7 @@ See more details [here](https://eic.github.io/epic-prod/documentation/faq.html).
 **Q: How can we copy files from xrootd?**
 
 A: Use xrdcp with full path and local destination directory. For example:
-```
+```bash
 xrdcp root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.01.1/epic_craterlake/DIS/NC/18x275/minQ2=1000/pythia8NCDIS_18x275_minQ2=1000_beamEffects_xAngle=-0.025_hiDiv_1.0000.eicrecon.tree.edm4eic.root <local destination>
 ```
 
@@ -134,11 +134,11 @@ and pass it via `--macroFile` option in your ddsim/npsim invocation.
 **Q: How do I obtain the generated cross-section for a simulated dataset?**
 
 Information of generated events can be found in the .hepmc3.tree.root files in /work/eic/EPIC/EVGEN. Here is an example on how to print out the cross section stored in the ROOT tree:
-```
+```bash
 root -l -b -q root://dtn-eic.jlab.org//volatile/eic/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root -e 'hepmc3_tree->Scan("hepmc3_event.attribute_string", "hepmc3_event.attribute_id==0 && hepmc3_event.attribute_name ==\"GenCrossSection\"", "colsize=30", 1, hepmc3_tree->GetEntries()-1)'
 ```
 Or: 
-```
+```c++
 TFile* file = TFile::Open("root://dtn-eic.jlab.org//volatile/eic/EPIC/EVGEN/DIS/NC/18x275/minQ2=1/pythia8NCDIS_18x275_minQ2=1_beamEffects_xAngle=-0.025_hiDiv_1.hepmc3.tree.root");
 
 TTreeReader tree_reader("hepmc3_tree", file);
