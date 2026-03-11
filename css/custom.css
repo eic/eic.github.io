@@ -23,6 +23,12 @@
     color: white;
     font-size: 1.75rem;
     padding: 1.5rem 0;
+    transition: background-color 0.2s ease;
+}
+
+.portal-btn:hover,
+.portal-btn:focus {
+    background-color: #c5c7c9;
 }
 
 /* ---------------------------- */
