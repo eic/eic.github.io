@@ -1,0 +1,70 @@
+---
+layout: null
+search_exclude: true
+---
+[
+{%- assign emitted = false -%}
+{%- for doc in site.pages -%}
+  {%- if doc.title and doc.search_exclude != true and doc.url != '/404.html' and doc.url != '/assets/js/search-data.json' -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='page' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.posts -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='post' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.software -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='software' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.resources -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='resources' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.activities -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='activities' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.organization -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='organization' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.documentation -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='documentation' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.policies -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='policies' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- for doc in site.about -%}
+  {%- if doc.title and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- include layouts/search_doc.json doc=doc collection='about' -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
+]

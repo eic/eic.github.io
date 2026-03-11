@@ -24,6 +24,18 @@ exclude: [vendor]
 # Custom helper variables:
 blank: 'target="_blank"'
 
+search_enabled: true
+
+search:
+  button: true
+  rel_url: true
+
+# Mermaid diagrams
+mermaid:
+  version: "11.12.2"
+
+# Google Analytics (optional)
+ga_tracking: G-YRCVGDK9B8
 
 # Layout
 tablepadding: ' '

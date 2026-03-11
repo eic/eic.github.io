@@ -1,16 +1,19 @@
 <nav class="navbar navbar-expand-lg fixed-top site-navbar" data-bs-theme="dark">
   <div class="container-fluid site-navbar-inner">
-    <a class="navbar-brand" href="{{ '/' | relative_url }}">
+    <a class="navbar-brand order-lg-1" href="{{ '/' | relative_url }}">
       <img src="{{ site.eic_logo | relative_url }}" height="32" width="32">
       &nbsp;
       <img src="{{ site.home_icon | relative_url }}" height="16" width="16">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex align-items-center ms-auto gap-2 order-lg-3 site-navbar-actions">
+      {% include layouts/search_button.html %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse">
       <ul class="navbar-nav me-auto">
         {% for menu in site.data.menus %}
         {% if menu.exclude or menu.right %}{% continue %}{% endif %}
