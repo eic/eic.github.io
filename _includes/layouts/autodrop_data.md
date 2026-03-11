@@ -11,22 +11,23 @@
 {% endcase %}
 
 {% assign the_menu = site.data.menus | where: "name", include.what | first %}
+{% assign dropdown_id = include.what | slugify | prepend: 'navbar-dropdown-' %}
 
 <li class="nav-item dropdown px-2">
 {% if icon.size > 0 %}
-<a class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff;">{{ the_menu.full }}&nbsp;&nbsp;<img src="{{ icon | relative_url }}" height="16" width="16"></a>
+<a class="nav-link dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">{{ the_menu.full }}&nbsp;&nbsp;<img src="{{ icon | relative_url }}" height="16" width="16"></a>
 {% else %}
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff;">{{ the_menu.full }}</a>
+<a class="nav-link dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">{{ the_menu.full }}</a>
 {% endif %}
 
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<div class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
 
 {% for submenu in the_menu.submenus %}
 {% if submenu.exclude %}{% continue %}{% endif %}
 
 {% if submenu.div %}<div class="dropdown-divider"></div>{% endif %}
 
-{% if submenu.label %}<div class="dropdown-item" style="color: #fff; background-color: #888;">{{ submenu.full }}</div>{% continue %}{% endif %}
+{% if submenu.label %}<div class="dropdown-item site-nav-section-label">{{ submenu.full }}</div>{% continue %}{% endif %}
 
 
 {% if submenu.link %}

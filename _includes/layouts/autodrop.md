@@ -1,6 +1,7 @@
 <li class="nav-item dropdown px-4">
-<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #fff;">{{ include.title }}</a>
-<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+{% assign dropdown_id = include.title | slugify | prepend: 'navbar-dropdown-' %}
+<a class="nav-link dropdown-toggle" href="#" id="{{ dropdown_id }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #fff;">{{ include.title }}</a>
+<div class="dropdown-menu" aria-labelledby="{{ dropdown_id }}">
 
 {% assign items = include.what | sort: 'weight' %}
 
