@@ -27,6 +27,8 @@
   submenus:
     - name: mcgen
       full: Monte Carlo Event Generators
+    - name: production_file
+      full: Rucio File access
     
 ### About
 #
