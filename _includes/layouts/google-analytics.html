@@ -1,4 +1,4 @@
-{% assign analytics_ids = site.ga_tracking | default: site.google_analytics | split: ',' %}
+{% assign analytics_ids = site.ga_tracking | default: site.google_analytics | default: '' | split: ',' %}
 {% assign analytics_primary_id = analytics_ids | first | strip %}
 {% if analytics_primary_id != '' %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_primary_id | uri_escape }}"></script>
