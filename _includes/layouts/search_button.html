@@ -1,0 +1,28 @@
+{% if site.search_enabled and site.search.button %}
+  {% assign search_placeholder = site.search.placeholder | default: 'Search this site' %}
+  {% assign shortcut_key = site.search.focus_shortcut_key | default: '' %}
+<div class="site-search-nav" id="siteSearch">
+  <label class="visually-hidden" for="siteSearchInput">{{ search_placeholder }}</label>
+  <div class="site-search-input-wrap">
+    <input
+      id="siteSearchInput"
+      class="form-control site-search-input"
+      type="search"
+      placeholder="{{ search_placeholder }}"
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="{{ search_placeholder }}"
+      aria-controls="siteSearchResults"
+      aria-expanded="false"
+      aria-autocomplete="list"
+    >
+  {% if shortcut_key != '' %}
+  <span class="site-search-shortcut">Ctrl+{{ shortcut_key | upcase }}</span>
+  {% endif %}
+  </div>
+  <div id="siteSearchPanel" class="site-search-panel" hidden>
+    <div id="siteSearchStatus" class="site-search-status">Start typing</div>
+    <div id="siteSearchResults" class="list-group list-group-flush site-search-results" aria-live="polite"></div>
+  </div>
+</div>
+{% endif %}

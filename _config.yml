@@ -24,6 +24,18 @@ exclude: [vendor]
 # Custom helper variables:
 blank: 'target="_blank"'
 
+search_enabled: true
+
+search:
+  button: true
+  rel_url: true
+
+# Mermaid diagrams
+mermaid:
+  version: "11.12.2"
+
+# Google Analytics (optional)
+ga_tracking: G-YRCVGDK9B8
 
 # Layout
 tablepadding: ' '
@@ -40,7 +52,8 @@ resources_icon: /assets/images/site/icons/cog-32.png
 activities_icon: /assets/images/site/icons/light-bulb-5-32.png
 organization_icon: /assets/images/site/icons/flow-chart-32.png
 policies_icon: /assets/images/site/icons/cog-32.png
-documentation_icon: /assets/images/site/icons/literature-32.png
+documentation_icon: /assets/images/site/icons/mind-map-32.png
+tutorials_icon: /assets/images/site/icons/literature-32.png
 about_icon: /assets/images/site/icons/light-bulb-5-32.png
 
 

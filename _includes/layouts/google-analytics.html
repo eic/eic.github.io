@@ -1,0 +1,16 @@
+{% assign analytics_ids = site.ga_tracking | default: site.google_analytics | default: '' | split: ',' %}
+{% assign analytics_primary_id = analytics_ids | first | strip %}
+{% if analytics_primary_id != '' %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ analytics_primary_id | uri_escape }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { window.dataLayer.push(arguments); }
+  gtag('js', new Date());
+  {% for analytics_id in analytics_ids %}
+    {% assign cleaned_analytics_id = analytics_id | strip %}
+    {% if cleaned_analytics_id != '' %}
+  gtag('config', '{{ cleaned_analytics_id }}'{% if site.ga_tracking_anonymize_ip %}, { 'anonymize_ip': true }{% endif %});
+    {% endif %}
+  {% endfor %}
+</script>
+{% endif %}

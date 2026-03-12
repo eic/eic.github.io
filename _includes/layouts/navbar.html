@@ -1,39 +1,38 @@
-<div class="container-fluid" style="min-width:1100px;padding-right:10px;">
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-  <div class="col-lg-12 d-flex">
-    
-    <a class="navbar-brand" href="{{ '/' | relative_url }}">
+<nav class="navbar navbar-expand-lg fixed-top site-navbar" data-bs-theme="dark">
+  <div class="container-fluid site-navbar-inner">
+    <a class="navbar-brand order-lg-1" href="{{ '/' | relative_url }}">
       <img src="{{ site.eic_logo | relative_url }}" height="32" width="32">
       &nbsp;
       <img src="{{ site.home_icon | relative_url }}" height="16" width="16">
     </a>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-	
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-	{% for menu in site.data.menus %}
-	
-  {% if menu.exclude %}{% continue %}{% endif %}
+    <div class="d-flex align-items-center ms-auto gap-2 order-lg-3 site-navbar-actions">
+      {% include layouts/search_button.html %}
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
 
-  {% if menu.right %}</ul><ul class="navbar-nav  text-right"><li>
+    <div class="collapse navbar-collapse order-lg-2" id="navbarCollapse">
+      <ul class="navbar-nav me-auto">
+        {% for menu in site.data.menus %}
+        {% if menu.exclude or menu.right %}{% continue %}{% endif %}
+        {% include layouts/autodrop_data.md what=menu.name %}
+        {% endfor %}
+      </ul>
 
-      {% include layouts/autodrop_data.md what=menu.name %}
-      <a class="navbar-brand mr-auto" href="{{ 'https://github.com/eic' | relative_url }}" target="_blank">
-      <img src="{{ '/assets/images/site/GitHub-Mark-Light-32px.png' | relative_url }}" height="32" ></a></li>
-
-  {% else %}
-
-	    {% include layouts/autodrop_data.md what=menu.name %}
-  
-  {% endif %}
-
-	{% endfor %}
+      <ul class="navbar-nav ms-auto align-items-lg-center">
+        {% for menu in site.data.menus %}
+        {% if menu.exclude or menu.right != true %}{% continue %}{% endif %}
+        {% include layouts/autodrop_data.md what=menu.name %}
+        {% endfor %}
+        <li class="nav-item ms-lg-2">
+          <a class="navbar-brand mb-0" href="https://github.com/eic/eic.github.io" target="_blank"
+            rel="noopener noreferrer">
+            <img src="{{ '/assets/images/site/GitHub-Mark-Light-32px.png' | relative_url }}" height="32">
+          </a>
+        </li>
       </ul>
     </div>
-    <!-- a class="navbar-brand mr-auto" href="{{ 'https://github.com/eic' | relative_url }}" target="_blank"><img src="{{ '/assets/images/site/GitHub-Mark-Light-32px.png' | relative_url }}" height="32" ></a -->
   </div>
 </nav>
-</div>

@@ -1,0 +1,13 @@
+{% if site.search_enabled %}
+  {% assign shortcut_key = site.search.focus_shortcut_key | default: '' %}
+<script id="siteSearchConfig" type="application/json">
+  {
+    "dataUrl": {{ '/assets/js/search-data.json' | relative_url | jsonify }},
+    "displayRelativeUrl": {{ site.search.rel_url | default: false | jsonify }},
+    "focusShortcutKey": {{ shortcut_key | jsonify }},
+    "previewWordsBefore": {{ site.search.preview_words_before | default: 5 | jsonify }},
+    "previewWordsAfter": {{ site.search.preview_words_after | default: 12 | jsonify }},
+    "maxResults": {{ site.search.max_results | default: 10 | jsonify }}
+  }
+</script>
+{% endif %}
