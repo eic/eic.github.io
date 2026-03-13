@@ -119,3 +119,37 @@ To see what files are available and how to access it use Rucio.
     file = ROOT.TFile.Open(file_path, "READ")
     ```
 
+- **Listing all files in a dataset with Python:**
+  
+    Using the Rucio Python client to get file paths:
+    ```python
+    from rucio.client import Client
+
+    # Initialize Rucio client
+    client = Client()
+    
+    # Define the dataset DID
+    dataset_did = "epic:/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg"
+    scope, name = dataset_did.split(':', 1)
+    
+    # Get the list of files in the dataset
+    files = list(client.list_files(scope, name))
+    dids = [{'scope': f['scope'], 'name': f['name']} for f in files]
+    
+    # Get one replica PFN for each file in the dataset
+    file_paths = [
+        next(iter(replica['pfns']))  # Get first PFN URL (dict keys are the URLs)
+        for replica in client.list_replicas(
+            dids,
+            schemes=["root"],
+          rse_expression="isopenaccess=true",
+      )
+        if replica['pfns']
+    ]
+    
+    # Print all file paths
+    for file_path in file_paths:
+        print(file_path)
+    ```
+
+
