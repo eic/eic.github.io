@@ -39,9 +39,6 @@
   full: About
   right: yes
   submenus:
-    - name: howto
-      full: Website How-To
-
     - name: overview
       collection: resources
       full: Computing Resources
