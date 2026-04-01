@@ -113,6 +113,28 @@ tr:nth-child(even) {
     flex-shrink: 0;
 }
 
+.site-github-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+    color: #fff;
+}
+
+.site-github-link:hover,
+.site-github-link:focus {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+.site-github-icon {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    fill: currentColor;
+}
+
 .site-search-nav {
     position: relative;
     width: min(22rem, 42vw);
