@@ -5,22 +5,39 @@
 
 /* ---------------------------- */
 .site-shell {
-    min-width: 1200px;
-    padding-right: 100px;
-    padding-left: 200px;
+    width: 100%;
+    max-width: 1400px;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
 }
 
 .site-navbar-inner {
-    min-width: 1100px;
-    padding-right: 10px;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.portal-btn {
+    background-color: var(--site-navbar-gray);
+    border-color: var(--site-navbar-gray);
+    color: white;
+    font-size: 1.75rem;
+    padding: 1.5rem 0;
+    transition: background-color 0.2s ease;
+}
+
+.portal-btn:hover,
+.portal-btn:focus {
+    background-color: #c5c7c9;
 }
 
 /* ---------------------------- */
 /* BLOCKQUOTES */
-blockquote{
+blockquote {
     padding: .5em .5em .5em .75em;
     color: #000;
-    background-color: #EEEEEE; /*  background: #FFEBCD; color: #8B4513; */
+    background-color: #EEEEEE;
+    /*  background: #FFEBCD; color: #8B4513; */
     word-wrap: normal;
     border-left: 0.5em solid #AAA;
     border-right: 0.5em solid #AAA;
@@ -40,7 +57,7 @@ blockquote::before {
 
 /* for nested paragraphs in block quotes */
 blockquote p {
-  display: inline;
+    display: inline;
 }
 
 /* OTHER STUFF */
@@ -68,7 +85,9 @@ td {
     padding: 8px;
 }
 
-tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 /* ---------------------------- */
 .site-navbar {
@@ -77,6 +96,12 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 .site-navbar .dropdown-menu {
     border-color: var(--site-navbar-gray);
+    min-width: 16rem;
+    max-width: min(90vw, 28rem);
+}
+
+.site-navbar .dropdown-item {
+    white-space: normal;
 }
 
 .site-nav-section-label {
@@ -93,14 +118,13 @@ tr:nth-child(even) {background-color: #f2f2f2;}
 
 @media (max-width: 1199.98px) {
     .site-shell {
-        min-width: 0;
         padding-right: 1rem;
         padding-left: 1rem;
     }
 
     .site-navbar-inner {
-        min-width: 0;
         padding-right: 0.5rem;
+        padding-left: 0.5rem;
     }
 }
 
@@ -125,7 +149,7 @@ tr:nth-child(even) {background-color: #f2f2f2;}
         transform: none !important;
     }
 }
-      
+
 .dropdown-submenu {
     position: relative;
 }

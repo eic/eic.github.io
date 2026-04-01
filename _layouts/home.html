@@ -1,11 +1,11 @@
 ---
 layout: default
 ---
-<div class="row">
-  <div class="col-md-10 blog-main">
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-10 blog-main">
     <hr>
 
-    <div class="row text-center align-items-center">
+    <div class="row text-center align-items-center gy-4">
       <div class="col-md-6">
         <img src="{{ site.splash | relative_url }}" class="img-fluid bg-dark" style="width:50%;height:auto"
           alt="EIC Software Portal" />
@@ -26,7 +26,7 @@ layout: default
 
     <hr />
 
-    <div class="d-flex justify-content-between">
+    <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
       <div>
         &copy;{{ site.time | date: '%Y' }} EIC User Group and ePIC Collaboration
       </div>

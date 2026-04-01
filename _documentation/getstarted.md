@@ -9,21 +9,21 @@ layout: default
 
 Welcome to the **Get Started** section. This page will guide you through the steps to get setup for contributing and working in our software framework. 
 
-1. Join GitHub: [https://github.com/eic](https://github.com/eic)
-* GitHub serves as a central platform for version control, code review, issue tracking, and documentation. We maintain the EIC organization on GitHub for collaborative development of all software related to the EIC.
-* **Read Access:** Contact [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-software-l-request@lists.bnl.gov) **eic-software-l-request@lists.bnl.gov** from your institutional email address. Include in your email your GitHub username and confirmation of whether you or your sponsor/advisor is a member of the EICUG or ePIC. Make sure that your GitHub profile displays your full name and affiliation.
-* **Write Access:** For access to specific repositories, you can request to join various GitHub teams. For example, join 'EPIC Devs’ for software development within the ePIC collaboration. 
+1. **Join GitHub:** [https://github.com/eic](https://github.com/eic)
+* GitHub serves as a central platform for version control, code review, issue tracking, and documentation. We maintain the [EIC](https://github.com/eic) organization on GitHub for collaborative development of all software related to the EIC.
+* **Read Access:** Contact [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-software-l-request@lists.bnl.gov) **[eic-software-l-request@lists.bnl.gov](mailto:eic-software-l-request@lists.bnl.gov)** from your institutional email address. Include in your email your GitHub username and confirmation of whether you or your sponsor/advisor is a member of the EICUG or ePIC. Make sure that your GitHub profile displays your full name and affiliation.
+* **Write Access:** For access to specific repositories, you can request to join various GitHub teams. For example, join '[EPIC Devs](https://github.com/orgs/eic/teams/epic-devs)’ for software development within the ePIC collaboration. 
 
-1. Join Mattermost: [https://chat.epic-eic.org/](https://chat.epic-eic.org/)
+2. **Join Mattermost**: [https://chat.epic-eic.org/](https://chat.epic-eic.org/)
 * We use Mattermost for our main communication channel.
 * You can join by emailing any group member to be added.
-1. Sign up for our mailing lists:
+3. **Sign up for our mailing lists**:
 * Collaboration mailing list ([subscribe here](https://lists.bnl.gov/mailman/listinfo/eic-projdet-collab-l)): [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-collab-l@lists.bnl.gov) **eic-projdet-collab-l@lists.bnl.gov** 
 * Software mailing list ([subscribe here](https://lists.bnl.gov/mailman/listinfo/eic-projdet-compsw-l)): [![emailicon](../assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-compsw-l@lists.bnl.gov) **eic-projdet-compsw-l@lists.bnl.gov** 
 
-1. Join a project! Checkout the [ePIC wiki](https://www.epic-eic.org/) to get involved:
+4. **Join a project**! Checkout the [ePIC wiki](https://www.epic-eic.org/) to get involved:
 * [Physics Working Group](https://www.epic-eic.org/physics/analysis_coordination.html)
 * [Detector Subsystems](https://www.epic-eic.org/detector/dsc.html)
 * [Software Working Group](https://www.epic-eic.org/sc/sc_overview.html)
 
-1. Refer back to the [landing page](https://eic.github.io/) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
+5. Refer back to the [landing page](https://eic.github.io/) to checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
