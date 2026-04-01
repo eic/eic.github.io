@@ -28,5 +28,4 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 
 5. Checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
 
-
-
+{% include documentation/getstarted_stack_diagram.html %}
