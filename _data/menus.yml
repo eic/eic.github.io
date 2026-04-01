@@ -32,6 +32,9 @@
     - name: event_display
       full: Event Display
       link: https://seeeic.org/
+    - name: principles
+      collection: activities
+      full: Statement of Software Principles
     
 ### About
 #
@@ -51,9 +54,7 @@
       collection: activities
       full: Expression of Interest
 
-    - name: principles
-      collection: activities
-      full: Statement of Software Principles
+
 
     - name: ucd
       collection: activities
