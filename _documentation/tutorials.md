@@ -7,8 +7,8 @@ tutorials:
 
   - title: "Setting up an environment"
     url: "https://eic.github.io/tutorial-setting-up-environment"
-    summary: "Get started with the ePIC software environment and the core tools used throughout the tutorial series."
-    image: "/assets/images/tutorials/SetupEnvSS.png"
+    summary: "How to get eic-shell and what it is<br> Usage of github"
+    image: "/assets/images/tutorials/tutorial-eicshell.png"
     resources:
       - label: "Video 1"
         url: "https://www.youtube.com/watch?v=Y0Mg24XLomY"
@@ -19,7 +19,7 @@ tutorials:
 
   - title: "Analysis and simulation output"
     url: "https://eic.github.io/tutorial-analysis"
-    summary: "Learn how to inspect simulation output and build analysis workflows around the produced data."
+    summary: "How to use eicrecon and analyze Reconstruction output<br> Full Chain Analysis walkthrough from MC generator"
     image: "/assets/images/tutorials/AnaTutSS.png"
     resources:
       - label: "Video 1"
@@ -31,21 +31,21 @@ tutorials:
 
   - title: "Simulating detectors"
     url: "https://eic.github.io/tutorial-geometry-development-using-dd4hep/"
-    summary: "Development of detector geometry using DD4hep, from core concepts to practical detector simulation work."
+    summary: "DD4hep for modifying and viewing detector<br> usage of detector .xml design"
     image: "/assets/images/tutorials/GeoDevSS.png"
     resources:
       - label: "Video"
         url: "https://youtu.be/k9Egs602GuM"
         kind: "youtube"
 
-  - title: "Modifying geometry and digitization"
+  - title: "Simulating detectors (extra): Modifying geometry"
     url: "https://eic.github.io/tutorial-modifying-geometry-digitization-etc"
-    summary: "Learn how to customize detector geometry, digitization, and related detector configuration details."
+    summary: "Building ePIC package within dRICH Tutorial Series"
     image: "/assets/images/tutorials/ModGeoTutSS.png"
 
-  - title: "Understanding simulation output"
+  - title: "Understanding Simulation output"
     url: "https://eic.github.io/tutorial-understanding-sim-output"
-    summary: "Take a deeper look at the structure of simulation output and how to interpret the information it contains."
+    summary: "DD4hep simulation and reconstruction workflow in Jupyter notebook"
     image: "/assets/images/tutorials/UnderSimOutTutSS.png"
     resources:
       - label: "Video"
@@ -54,7 +54,7 @@ tutorials:
 
   - title: "Getting started with physics analysis"
     url: "https://indico.bnl.gov/event/27123/"
-    summary: "Physics analysis introduction with workshop material and a linked recording for a guided walkthrough."
+    summary: "Understanding EPIC detector regions <br>Quality assurance plots for physics <br>Acceptance and efficiency<br>Beam effects and afterburner<br>Full-chain analysis"
     image: "/assets/images/tutorials/AnalysisThumbVid.png"
     resources:
       - label: "Video"
@@ -63,16 +63,16 @@ tutorials:
 
   - title: "Inclusive kinematics reconstruction"
     url: "https://eic.github.io/tutorial-kinematic-reconstruction/"
-    summary: "Work through inclusive kinematics reconstruction techniques and the assumptions behind the main methods."
+    summary: "Reconstructing inclusive DIS kinematics <br> x, y, Q2 within podio::ROOTFrameReader"
     image: "/assets/images/tutorials/InclusiveKinRecTutSS.png"
     resources:
       - label: "Video"
         url: "https://youtu.be/gdU5MXGy9xg"
         kind: "youtube"
 
-  - title: "Reconstruction algorithms"
+  - title: "Reconstruction algorithms in JANA2"
     url: "https://eic.github.io/tutorial-reconstruction-algorithms"
-    summary: "Study the reconstruction algorithms used in ePIC and compare the ideas behind different approaches."
+    summary: "JANA2 - Algorithms and Factories + PODIO"
     image: "/assets/images/tutorials/ReconAlgTutSS.png"
     resources:
       - label: "Video 1"
@@ -84,13 +84,13 @@ tutorials:
 
   - title: "Developing benchmarks"
     url: "https://eic.github.io/tutorial-developing-benchmarks"
-    summary: "Learn how to design and evaluate benchmarks for performance studies and software validation."
+    summary: "Continuous Integration (CI) benchmarks for physics and detector automation <br> Snakemake workflow"
     image: "/assets/images/tutorials/BenchmarkTutSS.png"
 
   - title: "Simulations with npsim and geant4"
     url: "https://eic.github.io/tutorial-simulations-using-npsim-and-geant4/"
-    summary: "Run detector simulations with npsim and Geant4 while comparing workflows across frameworks."
-    image: "/assets/images/tutorials/SimTutSS.png"
+    summary: "Single Particle Simulations with ddsim and npsim, steering file"
+    image: "/assets/images/tutorials/tutorial-geant4-npsim.png"
     resources:
       - label: "Video 1"
         url: "https://www.youtube.com/watch?v=QjjD1_wjLIw"
@@ -101,8 +101,8 @@ tutorials:
 
   - title: "Reconstruction framework"
     url: "https://eic.github.io/tutorial-jana2/"
-    summary: "Explore the JANA2-based reconstruction framework and the building blocks used in the ePIC workflow."
-    image: "/assets/images/tutorials/ReconTutSS.png"
+    summary: "eicrecon in nutshell"
+    image: "/assets/images/tutorials/tutorial-jana2.png"
     resources:
       - label: "Video 1"
         url: "https://www.youtube.com/watch?v=Ly2Zh1AGUEc"
@@ -113,7 +113,7 @@ tutorials:
 
   - title: "Analysis bootcamp"
     url: "https://github.com/eic/python-analysis-bootcamp"
-    summary: "Python-based analysis techniques collected in a bootcamp format for hands-on learning."
+    summary: "Jupyter notebooks on <br> Accessing Truth Information <br> Determining x and Q2  <br> Comparing measured and true x and Q2"
     image: "/assets/images/tutorials/AnaBootcampSS.png"
 ---
 
