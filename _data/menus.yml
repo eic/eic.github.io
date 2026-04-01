@@ -29,6 +29,9 @@
       full: Monte Carlo Event Generators
     - name: production_file
       full: Rucio File access
+    - name: event_display
+      full: Event Display
+      link: https://seeeic.org/
     
 ### About
 #
@@ -58,3 +61,7 @@
     - name: ucd
       collection: activities
       full: User-Centered Design
+
+    - name: simulations
+      collection: resources
+      full: Note on Accelerator/Beam Simulations

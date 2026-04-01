@@ -1,0 +1,15 @@
+{%- capture search_content -%}
+  {{- include.doc.search_content | default: include.doc.content | markdownify | strip_html | normalize_whitespace | strip -}}
+{%- endcapture -%}
+{%- capture search_description -%}
+  {{- include.doc.description | default: include.doc.excerpt | markdownify | strip_html | normalize_whitespace | strip -}}
+{%- endcapture -%}
+{
+  "id": {{ include.doc.url | jsonify }},
+  "title": {{ include.doc.title | default: include.doc.name | default: include.doc.url | jsonify }},
+  "url": {{ include.doc.url | relative_url | jsonify }},
+  "display_url": {{ include.doc.url | jsonify }},
+  "collection": {{ include.collection | default: include.doc.collection | default: "page" | jsonify }},
+  "description": {{ search_description | jsonify }},
+  "content": {{ search_content | jsonify }}
+}

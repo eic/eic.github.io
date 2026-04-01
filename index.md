@@ -23,8 +23,6 @@ layout: home
   </div>
 </div>
 
-Welcome to the **EIC Home Page**!
 
-Our mailing list: [![emailicon](/assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-compsw-l@lists.bnl.gov) [eic-projdet-compsw-l@lists.bnl.gov](mailto:eic-projdet-compsw-l@lists.bnl.gov)
+[Subscribe](https://lists.bnl.gov/mailman/listinfo/eic-projdet-compsw-l) to our mailing list: [![emailicon](/assets/images/site/icons/email.png){: width="3%" }](mailto:eic-projdet-compsw-l@lists.bnl.gov) [eic-projdet-compsw-l@lists.bnl.gov](mailto:eic-projdet-compsw-l@lists.bnl.gov) 
 
-Subscribe here: [https://lists.bnl.gov/mailman/listinfo/eic-projdet-compsw-l](https://lists.bnl.gov/mailman/listinfo/eic-projdet-compsw-l)
