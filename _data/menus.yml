@@ -27,8 +27,6 @@
   submenus:
     - name: mcgen
       full: Monte Carlo Event Generators
-    - name: production_file
-      full: Rucio File access
     - name: event_display
       full: Event Display
       link: https://seeeic.org/
@@ -53,8 +51,6 @@
     - name: eoi
       collection: activities
       full: Expression of Interest
-
-
 
     - name: ucd
       collection: activities
