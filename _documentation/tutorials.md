@@ -29,6 +29,12 @@ tutorials:
         url: "https://youtu.be/oI8i5PctZX4"
         kind: "youtube"
 
+  - title: "File Access with Rucio"
+    url: "https://eic.github.io/tutorial-file-access"
+    summary: "How to get a specific dataset from centrally produced Simulation campaign files using Rucio "
+    image: "/assets/images/tutorials/tutorial-file-access.png"
+
+
   - title: "Simulating detectors"
     url: "https://eic.github.io/tutorial-geometry-development-using-dd4hep/"
     summary: "DD4hep for modifying and viewing detector<br> usage of detector .xml design"
