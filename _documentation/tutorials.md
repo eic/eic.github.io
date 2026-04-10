@@ -1,6 +1,6 @@
 ---
 title: ePIC Tutorials
-description: epicTutorials
+description: Tutorials for ePIC environment setup, analysis, simulation, reconstruction, file access, and benchmarks.
 name: tutorials
 layout: default
 tutorials:
