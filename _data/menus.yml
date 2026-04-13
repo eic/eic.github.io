@@ -33,6 +33,8 @@
     - name: principles
       collection: activities
       full: Statement of Software Principles
+    - name: faq
+      full: FAQ
     
 ### About
 #
