@@ -96,16 +96,19 @@
 }
 
 /*
- * Single scrolling container: the existing site CSS sets `overflow: hidden`
- * on .site-search-panel and a separate max-height on .site-search-results,
- * which meant on wide screens (where the answer block + several source
- * cards together exceed the panel height) the last source card was clipped
- * outside every scrollable region. Override so the whole panel scrolls,
- * and let the inner results list flow freely without its own cap.
+ * Single scrolling container. The existing site CSS sets `overflow: hidden`
+ * on .site-search-panel (no max-height) and a separate max-height on
+ * .site-search-results. Because the panel is position:absolute inside a
+ * fixed navbar, if we don't cap the panel height, overflow has nowhere to
+ * scroll to: the last source card literally renders off-viewport and gets
+ * clipped mid-card. Fix: cap the panel at ~viewport - navbar and let the
+ * whole thing scroll as one unit.
  */
 .site-search-nav:has(#siteSearchSubmit) .site-search-panel {
+    max-height: min(calc(100vh - 5rem), 40rem);
     overflow-y: auto;
     overflow-x: hidden;
+    overscroll-behavior: contain;
 }
 
 .site-search-nav:has(#siteSearchSubmit) .site-search-results {
@@ -486,18 +489,27 @@
     transition: background-color 120ms ease;
 }
 
-.smart-search-citation:hover,
-.smart-search-citation:focus {
-    /* Barely-there neutral wash — just enough to show which card is focused
-     * without pulling the eye away from the answer block above. */
-    background-color: rgba(15, 23, 42, 0.025);
+/*
+ * Chain .list-group-item-action to out-specify Bootstrap's 0-2-0 hover rule
+ * (which otherwise repaints the card with its tinted-blue #f8f9fa wash).
+ * The :focus-visible twin keeps hover light for mouse users but still gives
+ * keyboard users a clear focus ring.
+ */
+.smart-search-citation.list-group-item-action:hover,
+.smart-search-citation.list-group-item-action:focus {
+    background-color: #fafbfc;
     color: inherit;
     box-shadow: none;
     outline: 0;
 }
 
-.smart-search-citation:active {
-    background-color: rgba(15, 23, 42, 0.05);
+.smart-search-citation.list-group-item-action:focus-visible {
+    outline: 2px solid rgba(15, 23, 42, 0.18);
+    outline-offset: -2px;
+}
+
+.smart-search-citation.list-group-item-action:active {
+    background-color: #f5f7fa;
 }
 
 /* ---------- small-screen adjustments ------------------------------------- */

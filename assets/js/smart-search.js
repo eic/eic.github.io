@@ -130,6 +130,11 @@
     }
 
     const topK = Number(config.smartSearchTopK) || 5;
+    // When the user submits (Enter / arrow button) we still ask for a handful
+    // of sources so they can scroll through them after the AI answer. The
+    // backend gives the LLM a broader pool internally, and reorders so the
+    // chunks the model actually cited bubble to the top of what's returned.
+    const submitTopK = Math.max(1, Number(config.smartSearchSubmitTopK) || 5);
     const debounceMs = Number(config.smartSearchDebounceMs) || 300;
     const minChars = Number(config.smartSearchMinChars) || 3;
     const popularWindowDays = Number(config.smartSearchPopularWindowDays) || 7;
@@ -226,7 +231,7 @@
         body: JSON.stringify({
           query: query,
           scope: "public",
-          top_k: topK,
+          top_k: generateAnswer ? submitTopK : topK,
           generate_answer: generateAnswer,
         }),
         signal: signal,
@@ -378,7 +383,28 @@
         await renderFull(query, data);
       } catch (err) {
         if (err && err.name === "AbortError") return;
-        setStatus("AI answer failed: " + ((err && err.message) || err));
+        // Transient network blips (tunnel resets, momentary offline) surface
+        // as TypeError / NetworkError. Retry once transparently before we
+        // give up — if speculation was the source, drop its entry first.
+        const message = (err && err.message) ? String(err.message) : String(err);
+        const isNetworkError = err instanceof TypeError || /NetworkError|Failed to fetch|load failed/i.test(message);
+        if (isNetworkError && state.mode === "full") {
+          state.speculativeCache.delete(query);
+          cancelSubmit();
+          const retryCtrl = new AbortController();
+          state.submitFetch = retryCtrl;
+          try {
+            const retryData = await runQuery(query, true, retryCtrl.signal);
+            if (state.mode !== "full") return;
+            await renderFull(query, retryData);
+            return;
+          } catch (retryErr) {
+            if (retryErr && retryErr.name === "AbortError") return;
+            setStatus("AI answer failed: " + ((retryErr && retryErr.message) || retryErr));
+            return;
+          }
+        }
+        setStatus("AI answer failed: " + message);
       } finally {
         setLoading(false);
       }

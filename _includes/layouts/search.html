@@ -10,6 +10,7 @@
     "maxResults": {{ site.search.max_results | default: 10 | jsonify }},
     "smartSearchUrl": {{ site.search.backend_url | default: '' | jsonify }},
     "smartSearchTopK": {{ site.search.top_k | default: 5 | jsonify }},
+    "smartSearchSubmitTopK": {{ site.search.submit_top_k | default: 5 | jsonify }},
     "smartSearchDebounceMs": {{ site.search.debounce_ms | default: 300 | jsonify }},
     "smartSearchMinChars": {{ site.search.min_chars | default: 3 | jsonify }},
     "smartSearchPopularWindowDays": {{ site.search.popular_window_days | default: 7 | jsonify }},
