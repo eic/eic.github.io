@@ -29,6 +29,15 @@ search_enabled: true
 search:
   button: true
   rel_url: true
+  # Smart search (AI answer + citations). Leave backend_url empty to use the
+  # existing Lunr static-index fallback.
+  backend_url: https://api.aprozo.space
+  placeholder: Ask anything about EIC…
+  top_k: 5
+  debounce_ms: 300
+  min_chars: 3
+  popular_window_days: 7
+  popular_limit: 5
 
 # Mermaid diagrams
 mermaid:

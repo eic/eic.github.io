@@ -21,6 +21,9 @@
 
 <link rel="stylesheet" href="{{ '/css/custom.css' | relative_url }}" type="text/css" />
 <link rel="stylesheet" href="{{ '/css/highlight.css' | relative_url }}" type="text/css" />
+{% if site.search_enabled and site.search.backend_url and site.search.backend_url != '' %}
+<link rel="stylesheet" href="{{ '/css/smart-search.css' | relative_url }}" type="text/css" />
+{% endif %}
 
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">

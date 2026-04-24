@@ -119,6 +119,21 @@
       return;
     }
 
+    // Smart-search hand-off. If a backend URL is configured AND the
+    // smart-search module has loaded, let it own the #siteSearch widget and
+    // skip the Lunr path entirely. The smart module wires its own input /
+    // keyboard / panel behavior, so returning here prevents double binding.
+    if (config.smartSearchUrl && window.eicSmartSearch && typeof window.eicSmartSearch.init === "function") {
+      const claimed = window.eicSmartSearch.init(config);
+      if (claimed) {
+        const focusShortcutKey = config.focusShortcutKey || "";
+        if (focusShortcutKey) {
+          bindFocusShortcut(focusShortcutKey);
+        }
+        return;
+      }
+    }
+
     const searchRoot = document.getElementById("siteSearch");
     const inputElement = document.getElementById("siteSearchInput");
     const panelElement = document.getElementById("siteSearchPanel");
@@ -385,27 +400,7 @@
     });
 
     if (searchConfig.focusShortcutKey) {
-      document.addEventListener("keydown", function onKeyDown(event) {
-        if (event.defaultPrevented || event.altKey || event.shiftKey) {
-          return;
-        }
-
-        if (isEditableTarget(event.target)) {
-          return;
-        }
-
-        const shortcutKey = String(searchConfig.focusShortcutKey).toLowerCase();
-        const matchesKey = event.key && event.key.toLowerCase() === shortcutKey;
-        const usesModifier = event.ctrlKey || event.metaKey;
-        if (!matchesKey || !usesModifier) {
-          return;
-        }
-
-        event.preventDefault();
-        inputElement.focus();
-        inputElement.select();
-        warmSearchIndex();
-      });
+      bindFocusShortcut(searchConfig.focusShortcutKey, warmSearchIndex);
     }
 
     document.addEventListener("mousedown", function onDocumentMouseDown(event) {
@@ -422,6 +417,35 @@
       }
 
       closePanel();
+    });
+  }
+
+  function bindFocusShortcut(shortcutKey, onFocus) {
+    document.addEventListener("keydown", function onKeyDown(event) {
+      if (event.defaultPrevented || event.altKey || event.shiftKey) {
+        return;
+      }
+
+      if (isEditableTarget(event.target)) {
+        return;
+      }
+
+      const key = String(shortcutKey).toLowerCase();
+      const matchesKey = event.key && event.key.toLowerCase() === key;
+      const usesModifier = event.ctrlKey || event.metaKey;
+      if (!matchesKey || !usesModifier) {
+        return;
+      }
+
+      event.preventDefault();
+      const input = document.getElementById("siteSearchInput");
+      if (input) {
+        input.focus();
+        input.select();
+      }
+      if (typeof onFocus === "function") {
+        onFocus();
+      }
     });
   }
 
