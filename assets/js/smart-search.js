@@ -24,7 +24,14 @@
   const MARKED_URL = "https://esm.sh/marked@14";
   const DOMPURIFY_URL = "https://esm.sh/dompurify@3";
   const HLJS_URL = "https://esm.sh/highlight.js@11";
-  const SPECULATE_IDLE_MS = 700;
+  // How long the user has to stop typing before we speculatively fire a
+  // full (LLM-backed) /query. Speculation is expensive — every fire is an
+  // OpenAI round-trip — so we err on the side of waiting. Overridable via
+  // config.smartSearchSpeculateIdleMs.
+  const DEFAULT_SPECULATE_IDLE_MS = 1800;
+  // Minimum word count before we even consider speculating. Prevents
+  // 1-2 word stubs from triggering a full LLM call mid-typing.
+  const SPECULATE_MIN_WORDS = 3;
   const SPECULATIVE_CACHE_MAX = 10;
 
   let markedPromise = null;
@@ -135,7 +142,8 @@
     // backend gives the LLM a broader pool internally, and reorders so the
     // chunks the model actually cited bubble to the top of what's returned.
     const submitTopK = Math.max(1, Number(config.smartSearchSubmitTopK) || 5);
-    const debounceMs = Number(config.smartSearchDebounceMs) || 300;
+    const debounceMs = Number(config.smartSearchDebounceMs) || 450;
+    const speculateIdleMs = Math.max(300, Number(config.smartSearchSpeculateIdleMs) || DEFAULT_SPECULATE_IDLE_MS);
     const minChars = Number(config.smartSearchMinChars) || 3;
     const popularWindowDays = Number(config.smartSearchPopularWindowDays) || 7;
     const popularLimit = Number(config.smartSearchPopularLimit) || 5;
@@ -320,10 +328,14 @@
     function scheduleSpeculation(query) {
       clearTimeout(state.speculativeTimer);
       if (getSpeculative(query)) return; // already fired (in-flight or resolved)
+      // Skip short stubs — "how", "what are" etc. never warrant a live
+      // LLM call. Wait until the query looks like a real question.
+      const wordCount = query.split(/\s+/).filter(Boolean).length;
+      if (wordCount < SPECULATE_MIN_WORDS) return;
       state.speculativeTimer = setTimeout(function () {
         if (input.value.trim() !== query) return; // user kept typing
         startSpeculation(query);
-      }, SPECULATE_IDLE_MS);
+      }, speculateIdleMs);
     }
 
     function startSpeculation(query) {
