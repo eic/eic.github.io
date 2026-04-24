@@ -336,6 +336,18 @@
 
 .smart-search-citation {
     padding: 0.75rem 1rem !important;
+    /* Bootstrap's .list-group-item uses rgba(0,0,0,0.125) — a crisp dark
+     * line between cards. Soften to a barely-there separator. */
+    border-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+/* Remove the outer border on first/last cards so the list visually melts
+ * into the answer block above and the panel edge below. */
+.smart-search-citation:first-child {
+    border-top: 0 !important;
+}
+.smart-search-citation:last-child {
+    border-bottom: 0 !important;
 }
 
 .smart-search-citation-row {
@@ -490,26 +502,43 @@
 }
 
 /*
- * Chain .list-group-item-action to out-specify Bootstrap's 0-2-0 hover rule
- * (which otherwise repaints the card with its tinted-blue #f8f9fa wash).
- * The :focus-visible twin keeps hover light for mouse users but still gives
- * keyboard users a clear focus ring.
+ * Hover / focus / active: keep the card essentially white so the body text
+ * stays fully readable, and force the text back to its normal color (Bootstrap
+ * swaps it to a muted #495057 grey on hover, which is what makes the content
+ * look washed out). !important + a high-specificity selector are used because
+ * Bootstrap's own .list-group-item-action:hover sits on the same cascade
+ * level and ships after our stylesheet.
  */
 .smart-search-citation.list-group-item-action:hover,
 .smart-search-citation.list-group-item-action:focus {
-    background-color: #fafbfc;
-    color: inherit;
-    box-shadow: none;
-    outline: 0;
-}
-
-.smart-search-citation.list-group-item-action:focus-visible {
-    outline: 2px solid rgba(15, 23, 42, 0.18);
-    outline-offset: -2px;
+    background-color: #f3f6fb !important;
+    color: #1f2937 !important;
+    box-shadow: inset 3px 0 0 rgba(14, 165, 233, 0.55) !important;
+    outline: 0 !important;
 }
 
 .smart-search-citation.list-group-item-action:active {
-    background-color: #f5f7fa;
+    background-color: #e8eef7 !important;
+    color: #1f2937 !important;
+    box-shadow: inset 3px 0 0 rgba(14, 165, 233, 0.7) !important;
+    outline: 0 !important;
+}
+
+.smart-search-citation.list-group-item-action:hover .smart-search-citation-title,
+.smart-search-citation.list-group-item-action:focus .smart-search-citation-title,
+.smart-search-citation.list-group-item-action:active .smart-search-citation-title {
+    color: #111827 !important;
+}
+
+.smart-search-citation.list-group-item-action:hover .smart-search-citation-snippet,
+.smart-search-citation.list-group-item-action:focus .smart-search-citation-snippet,
+.smart-search-citation.list-group-item-action:active .smart-search-citation-snippet {
+    color: #334155 !important;
+}
+
+.smart-search-citation.list-group-item-action:focus-visible {
+    outline: 2px solid rgba(14, 165, 233, 0.55) !important;
+    outline-offset: -2px;
 }
 
 /* ---------- small-screen adjustments ------------------------------------- */
