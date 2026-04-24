@@ -95,6 +95,24 @@
     }
 }
 
+/*
+ * Single scrolling container: the existing site CSS sets `overflow: hidden`
+ * on .site-search-panel and a separate max-height on .site-search-results,
+ * which meant on wide screens (where the answer block + several source
+ * cards together exceed the panel height) the last source card was clipped
+ * outside every scrollable region. Override so the whole panel scrolls,
+ * and let the inner results list flow freely without its own cap.
+ */
+.site-search-nav:has(#siteSearchSubmit) .site-search-panel {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.site-search-nav:has(#siteSearchSubmit) .site-search-results {
+    max-height: none;
+    overflow: visible;
+}
+
 /* Smooth entry — default (not centered). */
 .site-search-nav:has(#siteSearchSubmit) .site-search-panel {
     animation: smart-search-panel-in-flow 140ms ease-out;
@@ -470,14 +488,16 @@
 
 .smart-search-citation:hover,
 .smart-search-citation:focus {
-    background-color: #f7f7f8;
+    /* Barely-there neutral wash — just enough to show which card is focused
+     * without pulling the eye away from the answer block above. */
+    background-color: rgba(15, 23, 42, 0.025);
     color: inherit;
     box-shadow: none;
     outline: 0;
 }
 
 .smart-search-citation:active {
-    background-color: #efefef;
+    background-color: rgba(15, 23, 42, 0.05);
 }
 
 /* ---------- small-screen adjustments ------------------------------------- */
