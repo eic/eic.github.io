@@ -7,7 +7,15 @@
     "focusShortcutKey": {{ shortcut_key | jsonify }},
     "previewWordsBefore": {{ site.search.preview_words_before | default: 5 | jsonify }},
     "previewWordsAfter": {{ site.search.preview_words_after | default: 12 | jsonify }},
-    "maxResults": {{ site.search.max_results | default: 10 | jsonify }}
+    "maxResults": {{ site.search.max_results | default: 10 | jsonify }},
+    "smartSearchUrl": {{ site.search.backend_url | default: '' | jsonify }},
+    "smartSearchTopK": {{ site.search.top_k | default: 5 | jsonify }},
+    "smartSearchSubmitTopK": {{ site.search.submit_top_k | default: 5 | jsonify }},
+    "smartSearchDebounceMs": {{ site.search.debounce_ms | default: 450 | jsonify }},
+    "smartSearchSpeculateIdleMs": {{ site.search.speculate_idle_ms | default: 1800 | jsonify }},
+    "smartSearchMinChars": {{ site.search.min_chars | default: 3 | jsonify }},
+    "smartSearchPopularWindowDays": {{ site.search.popular_window_days | default: 7 | jsonify }},
+    "smartSearchPopularLimit": {{ site.search.popular_limit | default: 5 | jsonify }}
   }
 </script>
 {% endif %}

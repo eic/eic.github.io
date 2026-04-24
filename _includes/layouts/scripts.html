@@ -3,6 +3,9 @@
         crossorigin="anonymous"></script>
 {% if site.search_enabled %}
 <script defer src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script>
+{% if site.search.backend_url and site.search.backend_url != '' %}
+<script defer src="{{ '/assets/js/smart-search.js' | relative_url }}"></script>
+{% endif %}
 {% endif %}
 {% if site.mermaid %}
 <script>

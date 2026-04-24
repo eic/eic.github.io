@@ -16,12 +16,34 @@
       aria-expanded="false"
       aria-autocomplete="list"
     >
+    {%- comment -%}
+      Submit button only renders when the smart-search backend is configured.
+      When empty, the Lunr fallback drives the panel via typing alone and no
+      explicit submit is needed.
+    {%- endcomment -%}
+    {% if site.search.backend_url and site.search.backend_url != '' %}
+    <button
+      id="siteSearchSubmit"
+      class="site-search-submit"
+      type="button"
+      aria-label="Ask the AI"
+      title="Press Enter to ask the AI"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+    {% endif %}
   {% if shortcut_key != '' %}
   <span class="site-search-shortcut">Ctrl+{{ shortcut_key | upcase }}</span>
   {% endif %}
   </div>
   <div id="siteSearchPanel" class="site-search-panel" hidden>
     <div id="siteSearchStatus" class="site-search-status">Start typing</div>
+    {%- comment -%}
+      Smart-search regions. Only populated when site.search.backend_url is set.
+      Invisible when empty so the panel cleanly falls back to the Lunr list.
+    {%- endcomment -%}
+    <div id="siteSearchAnswer" class="site-search-answer" hidden></div>
+    <div id="siteSearchMeta" class="site-search-meta" hidden></div>
     <div id="siteSearchResults" class="list-group list-group-flush site-search-results" aria-live="polite"></div>
   </div>
 </div>

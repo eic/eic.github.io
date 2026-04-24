@@ -18,6 +18,7 @@ vendor/
 # Common editor backups
 *~
 
+_config_local.yml
 # Prerequisites
 *.d
 
