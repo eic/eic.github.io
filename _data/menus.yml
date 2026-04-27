@@ -40,7 +40,7 @@
 ### About
 #
 - name: about
-  full: About
+  full: Learn More
   right: yes
   submenus:
     - name: overview
