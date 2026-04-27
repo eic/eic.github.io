@@ -465,9 +465,16 @@ tr:nth-child(even) {
         width: min(15rem, calc(100vw - 9rem));
     }
 
+    /* Anchor the dropdown to the viewport on mobile — the search nav itself
+     * is a narrow column on the right, so absolute positioning relative to it
+     * pushes the panel's left edge off-screen. */
     .site-search-panel {
-        width: min(32rem, calc(100vw - 1rem));
-        right: -0.25rem;
+        position: fixed;
+        top: 3.75rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        width: auto;
+        max-height: min(calc(100vh - 4.5rem), 40rem);
     }
 }
 
