@@ -547,11 +547,25 @@
     .site-search-answer { max-height: min(50vh, 24rem); }
 }
 
-@media (max-width: 575.98px) {
-    /* On very small screens, center and widen the panel to fill the viewport. */
+/*
+ * On mobile, `.site-search-nav` is a narrow column pinned to the right of the
+ * navbar (next to the toggler), so an absolutely-positioned panel uses that
+ * narrow box as its containing block. With width ≈ 100vw and a small negative
+ * `right`, the panel's left edge would land off-screen. Switch to fixed
+ * positioning so the panel anchors to the viewport directly and spans full
+ * width regardless of how narrow the host nav is.
+ */
+@media (max-width: 991.98px) {
     .site-search-nav:has(#siteSearchSubmit) .site-search-panel {
-        width: calc(100vw - 1rem);
-        right: -0.25rem;
+        position: fixed;
+        top: 3.75rem;
+        left: 0.5rem;
+        right: 0.5rem;
+        width: auto;
+        max-height: min(calc(100vh - 4.5rem), 40rem);
     }
+}
+
+@media (max-width: 575.98px) {
     .smart-search-citation-title { font-size: 0.92rem; }
 }
