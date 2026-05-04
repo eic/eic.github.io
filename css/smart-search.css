@@ -167,13 +167,93 @@
 
 .site-search-answer p { margin: 0 0 0.6rem; }
 .site-search-answer p:last-child { margin-bottom: 0; }
-.site-search-answer strong { font-weight: 600; }
+.site-search-answer strong { font-weight: 600; color: #0f172a; }
+.site-search-answer em { font-style: italic; }
+
+/* Headings — answers rarely need them, but when the LLM emits one, keep it
+ * proportional to body text instead of inheriting Bootstrap's massive h1/h2. */
+.site-search-answer h1,
+.site-search-answer h2,
+.site-search-answer h3,
+.site-search-answer h4,
+.site-search-answer h5,
+.site-search-answer h6 {
+    margin: 0.9rem 0 0.4rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #0f172a;
+}
+.site-search-answer h1 { font-size: 1.05rem; }
+.site-search-answer h2 { font-size: 1rem; }
+.site-search-answer h3 { font-size: 0.97rem; }
+.site-search-answer h4,
+.site-search-answer h5,
+.site-search-answer h6 { font-size: 0.95rem; color: #334155; }
+.site-search-answer h1:first-child,
+.site-search-answer h2:first-child,
+.site-search-answer h3:first-child { margin-top: 0; }
+
+/* Lists — Bootstrap's reset leaves these unstyled inside the panel. Give
+ * them tight, readable indent and spacing that matches the body line-height. */
+.site-search-answer ul,
+.site-search-answer ol {
+    margin: 0.25rem 0 0.7rem;
+    padding-left: 1.25rem;
+}
+.site-search-answer ul { list-style: disc; }
+.site-search-answer ol { list-style: decimal; }
+.site-search-answer li {
+    margin: 0.15rem 0;
+    padding-left: 0.15rem;
+}
+.site-search-answer li > p { margin: 0 0 0.25rem; }
+.site-search-answer li:last-child { margin-bottom: 0; }
+.site-search-answer ul ul,
+.site-search-answer ol ol,
+.site-search-answer ul ol,
+.site-search-answer ol ul {
+    margin: 0.15rem 0 0.15rem;
+}
+
+.site-search-answer blockquote {
+    margin: 0.5rem 0 0.7rem;
+    padding: 0.1rem 0 0.1rem 0.75rem;
+    border-left: 3px solid #cbd5e1;
+    color: #475569;
+}
+.site-search-answer blockquote p:last-child { margin-bottom: 0; }
+
+.site-search-answer hr {
+    border: 0;
+    border-top: 1px solid rgba(15, 23, 42, 0.08);
+    margin: 0.8rem 0;
+}
+
+.site-search-answer table {
+    border-collapse: collapse;
+    margin: 0.5rem 0 0.7rem;
+    font-size: 0.88rem;
+    width: auto;
+}
+.site-search-answer th,
+.site-search-answer td {
+    border: 1px solid rgba(15, 23, 42, 0.1);
+    padding: 0.3rem 0.55rem;
+    text-align: left;
+}
+.site-search-answer th {
+    background-color: #f8fafc;
+    font-weight: 600;
+}
+
 .site-search-answer code {
-    background-color: #f3f4f6;
+    background-color: #f1f5f9;
+    color: #0f172a;
     padding: 0.1em 0.35em;
     border-radius: 0.25rem;
-    font-size: 0.9em;
+    font-size: 0.88em;
     font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    border: 1px solid rgba(15, 23, 42, 0.06);
 }
 .site-search-answer pre {
     background-color: #f8fafc;
@@ -253,37 +333,40 @@
     border-radius: 3px;
 }
 
-/* ---------- minimal highlight.js theme (GitHub-ish) -------------------- */
+/* ---------- minimal highlight.js theme (medium tone, no pink) ---------- */
+/* Replaces the default GitHub palette (harsh pink keywords #d73a49 and
+ * purple titles #6f42c1) with mid-weight Tailwind 500/600s. Calm on the
+ * #f8fafc code background, still readable, no overly dark slabs. */
 
 .site-search-answer .hljs-comment,
-.site-search-answer .hljs-quote { color: #6a737d; font-style: italic; }
+.site-search-answer .hljs-quote { color: #94a3b8; font-style: italic; }
 .site-search-answer .hljs-keyword,
 .site-search-answer .hljs-selector-tag,
-.site-search-answer .hljs-subst { color: #d73a49; }
+.site-search-answer .hljs-subst { color: #2563eb; }
 .site-search-answer .hljs-number,
 .site-search-answer .hljs-literal,
 .site-search-answer .hljs-variable,
 .site-search-answer .hljs-template-variable,
-.site-search-answer .hljs-tag .hljs-attr { color: #005cc5; }
+.site-search-answer .hljs-tag .hljs-attr { color: #0891b2; }
 .site-search-answer .hljs-string,
-.site-search-answer .hljs-doctag { color: #032f62; }
+.site-search-answer .hljs-doctag { color: #16a34a; }
 .site-search-answer .hljs-title,
 .site-search-answer .hljs-section,
-.site-search-answer .hljs-selector-id { color: #6f42c1; font-weight: 600; }
+.site-search-answer .hljs-selector-id { color: #475569; font-weight: 600; }
 .site-search-answer .hljs-type,
-.site-search-answer .hljs-class .hljs-title { color: #6f42c1; }
+.site-search-answer .hljs-class .hljs-title { color: #64748b; }
 .site-search-answer .hljs-tag,
 .site-search-answer .hljs-name,
-.site-search-answer .hljs-attribute { color: #22863a; }
+.site-search-answer .hljs-attribute { color: #0d9488; }
 .site-search-answer .hljs-regexp,
-.site-search-answer .hljs-link { color: #032f62; }
+.site-search-answer .hljs-link { color: #16a34a; }
 .site-search-answer .hljs-symbol,
-.site-search-answer .hljs-bullet { color: #e36209; }
+.site-search-answer .hljs-bullet { color: #d97706; }
 .site-search-answer .hljs-built_in,
-.site-search-answer .hljs-builtin-name { color: #005cc5; }
-.site-search-answer .hljs-meta { color: #6a737d; }
-.site-search-answer .hljs-deletion { background-color: #ffeef0; }
-.site-search-answer .hljs-addition { background-color: #f0fff4; }
+.site-search-answer .hljs-builtin-name { color: #2563eb; }
+.site-search-answer .hljs-meta { color: #94a3b8; }
+.site-search-answer .hljs-deletion { background-color: #fef2f2; }
+.site-search-answer .hljs-addition { background-color: #f0fdf4; }
 .site-search-answer .hljs-emphasis { font-style: italic; }
 .site-search-answer .hljs-strong { font-weight: 700; }
 .site-search-answer a { color: #0284c7; text-decoration: none; }

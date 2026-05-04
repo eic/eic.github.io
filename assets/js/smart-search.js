@@ -290,7 +290,12 @@
         btn.addEventListener("click", function () {
           input.value = q;
           input.focus();
-          input.dispatchEvent(new Event("input", { bubbles: true }));
+          // Skip the preview round-trip and go straight to the full LLM
+          // answer — popular chips are by definition already in the
+          // server-side QueryCache, so submitFull resolves fast.
+          clearTimeout(state.debounceTimer);
+          clearTimeout(state.speculativeTimer);
+          submitFull(q);
         });
         container.appendChild(btn);
       });
@@ -472,7 +477,10 @@
       results.appendChild(fragment);
 
       if (mode === "full") {
-        setStatus("Answer");
+        // The answer block + citation list speak for themselves; a
+        // redundant "Answer" header just adds noise.
+        status.textContent = "";
+        status.hidden = true;
       } else {
         setStatus("Top " + citations.length + " sources");
       }
