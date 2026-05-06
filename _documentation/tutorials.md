@@ -33,7 +33,10 @@ tutorials:
     url: "https://eic.github.io/tutorial-file-access"
     summary: "How to get a specific dataset from centrally produced Simulation campaign files using Rucio "
     image: "/assets/images/tutorials/tutorial-file-access.png"
-
+    resources:
+      - url: "https://youtu.be/BTQMQhtSnWc"
+        kind: "youtube"
+    
 
   - title: "Simulating detectors"
     url: "https://eic.github.io/tutorial-geometry-development-using-dd4hep/"
