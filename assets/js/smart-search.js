@@ -24,6 +24,8 @@
   const MARKED_URL = "https://esm.sh/marked@14";
   const DOMPURIFY_URL = "https://esm.sh/dompurify@3";
   const HLJS_URL = "https://esm.sh/highlight.js@11";
+  const KATEX_AUTO_RENDER_URL = "https://esm.sh/katex@0.16.11/contrib/auto-render";
+  const KATEX_CSS_URL = "https://esm.sh/katex@0.16.11/dist/katex.min.css";
   // How long the user has to stop typing before we speculatively fire a
   // full (LLM-backed) /query. Speculation is expensive — every fire is an
   // OpenAI round-trip — so we err on the side of waiting. Overridable via
@@ -90,6 +92,83 @@
       });
     }
     return markedPromise;
+  }
+
+  let katexCssInjected = false;
+  function ensureKatexCss() {
+    if (katexCssInjected) return;
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = KATEX_CSS_URL;
+    link.crossOrigin = "anonymous";
+    document.head.appendChild(link);
+    katexCssInjected = true;
+  }
+
+  let katexPromise = null;
+  function loadKatex() {
+    if (!katexPromise) {
+      ensureKatexCss();
+      katexPromise = import(/* @vite-ignore */ KATEX_AUTO_RENDER_URL)
+        .then(function (mod) { return mod.default || mod.renderMathInElement || null; })
+        .catch(function () { return null; });
+    }
+    return katexPromise;
+  }
+
+  function renderMath(el) {
+    if (!el) return;
+    loadKatex().then(function (renderMathInElement) {
+      if (typeof renderMathInElement !== "function") return;
+      try {
+        renderMathInElement(el, {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "$", right: "$", display: false },
+          ],
+          throwOnError: false,
+          ignoredTags: ["script", "noscript", "style", "textarea", "pre", "code"],
+        });
+      } catch (_err) { /* swallow — leave raw text */ }
+    });
+  }
+
+  // Pull math segments out of the raw markdown before marked sees them, so
+  // intraword underscore emphasis doesn't mangle LaTeX. Replace each with a
+  // private-use placeholder that survives marked + DOMPurify untouched, and
+  // reinject as $...$ / $$...$$ afterwards for KaTeX auto-render to pick up.
+  // Only $...$ and $$...$$ are recognized — backticked spans stay as code.
+  const MATH_PLACEHOLDER_OPEN = "M";
+  const MATH_PLACEHOLDER_CLOSE = "";
+
+  function extractMath(md) {
+    const math = [];
+    function placeholder(content, display) {
+      math.push({ content: content, display: display });
+      return MATH_PLACEHOLDER_OPEN + (math.length - 1) + MATH_PLACEHOLDER_CLOSE;
+    }
+    let s = String(md || "");
+    s = s.replace(/\$\$([\s\S]+?)\$\$/g, function (_m, inner) { return placeholder(inner, true); });
+    // Single-$ inline: skip currency ($5, USD$10) by requiring non-alphanumeric on both sides.
+    s = s.replace(/(^|[^A-Za-z0-9])\$([^\$\n]+?)\$(?![A-Za-z0-9])/g, function (_m, lead, inner) {
+      return lead + placeholder(inner, false);
+    });
+    return { md: s, math: math };
+  }
+
+  function reinjectMath(html, math) {
+    if (!math.length) return html;
+    const re = new RegExp(MATH_PLACEHOLDER_OPEN + "(\\d+)" + MATH_PLACEHOLDER_CLOSE, "g");
+    return html.replace(re, function (m, idx) {
+      const i = Number(idx);
+      if (i < 0 || i >= math.length) return m;
+      const entry = math[i];
+      const escaped = String(entry.content)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+      return entry.display ? ("$$" + escaped + "$$") : ("$" + escaped + "$");
+    });
   }
 
   function escapeHtml(s) {
@@ -430,9 +509,14 @@
     async function renderFull(query, data) {
       const libs = await loadMarkdownLibs();
       const citations = Array.isArray(data.citations) ? data.citations : [];
-      const rawMd = data.answer || "";
-      const html = libs.marked.parse(rawMd, { async: false });
+      // Pull math out *before* marked sees it; intraword underscores inside
+      // formulas would otherwise be eaten as emphasis.
+      const extracted = extractMath(data.answer || "");
+      const html = libs.marked.parse(extracted.md, { async: false });
       let clean = libs.DOMPurify.sanitize(html, { ADD_ATTR: ["target", "rel"] });
+      // Citation replacement first — placeholders contain no [N] tokens, so
+      // doing this before reinject avoids any [N] inside formulas being
+      // mistaken for citations.
       clean = clean.replace(/\[(\d+)\]/g, function (match, n) {
         const i = Number(n);
         if (!Number.isInteger(i) || i < 1 || i > citations.length) return match;
@@ -441,7 +525,12 @@
         const title = escapeHtml(citation.title || "");
         return '<sup><a href="' + href + '" target="_blank" rel="noopener" title="' + title + '">[' + i + "]</a></sup>";
       });
+      clean = reinjectMath(clean, extracted.math);
       renderResults(data, "full", clean);
+      // Render any LaTeX in the answer (e.g. $Q^2$, $$x = \\frac{p \\cdot q}{p \\cdot Q}$$).
+      // Run after the HTML is in the DOM, so KaTeX scans real text nodes; DOMPurify
+      // never sees KaTeX output. Code blocks are skipped via ignoredTags.
+      renderMath(answer);
     }
 
     // ------------------------------------------------------------------
