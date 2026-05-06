@@ -54,7 +54,7 @@ tutorials:
   - title: "Understanding Simulation output"
     url: "https://eic.github.io/tutorial-understanding-sim-output"
     summary: "DD4hep simulation and reconstruction workflow in Jupyter notebook"
-    image: "/assets/images/tutorials/UnderSimOutTutSS.png"
+    image: "/assets/images/tutorials/tutorial-understanding-sim-output.png"
     resources:
       - url: "https://youtu.be/ENx4J47ij9Y"
         kind: "youtube"
@@ -78,7 +78,7 @@ tutorials:
   - title: "Reconstruction algorithms in JANA2"
     url: "https://eic.github.io/tutorial-reconstruction-algorithms"
     summary: "JANA2 - Algorithms and Factories + PODIO"
-    image: "/assets/images/tutorials/ReconAlgTutSS.png"
+    image: "/assets/images/tutorials/tutorial-reconstruction-algorithms.png"
     resources:
       - label: "1"
         url: "https://youtu.be/Fjs8pyS47_A"
@@ -119,7 +119,7 @@ tutorials:
   - title: "Analysis bootcamp"
     url: "https://github.com/eic/python-analysis-bootcamp"
     summary: "Jupyter notebooks on <br> Accessing Truth Information <br> Determining x and Q2  <br> Comparing measured and true x and Q2"
-    image: "/assets/images/tutorials/AnaBootcampSS.png"
+    image: "/assets/images/tutorials/tutorial-python-analysis-bootcamp.png"
 ---
 
 <div class="tutorials-landing">
