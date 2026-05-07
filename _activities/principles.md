@@ -6,7 +6,12 @@ layout: default
 
 {% include layouts/title.md %}
 
+<div class="principles-image" style="text-align: center;">
 {% include images/image.md name='principles' width='1000' %}
+</div>
+<style>
+  .principles-image img { max-width: 100%; height: auto; }
+</style>
 
 The Statement of Principles represent guiding principles for EIC Software. They have been endorsed by the international EIC community. The [endorsers](#endorsers) are listed below. The Statement of Principles are also available as [PDF version](https://www.dropbox.com/s/l21sbvmx6fonsk4/EIC%20Software%20-%20Statement%20of%20Software%20Principles.pdf?dl=0).
 
