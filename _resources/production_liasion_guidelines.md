@@ -110,16 +110,54 @@ You only need to do this once.
 Run eic-shell and set the rucio variables
 ```bash
 ./eic-shell
-export RUCIO_CONFIG=/opt/campaigns/hepmc3/scripts/rucio.cfg
+export SCRIPT_DIR=/opt/campaigns/hepmc3/scripts
+export RUCIO_CONFIG=${SCRIPT_DIR}/rucio.cfg
 export X509_USER_PROXY=x509_user_proxy
 ```
 
 Then you can transfer the files from the source location to desired directory structure on JLAB RSE following the [input pre-processing guidelines](https://eic.github.io/epic-prod/documentation/input_preprocessing.html). Make sure that the dataset can be traced to a version controlled github repo before this transfer happens because you will need the version tag for the directory structure and nomenclature. An example of the transfer is shown here:
 ```
 timestamp=$(date '+%Y-%m-%d_%H-%M-%S')
-python /opt/campaigns/hepmc3/scripts/register_to_rucio.py \
+python ${SCRIPT_DIR}/register_to_rucio.py \
 -f "test.hepmc3.tree.root" \
 -d "/EVGEN/Test/test-${timestamp}.hepmc3.tree.root" \
 -s epic -r EIC-XRD
 ```
 Once all your input files are uploaded, create a PR similar to [this](https://eicweb.phy.anl.gov/EIC/campaigns/datasets/-/merge_requests/94/diffs) on the [datasets repository](https://github.com/eic/simulation_campaign_datasets/) with csv file catalogues for the respective datasets and integration line in the config.yml file. 
+
+
+---
+# Backing up Campaign Logs Post Campaign
+
+Once a campaign has been completed, the logs from that campaign need to be backed up to tape. This should only be done by 1 person. Don't do this unless instructed by the production WG conveners. 
+
+They are located in 
+```
+/work/eic3/EPIC/LOGS/LOG
+```
+
+Compress the campaign directory to a zip folder
+```
+cd /w/eic-scshelf2104/EPIC/LOGS/LOG
+tar -czf YY.MM.P.tar.gz YY.MM.P
+```
+
+Upload them to log folder
+```
+export SCRIPT_DIR=/opt/campaigns/hepmc3/scripts
+export RUCIO_CONFIG=${SCRIPT_DIR}/rucio.cfg
+export X509_USER_PROXY=x509_user_proxy
+python ${SCRIPT_DIR}/register_to_rucio.py \
+    -f "/w/eic-scshelf2104/EPIC/LOGS/LOG/YY.MM.P.tar.gz" \
+    -d "/COMBINED_LOG/YY.MM.P.tar.gz" \
+    -s epic -r EIC-XRD-LOG 
+```
+
+Add rucio rule
+```
+rucio rule add --rses JLAB-TAPE-SE --copies 1 <dataset_did>
+```
+
+
+
+
