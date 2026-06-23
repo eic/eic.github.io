@@ -36,7 +36,10 @@
     - name: faq
       collection: documentation
       full: FAQ
-    
+    - name: plots_monitoring
+      full: Plots Monitoring
+      link: https://epsciweb.jlab.org/epic_hydra/plotBrowser
+     
 ### About
 #
 - name: about
