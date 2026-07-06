@@ -26,6 +26,8 @@ Welcome to the **Get Started** section. This page will guide you through the ste
 * [Detector Subsystems](https://www.epic-eic.org/detector/dsc.html)
 * [Software Working Group](https://www.epic-eic.org/sc/sc_overview.html)
 
-5. Checkout [HEP Software](https://hepsoftwarefoundation.org/training/center.html) and [ePIC tutorials](./tutorials.html)
+5. Checkout **[HEP Software](https://hepsoftwarefoundation.org/training/center.html)** and **[ePIC tutorials](./tutorials.html)**
+
+6. As an interactive way to learn different aspects of the EIC/ePIC software framework, you might want to try the **[Scavenger Hunt](https://eic.github.io/scavenger-hunt)** 
 
 {% include documentation/getstarted_stack_diagram.html %}

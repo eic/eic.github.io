@@ -17,6 +17,11 @@ tutorials:
         url: "https://www.youtube.com/watch?v=5HmzFnYW4W4"
         kind: "youtube"
 
+  - title: "Scavenger hunt"
+    url: "https://eic.github.io/scavenger-hunt"
+    summary: "Interactive way to learn different aspects of the EIC/ePIC software"
+    image: "/assets/images/tutorials/scavenger-hunt.png"
+
   - title: "Analysis and simulation output"
     url: "https://eic.github.io/tutorial-analysis"
     summary: "How to use eicrecon and analyze Reconstruction output<br> Full Chain Analysis walkthrough from MC generator"
