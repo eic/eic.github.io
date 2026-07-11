@@ -22,6 +22,11 @@ tutorials:
     summary: "Interactive way to learn different aspects of the EIC/ePIC software"
     image: "/assets/images/tutorials/scavenger-hunt.png"
 
+  - title: "Track-cluster matching"
+    url: "https://eic.github.io/tutorial-track-cluster-matching"
+    summary: "How to match tracks and calorimeter clusters with PODIO"
+    image: "/assets/images/tutorials/tutorial-track-cluster-matching.png"
+
   - title: "Analysis and simulation output"
     url: "https://eic.github.io/tutorial-analysis"
     summary: "How to use eicrecon and analyze Reconstruction output<br> Full Chain Analysis walkthrough from MC generator"
