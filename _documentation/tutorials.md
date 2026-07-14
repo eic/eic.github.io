@@ -27,6 +27,11 @@ tutorials:
     summary: "How to match tracks and calorimeter clusters with PODIO"
     image: "/assets/images/tutorials/tutorial-track-cluster-matching.png"
 
+  - title: "AI and MCP"
+    url: "https://eic.github.io/tutorial-mcp"
+    summary: "How to use AI/LLMs and MCP servers for physics analysis"
+    image: "/assets/images/tutorials/tutorial-mcp.png"
+
   - title: "Analysis and simulation output"
     url: "https://eic.github.io/tutorial-analysis"
     summary: "How to use eicrecon and analyze Reconstruction output<br> Full Chain Analysis walkthrough from MC generator"
