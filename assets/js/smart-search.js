@@ -328,6 +328,73 @@
       });
     }
 
+    // Streaming variant of the full call: POST /query/stream (SSE).
+    // Events: `citations` (provisional, arrives at retrieval speed) →
+    // `delta` (answer text fragments) → `done` (final aligned payload).
+    // Throws on any transport/protocol problem so the caller can fall
+    // back to the plain /query JSON endpoint.
+    async function submitStream(query, ctrl) {
+      const libs = await loadMarkdownLibs();
+      const response = await fetch(apiBase + "/query/stream", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: query,
+          scope: "public",
+          top_k: submitTopK,
+          generate_answer: true,
+        }),
+        signal: ctrl.signal,
+      });
+      if (!response.ok || !response.body) throw new Error("HTTP " + response.status);
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = "";
+      let answerMd = "";
+      let gotDone = false;
+      let lastRender = 0;
+
+      function renderPartial() {
+        const html = libs.marked.parse(answerMd, { async: false });
+        answer.innerHTML = libs.DOMPurify.sanitize(html, { ADD_ATTR: ["target", "rel"] });
+        answer.hidden = false;
+      }
+
+      for (;;) {
+        const chunk = await reader.read();
+        if (chunk.done) break;
+        buf += decoder.decode(chunk.value, { stream: true });
+        const frames = buf.split("\n\n");
+        buf = frames.pop();
+        for (const frame of frames) {
+          const evMatch = frame.match(/^event: (.+)$/m);
+          const dataMatch = frame.match(/^data: (.+)$/m);
+          if (!evMatch || !dataMatch) continue;
+          let payload;
+          try { payload = JSON.parse(dataMatch[1]); } catch (e) { continue; }
+          if (state.mode !== "full") { ctrl.abort(); return; }
+          if (evMatch[1] === "citations") {
+            // Provisional sources, pre-answer — visible within ~0.5 s.
+            renderResults({ citations: payload.citations }, "full", "");
+            status.hidden = false;
+            status.textContent = "Generating answer…";
+          } else if (evMatch[1] === "delta") {
+            answerMd += payload.text || "";
+            const now = Date.now();
+            if (now - lastRender > 120) {
+              lastRender = now;
+              renderPartial();
+            }
+          } else if (evMatch[1] === "done") {
+            gotDone = true;
+            // Final payload: [N] markers remapped, citations realigned.
+            await renderFull(query, payload);
+          }
+        }
+      }
+      if (!gotDone) throw new Error("stream ended without done event");
+    }
+
     function fetchPopular() {
       if (!state.popularPromise) {
         const url = apiBase + "/popular?window_days=" + popularWindowDays + "&limit=" + popularLimit;
@@ -465,12 +532,26 @@
         dataPromise = cached.promise;
       } else {
         // Either no cache, or a prior speculation errored — fire fresh.
+        // Prefer the SSE endpoint: provisional sources render at retrieval
+        // speed and the answer types itself out. Any stream failure falls
+        // through to the plain JSON endpoint below.
         if (cached && cached.error) state.speculativeCache.delete(query);
         setStatus("Thinking…");
         cancelSubmit();
-        const ctrl = new AbortController();
-        state.submitFetch = ctrl;
-        dataPromise = runQuery(query, true, ctrl.signal);
+        const streamCtrl = new AbortController();
+        state.submitFetch = streamCtrl;
+        try {
+          await submitStream(query, streamCtrl);
+          setLoading(false);
+          return;
+        } catch (streamErr) {
+          if (streamErr && streamErr.name === "AbortError") { setLoading(false); return; }
+          // Stream endpoint unavailable / proxy buffered it — plain call.
+          cancelSubmit();
+          const ctrl = new AbortController();
+          state.submitFetch = ctrl;
+          dataPromise = runQuery(query, true, ctrl.signal);
+        }
       }
 
       try {
