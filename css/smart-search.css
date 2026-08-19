@@ -646,3 +646,28 @@
 @media (max-width: 575.98px) {
     .smart-search-citation-title { font-size: 0.92rem; }
 }
+
+/* Feedback / expert-referral row (added 2026-08) */
+.smart-search-feedback { margin-top: 12px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.08); font-size: 0.85rem; }
+.smart-search-expert { margin-bottom: 6px; color: #334; }
+.smart-search-rate { display: flex; align-items: center; gap: 8px; color: #667; }
+.smart-search-thumb { background: none; border: 1px solid rgba(0,0,0,0.15); border-radius: 6px; cursor: pointer; padding: 2px 8px; font-size: 1rem; }
+.smart-search-thumb:hover:not(:disabled) { background: rgba(0,0,0,0.05); }
+.smart-search-thumb:disabled { opacity: 0.4; cursor: default; }
+.smart-search-thanks { color: #093; }
+.smart-search-noresult { color: #556; font-size: 0.9rem; line-height: 1.5; }
+.smart-search-noresult a { color: #2a78d6; }
+
+/* Follow-up mode: "new topic" escape hatch next to the turn counter. */
+.smart-search-newtopic {
+  border: 1px solid rgba(128, 128, 128, 0.45);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  padding: 0.1rem 0.55rem;
+  margin-left: 0.4rem;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.smart-search-newtopic:hover { opacity: 1; }

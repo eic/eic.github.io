@@ -236,7 +236,55 @@
       lastPreviewQuery: null,
       mode: "idle",
       popularPromise: null,     // memoized fetch of /popular for the session
+      history: [],              // conversation turns [{role, content}], max 3 exchanges
     };
+    const originalPlaceholder = input.placeholder;
+
+    // ------------------------------------------------------------------
+    // Conversation history (follow-up questions)
+    // ------------------------------------------------------------------
+
+    function historyPayload() {
+      return state.history.slice(-6);
+    }
+
+    function pushHistory(query, answerText) {
+      if (!answerText) return;
+      const last = state.history[state.history.length - 2];
+      if (last && last.role === "user" && last.content === query) return; // re-render of same turn
+      state.history.push({ role: "user", content: String(query).slice(0, 2000) });
+      state.history.push({ role: "assistant", content: String(answerText).slice(0, 4000) });
+      while (state.history.length > 6) state.history.shift();
+      updateFollowupUi();
+    }
+
+    function clearHistory() {
+      state.history = [];
+      updateFollowupUi();
+    }
+
+    function updateFollowupUi() {
+      input.placeholder = state.history.length
+        ? "Ask a follow-up… (Esc = new topic)"
+        : originalPlaceholder;
+    }
+
+    function renderFollowupChip() {
+      if (!state.history.length) return;
+      const exchanges = state.history.length / 2;
+      meta.innerHTML =
+        '<span class="smart-search-badge smart-search-badge-hint">Follow-up mode · ' +
+        exchanges + (exchanges === 1 ? " turn" : " turns") + "</span> " +
+        '<button type="button" class="smart-search-newtopic" id="smartSearchNewTopic">✕ new topic</button>';
+      meta.hidden = false;
+      const btn = document.getElementById("smartSearchNewTopic");
+      if (btn) btn.addEventListener("click", function () {
+        clearHistory();
+        meta.hidden = true;
+        meta.innerHTML = "";
+        input.focus();
+      });
+    }
 
     function openPanel() {
       panel.hidden = false;
@@ -320,6 +368,7 @@
           scope: "public",
           top_k: generateAnswer ? submitTopK : topK,
           generate_answer: generateAnswer,
+          history: generateAnswer ? historyPayload() : [],
         }),
         signal: signal,
       }).then(function (response) {
@@ -343,6 +392,7 @@
           scope: "public",
           top_k: submitTopK,
           generate_answer: true,
+          history: historyPayload(),
         }),
         signal: ctrl.signal,
       });
@@ -516,7 +566,9 @@
       // Preview can go.
       cancelPreview();
 
-      const cached = getSpeculative(query);
+      // Speculative entries were fired without conversation history — in
+      // follow-up mode they would answer out of context. Skip them.
+      const cached = state.history.length ? null : getSpeculative(query);
       let dataPromise;
 
       if (cached && cached.resolved && cached.data) {
@@ -612,18 +664,48 @@
       // Run after the HTML is in the DOM, so KaTeX scans real text nodes; DOMPurify
       // never sees KaTeX output. Code blocks are skipped via ignoredTags.
       renderMath(answer);
+      // Remember the exchange so the next question can be a follow-up,
+      // and offer the escape hatch back to a fresh topic.
+      pushHistory(query, data.answer || "");
+      renderFollowupChip();
     }
 
     // ------------------------------------------------------------------
     // Rendering
     // ------------------------------------------------------------------
 
+    // Citation-click telemetry: feeds the backend feedback table so
+    // ranking can later learn from what users actually open.
+    let lastQueryLogId = null;
+    function beaconCitationClick(chunkId) {
+      try {
+        const payload = JSON.stringify({
+          query_log_id: lastQueryLogId,
+          selected_citation_ids: [chunkId],
+          metadata: { type: "citation_click" },
+        });
+        navigator.sendBeacon(
+          apiBase + "/feedback",
+          new Blob([payload], { type: "application/json" })
+        );
+      } catch (_err) { /* telemetry only — never break navigation */ }
+    }
+
     function renderResults(data, mode, answerHtml) {
+      if (data && data.query_log_id) lastQueryLogId = data.query_log_id;
       const citations = Array.isArray(data.citations) ? data.citations : [];
       results.innerHTML = "";
       if (!citations.length) {
-        setStatus("No matching documents.");
+        setStatus("No matching documents in the indexed sources.");
         clearAnswer();
+        if (mode === "full") {
+          answer.hidden = false;
+          answer.innerHTML =
+            '<div class="smart-search-noresult">No indexed source answers this. Try rephrasing, ' +
+            'or ask in <a href="https://chat.epic-eic.org/" target="_blank" rel="noopener">Mattermost</a> / ' +
+            'browse the <a href="https://wiki.bnl.gov/EPIC/" target="_blank" rel="noopener">wiki</a>.</div>';
+          renderFeedbackRow(data);
+        }
         return;
       }
 
@@ -651,9 +733,49 @@
         // redundant "Answer" header just adds noise.
         status.textContent = "";
         status.hidden = true;
+        renderFeedbackRow(data);
       } else {
         setStatus("Top " + citations.length + " sources");
       }
+    }
+
+    // Expert referral (from the API's expert_hint) + thumbs feedback. Turns
+    // a low-confidence answer into a route to a human and a training signal.
+    function renderFeedbackRow(data) {
+      const old = document.getElementById("smart-search-feedback");
+      if (old) old.remove();
+      const row = document.createElement("div");
+      row.id = "smart-search-feedback";
+      row.className = "smart-search-feedback";
+      let html = "";
+      if (data && data.expert_hint) {
+        html += '<div class="smart-search-expert">👤 ' + escapeHtml(data.expert_hint) + "</div>";
+      }
+      html +=
+        '<div class="smart-search-rate">Helpful?' +
+        '<button type="button" class="smart-search-thumb" data-rate="5" aria-label="Yes">👍</button>' +
+        '<button type="button" class="smart-search-thumb" data-rate="1" aria-label="No">👎</button>' +
+        '<span class="smart-search-thanks" hidden>Thanks — logged.</span></div>';
+      row.innerHTML = html;
+      row.querySelectorAll(".smart-search-thumb").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          sendFeedback(Number(btn.dataset.rate), data);
+          row.querySelector(".smart-search-thanks").hidden = false;
+          row.querySelectorAll(".smart-search-thumb").forEach(function (b) { b.disabled = true; });
+        });
+      });
+      answer.appendChild(row);
+    }
+
+    function sendFeedback(rating, data) {
+      try {
+        const payload = JSON.stringify({
+          query_log_id: (data && data.query_log_id) || lastQueryLogId,
+          rating: rating,
+          metadata: { type: "thumb" },
+        });
+        navigator.sendBeacon(apiBase + "/feedback", new Blob([payload], { type: "application/json" }));
+      } catch (_err) { /* telemetry only */ }
     }
 
     function renderCitation(c, index) {
@@ -685,6 +807,7 @@
       a.href = url;
       a.target = "_blank";
       a.rel = "noopener";
+      if (c.chunk_id) a.addEventListener("click", function () { beaconCitationClick(c.chunk_id); });
       a.innerHTML =
         '<div class="smart-search-citation-row">' +
         '<span class="smart-search-citation-index">' + index + "</span>" +
@@ -720,6 +843,10 @@
         return;
       }
       state.debounceTimer = setTimeout(function () {
+        // In follow-up mode the typed text is usually anaphoric ("how do I
+        // read one?") — previews and speculation on it retrieve garbage and
+        // would answer without the conversation context. Submit-only.
+        if (state.history.length) return;
         prefire(q);
         scheduleSpeculation(q);
       }, debounceMs);
@@ -738,6 +865,16 @@
         clearTimeout(state.speculativeTimer);
         submitFull(input.value.trim());
       } else if (e.key === "Escape") {
+        // First Esc in follow-up mode starts a new topic (keeps focus for
+        // the next question); Esc with no history closes the panel.
+        if (state.history.length) {
+          clearHistory();
+          meta.hidden = true;
+          meta.innerHTML = "";
+          input.value = "";
+          setStatus("New topic — conversation cleared.");
+          return;
+        }
         closePanel();
         cancelPreview();
         cancelSubmit();
