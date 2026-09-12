@@ -36,6 +36,9 @@
     - name: faq
       collection: documentation
       full: FAQ
+    - name: find_data
+      full: Find data
+      link: https://epic-devcloud.org/prod/pcs/find/
     - name: plots_monitoring
       full: Plots Monitoring
       link: https://epsciweb.jlab.org/epic_hydra/plotBrowser
