@@ -815,9 +815,9 @@ tr:nth-child(even) {
 }
 
 .person-avatar--md {
-    width: 5rem;
-    height: 5rem;
-    font-size: 1.4rem;
+    width: 7rem;
+    height: 7rem;
+    font-size: 1.9rem;
 }
 
 .person-avatar--lg {
@@ -908,9 +908,11 @@ tr:nth-child(even) {
     line-height: 1.25;
 }
 
+/* Wider columns than the photo needs on its own, so the role and institution
+   beside it do not squeeze down to two words a line. */
 .people-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
     gap: 1rem;
 }
 
