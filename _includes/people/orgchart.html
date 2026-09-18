@@ -1,0 +1,84 @@
+{%- comment -%}
+  ePIC organisation chart.
+
+  Boxes and their order come from _data/org.yml; the people in them come from
+  the `roles:` list in each _people/*.md profile. Add a profile with the right
+  `office:`/`wg:` and it shows up here on the next build - there is no list to
+  keep in sync.
+{%- endcomment -%}
+{%- assign everyone = site.people | where_exp: "p", "p.active != false" | sort_natural: "shortname" -%}
+{%- comment -%} Leadership reads better with the lead first, then the deputies. {%- endcomment -%}
+{%- assign lead_order = "lead,deputy" | split: "," -%}
+
+<div class="org">
+
+  {%- comment -%} Top box: the Spokesperson's Office {%- endcomment -%}
+  {%- assign top = site.data.org | where: "name", "spokesperson" | first -%}
+  <div class="org-top">
+    <div class="org-box org-box--top">
+      <div class="org-box-head">
+        <span class="org-box-title">{{ top.full }}</span>
+        <span class="org-box-blurb">{{ top.blurb }}</span>
+      </div>
+      <div class="org-people">
+        {%- for kind in lead_order -%}
+          {%- for p in everyone -%}
+            {%- for r in p.roles -%}
+              {%- if r.office == "spokesperson" and r.kind == kind -%}
+                {% include people/card.html person=p compact=true %}
+              {%- endif -%}
+            {%- endfor -%}
+          {%- endfor -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+
+  <div class="org-stem" aria-hidden="true"></div>
+
+  <div class="org-offices">
+    {%- for office in site.data.org -%}
+      {%- if office.name == "spokesperson" -%}{%- continue -%}{%- endif -%}
+      <section class="org-office org-office--{{ office.name }}{% if office.highlight %} org-office--highlight{% endif %}" id="{{ office.name }}">
+
+        <div class="org-office-head">
+          <h3 class="org-office-title">{{ office.short | default: office.full }}</h3>
+          <p class="org-office-blurb">{{ office.blurb }}</p>
+          <div class="org-people org-people--lead">
+            {%- for kind in lead_order -%}
+              {%- for p in everyone -%}
+                {%- for r in p.roles -%}
+                  {%- if r.office == office.name and r.wg == nil and r.kind == kind -%}
+                    {% include people/card.html person=p compact=true %}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="org-wgs"{% if office.columns %} style="--org-cols: {{ office.columns }}"{% endif %}>
+          {%- for wg in office.wgs -%}
+          <div class="org-wg" id="{{ wg.name }}">
+            <h4 class="org-wg-title">
+              {{ wg.full }}
+              {%- if wg.area %} <span class="org-wg-area">{{ wg.area }}</span>{% endif -%}
+            </h4>
+            <p class="org-wg-blurb">{{ wg.blurb }}</p>
+            <div class="org-people">
+              {%- for p in everyone -%}
+                {%- for r in p.roles -%}
+                  {%- if r.office == office.name and r.wg == wg.name -%}
+                    {% include people/card.html person=p compact=true %}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endfor -%}
+            </div>
+          </div>
+          {%- endfor -%}
+        </div>
+
+      </section>
+    {%- endfor -%}
+  </div>
+</div>

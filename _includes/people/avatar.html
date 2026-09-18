@@ -1,0 +1,22 @@
+{%- comment -%}
+  Avatar for a person. Uses `photo:` from the profile front matter when set,
+  otherwise falls back to initials on a colour derived from the shortname, so
+  everyone gets a stable colour without any extra bookkeeping.
+  Params: person, size (sm | md | lg)
+{%- endcomment -%}
+{%- assign p = include.person -%}
+{%- assign size = include.size | default: 'md' -%}
+{%- if p.photo and p.photo != '' -%}
+<span class="person-avatar person-avatar--{{ size }}"><img src="{{ p.photo | relative_url }}" alt="" loading="lazy"></span>
+{%- else -%}
+{%- assign words = p.name | split: ' ' -%}
+{%- assign ini_a = words | first | slice: 0 -%}
+{%- assign ini_b = words | last | slice: 0 -%}
+{%- assign initials = ini_a | append: ini_b | upcase -%}
+{%- assign seed = p.shortname | default: p.name | downcase -%}
+{%- assign letter = seed | slice: 0 -%}
+{%- assign before = 'abcdefghijklmnopqrstuvwxyz' | split: letter | first -%}
+{%- assign pos = before | size | plus: seed.size -%}
+{%- assign bucket = pos | modulo: 8 -%}
+<span class="person-avatar person-avatar--{{ size }} person-avatar--initials person-avatar--c{{ bucket }}" aria-hidden="true">{{ initials }}</span>
+{%- endif -%}

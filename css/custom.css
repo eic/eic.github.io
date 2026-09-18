@@ -169,7 +169,6 @@ blockquote p {
     user-select: none;
 }
 
-
 /* ---------------------------- */
 /* TABLE */
 th {
@@ -209,7 +208,10 @@ tr:nth-child(even) {
 }
 
 .site-navbar-actions {
-    flex-shrink: 0;
+    /* Allowed to shrink so a long menu row squeezes the search bar instead of
+       overflowing the navbar; .site-search-nav keeps a usable minimum. */
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .site-github-link {
@@ -237,6 +239,7 @@ tr:nth-child(even) {
 .site-search-nav {
     position: relative;
     width: min(22rem, 42vw);
+    min-width: 11rem;
 }
 
 .site-search-input-wrap {
@@ -762,4 +765,457 @@ tr:nth-child(even) {
     .tutorials-hero-copy {
         font-size: 1rem;
     }
+}
+
+/* ---------------------------------------------------------------------------
+   People pages: org chart, roster cards and individual profiles.
+   --------------------------------------------------------------------------- */
+
+.people-section-title {
+    margin-top: 2.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(52, 58, 64, 0.14);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+/* --- avatars --------------------------------------------------------------- */
+
+.person-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 0.6rem;
+    background: #e9ecef;
+    box-shadow: inset 0 0 0 1px rgba(52, 58, 64, 0.1);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    user-select: none;
+}
+
+.person-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* In the chart the photo spans the card, so it grows and shrinks with the
+   column count rather than sitting at one fixed size. */
+.person-avatar--sm {
+    width: 100%;
+    max-width: 8rem;
+    height: auto;
+    aspect-ratio: 1;
+    font-size: 1.5rem;
+}
+
+.person-avatar--md {
+    width: 7rem;
+    height: 7rem;
+    font-size: 1.9rem;
+}
+
+.person-avatar--lg {
+    width: 10rem;
+    height: 10rem;
+    font-size: 3rem;
+}
+
+/* Eight tints, picked deterministically per person so a colour never moves once
+   a profile exists. Kept pale: at photo size a saturated fill shouts next to the
+   real photographs. */
+.person-avatar--c0 { background: #edf2ff; color: #3b5bdb; }
+.person-avatar--c1 { background: #e6fcf5; color: #0b7285; }
+.person-avatar--c2 { background: #fff4e6; color: #b8500f; }
+.person-avatar--c3 { background: #f3f0ff; color: #6741d9; }
+.person-avatar--c4 { background: #e7f5ff; color: #1864ab; }
+.person-avatar--c5 { background: #fff0f6; color: #a61e4d; }
+.person-avatar--c6 { background: #ebfbee; color: #2b8a3e; }
+.person-avatar--c7 { background: #f8f0fc; color: #862e9c; }
+
+/* --- person card ----------------------------------------------------------- */
+
+.person-card {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(52, 58, 64, 0.12);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0.6rem 1.4rem rgba(31, 45, 61, 0.07);
+    color: #212529;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.person-card:hover,
+.person-card:focus {
+    transform: translateY(-3px);
+    border-color: rgba(52, 58, 64, 0.26);
+    box-shadow: 0 1rem 2rem rgba(31, 45, 61, 0.14);
+    color: #212529;
+    text-decoration: none;
+}
+
+.person-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+}
+
+.person-card-name {
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.person-card-role {
+    font-size: 0.85rem;
+    color: #495057;
+    line-height: 1.3;
+}
+
+.person-card-inst {
+    font-size: 0.8rem;
+    color: #868e96;
+    line-height: 1.3;
+}
+
+/* Fluid rather than fixed width: a group with two conveners keeps them side by
+   side in a narrow column instead of stacking, and a group on its own does not
+   stretch a card across the whole panel. */
+.person-card--compact {
+    /* Basis stays small so two conveners share a narrow column rather than
+       wrapping; they grow to fill whatever the column actually gives them. */
+    flex: 1 1 5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 4.5rem;
+    max-width: 9.5rem;
+    padding: 0.5rem 0.5rem 0.75rem;
+    text-align: center;
+}
+
+.person-card--compact .person-card-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+/* Wider columns than the photo needs on its own, so the role and institution
+   beside it do not squeeze down to two words a line. */
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1rem;
+}
+
+/* --- org chart ------------------------------------------------------------- */
+
+.org {
+    margin: 1.5rem 0 2.5rem;
+}
+
+.org-people {
+    display: flex;
+    flex-wrap: wrap;
+    /* Hug the content: a group with a single convener should not stretch that
+       one card down the whole band. */
+    align-items: flex-start;
+    gap: 0.6rem;
+}
+
+.org-top {
+    display: flex;
+    justify-content: center;
+}
+
+.org-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.1rem 1.5rem;
+    border: 1px solid rgba(52, 58, 64, 0.14);
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #eef2f4 100%);
+    box-shadow: 0 1rem 2.5rem rgba(31, 45, 61, 0.06);
+    text-align: center;
+}
+
+.org-box-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.org-box-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.org-box-blurb {
+    max-width: 48ch;
+    font-size: 0.85rem;
+    color: #5c636a;
+    line-height: 1.45;
+}
+
+.org-stem {
+    width: 2px;
+    height: 1.75rem;
+    margin: 0 auto;
+    background: rgba(52, 58, 64, 0.2);
+}
+
+.org-offices {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.org-office {
+    padding: 1.15rem;
+    border: 1px solid rgba(52, 58, 64, 0.12);
+    border-left: 5px solid var(--org-accent, #adb5bd);
+    border-radius: 1.1rem;
+    background: rgba(255, 255, 255, 0.6);
+    scroll-margin-top: 5rem;
+}
+
+.org-office--software  { --org-accent: #1c7ed6; }
+.org-office--technical { --org-accent: #0f766e; }
+.org-office--analysis  { --org-accent: #b8500f; }
+
+.org-office--highlight {
+    background: linear-gradient(135deg, #f8fbff 0%, #eef4fa 100%);
+    box-shadow: 0 1rem 2.5rem rgba(31, 45, 61, 0.06);
+}
+
+.org-office-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.35rem 1.25rem;
+    padding-bottom: 0.9rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed rgba(52, 58, 64, 0.18);
+}
+
+.org-office-title {
+    margin: 0;
+    color: var(--org-accent, #343a40);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+}
+
+.org-office-blurb {
+    flex: 1 1 22rem;
+    margin: 0;
+    font-size: 0.85rem;
+    color: #5c636a;
+    line-height: 1.45;
+}
+
+.org-people--lead {
+    flex-basis: 100%;
+    margin-top: 0.25rem;
+}
+
+/* Column count comes from `columns:` on the office in _data/org.yml, so each
+   office fills whole rows. It holds down to lg; below that there is not enough
+   width and we fall back to fitting as many groups as will fit. */
+.org-wgs {
+    display: grid;
+    grid-template-columns: repeat(var(--org-cols, 4), minmax(0, 1fr));
+    align-items: start;
+    gap: 0.85rem;
+}
+
+/* Group titles and blurbs run to different numbers of lines, which would leave
+   the photos in a row starting at different heights. Subgrid gives every group
+   in a row the same three bands - title, blurb, people - so the photos line up.
+   Browsers without subgrid just get the ragged version. */
+@supports (grid-template-rows: subgrid) {
+    .org-wgs {
+        align-items: stretch;
+        row-gap: 0.45rem;
+    }
+
+    .org-wg {
+        grid-row: span 3;
+        grid-template-rows: subgrid;
+        gap: 0;
+        margin-bottom: 0.4rem;
+    }
+
+    .org-wg-blurb {
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .org-wgs {
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    }
+}
+
+@media (max-width: 575.98px) {
+    .org-wgs {
+        grid-template-columns: 1fr;
+    }
+}
+
+.org-wg {
+    display: grid;
+    align-content: start;
+    gap: 0.35rem;
+    padding: 0.85rem;
+    border: 1px solid rgba(52, 58, 64, 0.1);
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.95);
+    scroll-margin-top: 5rem;
+}
+
+.org-wg-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.org-wg-area {
+    display: inline-block;
+    padding: 0.05rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(28, 126, 214, 0.1);
+    color: #1765ab;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    vertical-align: middle;
+}
+
+.org-wg-blurb {
+    margin: 0 0 0.4rem;
+    font-size: 0.78rem;
+    color: #868e96;
+    line-height: 1.4;
+}
+
+/* --- individual profile ---------------------------------------------------- */
+
+.person-back {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.person-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(52, 58, 64, 0.14);
+}
+
+.person-header-text {
+    flex: 1;
+    min-width: 260px;
+}
+
+.person-name {
+    margin-bottom: 0.25rem;
+    font-size: 1.9rem;
+    font-weight: 800;
+}
+
+.person-title {
+    margin-bottom: 0.15rem;
+    font-size: 1.05rem;
+    color: #495057;
+}
+
+.person-inst {
+    margin-bottom: 0.75rem;
+    color: #868e96;
+}
+
+.person-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.person-link {
+    padding: 0.3rem 0.85rem;
+    border: 1px solid rgba(52, 58, 64, 0.18);
+    border-radius: 999px;
+    background: #fff;
+    color: #343a40;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease;
+}
+
+.person-link:hover,
+.person-link:focus {
+    border-color: rgba(52, 58, 64, 0.4);
+    background: #f1f3f5;
+    color: #212529;
+    text-decoration: none;
+}
+
+.person-roles {
+    margin: 0;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+    color: #495057;
+}
+
+.person-unverified {
+    margin: 1.25rem 0 0;
+    padding: 0.75rem 1rem;
+    border: 1px dashed rgba(194, 81, 0, 0.35);
+    border-radius: 0.8rem;
+    background: #fff9f2;
+    color: #8a4b0a;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.person-body {
+    max-width: 72ch;
+    margin-top: 1.75rem;
+    line-height: 1.65;
+}
+
+.person-body h3 {
+    margin-top: 1.75rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.person-foot {
+    font-size: 0.85rem;
+    color: #868e96;
+}
+
+.person-role-src {
+    padding: 0.02rem 0.4rem;
+    border-radius: 999px;
+    background: rgba(52, 58, 64, 0.07);
+    color: #6c757d;
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }

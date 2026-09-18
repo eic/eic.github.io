@@ -1,0 +1,15 @@
+{%- comment -%}
+  One person, as a card. Params: person, compact (true inside the org chart).
+{%- endcomment -%}
+{%- assign p = include.person -%}
+{%- if include.compact -%}{%- assign asize = 'sm' -%}{%- else -%}{%- assign asize = 'md' -%}{%- endif -%}
+<a class="person-card{% if include.compact %} person-card--compact{% endif %}" href="{{ p.url | relative_url }}">
+  {% include people/avatar.html person=p size=asize %}
+  <span class="person-card-text">
+    <span class="person-card-name">{{ p.name }}</span>
+    {%- unless include.compact %}
+    <span class="person-card-role">{{ p.role }}</span>
+    {%- if p.institution and p.institution != '' %}<span class="person-card-inst">{{ p.institution }}</span>{% endif -%}
+    {%- endunless %}
+  </span>
+</a>

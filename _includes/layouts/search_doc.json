@@ -6,7 +6,7 @@
 {%- endcapture -%}
 {
   "id": {{ include.doc.url | jsonify }},
-  "title": {{ include.doc.title | default: include.doc.name | default: include.doc.url | jsonify }},
+  "title": {{ include.title | default: include.doc.title | default: include.doc.name | default: include.doc.url | jsonify }},
   "url": {{ include.doc.url | relative_url | jsonify }},
   "display_url": {{ include.doc.url | jsonify }},
   "collection": {{ include.collection | default: include.doc.collection | default: "page" | jsonify }},
