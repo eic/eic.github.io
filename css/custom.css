@@ -789,13 +789,12 @@ tr:nth-child(even) {
     justify-content: center;
     flex-shrink: 0;
     overflow: hidden;
-    border-radius: 50%;
+    border-radius: 0.6rem;
     background: #e9ecef;
     box-shadow: inset 0 0 0 1px rgba(52, 58, 64, 0.1);
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.01em;
-    color: #fff;
     user-select: none;
 }
 
@@ -805,34 +804,39 @@ tr:nth-child(even) {
     object-fit: cover;
 }
 
+/* In the chart the photo spans the card, so it grows and shrinks with the
+   column count rather than sitting at one fixed size. */
 .person-avatar--sm {
-    width: 3.75rem;
-    height: 3.75rem;
-    font-size: 1.05rem;
+    width: 100%;
+    max-width: 8rem;
+    height: auto;
+    aspect-ratio: 1;
+    font-size: 1.5rem;
 }
 
 .person-avatar--md {
-    width: 4.25rem;
-    height: 4.25rem;
-    font-size: 1.2rem;
+    width: 5rem;
+    height: 5rem;
+    font-size: 1.4rem;
 }
 
 .person-avatar--lg {
-    width: 6.5rem;
-    height: 6.5rem;
-    font-size: 2rem;
+    width: 10rem;
+    height: 10rem;
+    font-size: 3rem;
 }
 
-/* Eight muted, roughly equal-weight fills; picked deterministically per person
-   so a colour never moves once a profile exists. */
-.person-avatar--c0 { background: #4c6ef5; }
-.person-avatar--c1 { background: #0f766e; }
-.person-avatar--c2 { background: #b8500f; }
-.person-avatar--c3 { background: #7048e8; }
-.person-avatar--c4 { background: #1c7ed6; }
-.person-avatar--c5 { background: #a61e4d; }
-.person-avatar--c6 { background: #2b8a3e; }
-.person-avatar--c7 { background: #5f3dc4; }
+/* Eight tints, picked deterministically per person so a colour never moves once
+   a profile exists. Kept pale: at photo size a saturated fill shouts next to the
+   real photographs. */
+.person-avatar--c0 { background: #edf2ff; color: #3b5bdb; }
+.person-avatar--c1 { background: #e6fcf5; color: #0b7285; }
+.person-avatar--c2 { background: #fff4e6; color: #b8500f; }
+.person-avatar--c3 { background: #f3f0ff; color: #6741d9; }
+.person-avatar--c4 { background: #e7f5ff; color: #1864ab; }
+.person-avatar--c5 { background: #fff0f6; color: #a61e4d; }
+.person-avatar--c6 { background: #ebfbee; color: #2b8a3e; }
+.person-avatar--c7 { background: #f8f0fc; color: #862e9c; }
 
 /* --- person card ----------------------------------------------------------- */
 
@@ -887,12 +891,14 @@ tr:nth-child(even) {
    side in a narrow column instead of stacking, and a group on its own does not
    stretch a card across the whole panel. */
 .person-card--compact {
-    flex: 1 1 6rem;
+    /* Basis stays small so two conveners share a narrow column rather than
+       wrapping; they grow to fill whatever the column actually gives them. */
+    flex: 1 1 5rem;
     flex-direction: column;
     gap: 0.5rem;
-    min-width: 5.25rem;
-    max-width: 8.25rem;
-    padding: 0.85rem 0.5rem;
+    min-width: 4.5rem;
+    max-width: 9.5rem;
+    padding: 0.5rem 0.5rem 0.75rem;
     text-align: center;
 }
 
