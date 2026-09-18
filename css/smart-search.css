@@ -66,13 +66,17 @@
 
 /*
  * When smart search is enabled AND the viewport is wide enough that the left
- * nav items (brand + dropdowns like Tutorials/Software) and the right cluster
- * leave real middle space, float the bar into the visual center of the
+ * nav items (brand + dropdowns like Tutorials/Software/People) and the right
+ * cluster leave real middle space, float the bar into the visual center of the
  * navbar. On anything narrower (including zoomed-in viewports via
  * Ctrl+scroll) the bar falls back to the natural right-aligned flow position
  * so it never overlaps the menu items.
+ *
+ * The breakpoint has to clear the widest menu row: the bar is centred on the
+ * viewport, so it starts at (100vw - 30rem) / 2 and the left-hand nav items
+ * have to end before that. Raise it again if another top-level menu is added.
  */
-@media (min-width: 1200px) {
+@media (min-width: 1700px) {
     .site-search-nav:has(#siteSearchSubmit) {
         position: absolute;
         left: 50%;
@@ -84,7 +88,8 @@
 
 /* ---------- results panel: wider + centered below input at xl+ ---------- */
 
-@media (min-width: 1200px) {
+/* Matches the centring breakpoint above. */
+@media (min-width: 1700px) {
     .site-search-nav:has(#siteSearchSubmit) .site-search-panel {
         left: 50%;
         right: auto;

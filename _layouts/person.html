@@ -1,0 +1,80 @@
+---
+layout: default
+---
+{%- assign p = page -%}
+<div class="row justify-content-center">
+  <div class="col-12 col-xl-10">
+
+    <p class="person-back"><a href="{{ '/people/' | relative_url }}">&larr; All people</a></p>
+
+    <header class="person-header">
+      {% include people/avatar.html person=p size='lg' %}
+      <div class="person-header-text">
+        <h1 class="person-name">{{ p.name }}</h1>
+        {%- if p.role and p.role != '' %}<p class="person-title">{{ p.role }}</p>{% endif -%}
+        {%- if p.institution and p.institution != '' %}<p class="person-inst">{{ p.institution }}</p>{% endif %}
+
+        {%- assign has_links = false -%}
+        {%- if p.email != blank or p.github != blank or p.orcid != blank or p.website != blank -%}{%- assign has_links = true -%}{%- endif -%}
+        {%- if has_links %}
+        <div class="person-links">
+          {%- if p.email != blank %}<a class="person-link" href="mailto:{{ p.email }}">Email</a>{% endif -%}
+          {%- if p.github != blank %}<a class="person-link" href="https://github.com/{{ p.github }}" target="_blank" rel="noopener noreferrer">GitHub</a>{% endif -%}
+          {%- if p.orcid != blank %}<a class="person-link" href="https://orcid.org/{{ p.orcid }}" target="_blank" rel="noopener noreferrer">ORCID</a>{% endif -%}
+          {%- if p.website != blank %}<a class="person-link" href="{{ p.website }}" target="_blank" rel="noopener noreferrer">Website</a>{% endif -%}
+        </div>
+        {%- endif %}
+
+        {%- comment -%}
+          The list is only worth showing when it adds something the title line
+          does not already say: a link to a working group, or a second role.
+        {%- endcomment -%}
+        {%- assign show_roles = false -%}
+        {%- if p.roles.size > 1 -%}{%- assign show_roles = true -%}
+        {%- elsif p.roles.first.wg -%}{%- assign show_roles = true -%}
+        {%- elsif p.subsystems -%}{%- assign show_roles = true -%}{%- endif -%}
+        {%- if show_roles %}
+        <ul class="person-roles">
+          {%- for r in p.roles -%}
+            {%- assign office = site.data.org | where: "name", r.office | first -%}
+            {%- if r.wg -%}
+              {%- assign wg = office.wgs | where: "name", r.wg | first -%}
+              <li><a href="{{ '/people/' | relative_url }}#{{ r.wg }}">{{ wg.full }}</a> &mdash; {{ office.short | default: office.full }}</li>
+            {%- else -%}
+              <li>{{ office.full }}</li>
+            {%- endif -%}
+          {%- endfor -%}
+          {%- comment -%}
+            Detector-subsystem roles. Shown here only - the chart on the People
+            page is the working-group chart, not the subsystem one.
+          {%- endcomment -%}
+          {%- for sub in p.subsystems -%}
+          <li>{{ sub }} <span class="person-role-src">detector subsystem</span></li>
+          {%- endfor -%}
+        </ul>
+        {%- endif %}
+      </div>
+    </header>
+
+    {%- if p.verified != true %}
+    <p class="person-unverified">
+      Starter profile, not confirmed yet.
+      {%- if p.shortname %}
+      <a href="https://github.com/eic/eic.github.io/edit/master/_people/{{ p.shortname }}.md" target="_blank" rel="noopener noreferrer">Edit this page</a>
+      {%- endif %}
+    </p>
+    {%- endif %}
+
+    <div class="person-body">
+      {{ content }}
+    </div>
+
+    <hr>
+    <p class="person-foot">
+      {%- if p.shortname -%}
+      <a href="https://github.com/eic/eic.github.io/edit/master/_people/{{ p.shortname }}.md" target="_blank" rel="noopener noreferrer">Edit <code>_people/{{ p.shortname }}.md</code></a>
+      {%- endif -%}
+    </p>
+
+  </div>
+</div>
