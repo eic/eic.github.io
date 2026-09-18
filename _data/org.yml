@@ -1,0 +1,102 @@
+###########################################################################
+#                                                                         #
+# ePIC collaboration organisation chart.                                  #
+#                                                                         #
+# This file describes only the *boxes* of the chart and their order.      #
+# People are slotted in automatically: every file in _people/ carries a   #
+# `roles:` list whose `office:` and `wg:` match the names below.          #
+#                                                                         #
+# To add a working group, add it here and give people the matching `wg:`  #
+# in their profile. Nothing else needs to change.                         #
+#                                                                         #
+# `blurb:` is a short noun phrase rendered under a working group's title.  #
+# Offices do not carry one - their names are enough.                      #
+#                                                                         #
+# `columns:` fixes how many groups an office puts on one row, so they fall #
+# into full rows instead of wrapping ragged. Pick a divisor of the group   #
+# count (6 groups -> 3, 5 groups -> 5). Narrow screens ignore it and fall  #
+# back to fitting as many as will fit.                                     #
+#                                                                         #
+# Source: ePIC Working Groups chart, revised 2026-08-28                   #
+# https://www.epic-eic.org/collaboration/overview.html                    #
+#                                                                         #
+# Software & Computing is listed first because this is the EIC software   #
+# site; the collaboration's own chart lists Technical Coordination first. #
+#                                                                         #
+###########################################################################
+
+- name: spokesperson
+  full: Spokesperson's Office
+
+- name: software
+  full: Software and Computing Coordination
+  short: Software &amp; Computing
+  highlight: true
+  columns: 3
+  wgs:
+    - name: simulation
+      full: Physics and Detector Simulation
+      blurb: Detector description, Geant4, event generators.
+      area: Development
+    - name: reconstruction
+      full: Reconstruction
+      blurb: Tracking, PID, calorimetry, physics objects.
+      area: Development
+    - name: streaming
+      full: Streaming Computing Model
+      blurb: Streaming orchestration, distributed computing, DAQ interfaces.
+      area: Infrastructure
+    - name: production
+      full: Production
+      blurb: Software releases, simulation campaigns.
+      area: Operations
+    - name: user-learning
+      full: User Learning
+      blurb: Tutorials, documentation, onboarding.
+      area: Operations
+    - name: validation
+      full: Validation
+      blurb: Benchmarks, physics validation.
+      area: Operations
+
+- name: technical
+  full: Technical Coordination Office
+  short: Technical Coordination
+  columns: 5
+  wgs:
+    - name: electronics-daq
+      full: Electronics, Readout and DAQ
+      blurb: Front-end electronics, readout chain, streaming DAQ.
+    - name: tracking-det
+      full: Tracking
+      blurb: Silicon vertex tracker, gaseous trackers.
+    - name: pid
+      full: PID
+      blurb: Cherenkov detectors, time-of-flight.
+    - name: calorimetry
+      full: Calorimetry
+      blurb: Electromagnetic and hadronic calorimeters.
+    - name: ac-lgad
+      full: AC-LGAD
+      blurb: AC-coupled LGAD sensors, precision timing.
+
+- name: analysis
+  full: Physics Analysis Coordination
+  short: Physics Analysis
+  columns: 5
+  wgs:
+    - name: inclusive
+      full: Inclusive Physics
+      blurb: Inclusive DIS, structure functions.
+    - name: semi-inclusive
+      full: Semi-Inclusive Physics
+      blurb: SIDIS, transverse momentum distributions, fragmentation.
+    - name: exclusive
+      full: Exclusive, Diffraction and Tagging
+      blurb: Exclusive and diffractive processes, far-forward and far-backward tagging.
+    - name: jets-hf
+      full: Jets and Heavy Flavor
+      blurb: Jet observables, heavy-flavour production.
+    - name: bsm-ew
+      full: BSM and Precision EW
+      blurb: Beyond-the-Standard-Model searches, precision electroweak.
