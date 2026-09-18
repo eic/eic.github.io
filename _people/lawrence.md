@@ -2,8 +2,8 @@
 layout: person
 name: David Lawrence
 shortname: lawrence
-role:
-institution: 
+role: ECSJI Director
+institution: Jefferson Lab
 photo:
 email: davidl@jlab.org
 github:

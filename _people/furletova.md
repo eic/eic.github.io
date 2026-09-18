@@ -3,7 +3,9 @@ layout: person
 name: Yulia Furletova
 shortname: furletova
 role:
-institution: 
+subsystems:
+  - Far Forward Co-DSL
+institution: Jefferson Lab
 photo:
 email: yulia@jlab.org
 github:

@@ -3,6 +3,8 @@ layout: person
 name: Sylvester Johannes Joosten
 shortname: joosten
 role:
+subsystems:
+  - Barrel ECAL Co-DSL
 institution: Argonne National Laboratory
 photo:
 email: sjoosten@anl.gov
