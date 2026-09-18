@@ -39,7 +39,7 @@ layout: default
             {%- assign office = site.data.org | where: "name", r.office | first -%}
             {%- if r.wg -%}
               {%- assign wg = office.wgs | where: "name", r.wg | first -%}
-              <li><a href="{{ '/people/' | relative_url }}#{{ r.wg }}">{{ wg.full }}</a> &mdash; {{ office.short | default: office.full }}</li>
+              <li><a href="{{ '/people/organization.html' | relative_url }}#{{ r.wg }}">{{ wg.full }}</a> &mdash; {{ office.short | default: office.full }}</li>
             {%- else -%}
               <li>{{ office.full }}</li>
             {%- endif -%}
