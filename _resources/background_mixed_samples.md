@@ -42,13 +42,13 @@ N.B.: The sampling frequencies in this example are taken from the [ePIC Backgrou
 **Simulation Output** 
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/FULL/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
 ```
 
 **Reconstructed Output**
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/
 ```
 
 N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstructed output is available for every campaign but simulation output is not always preserved to save storage resources.
@@ -87,13 +87,13 @@ A run is a collection of events and each event represents a 2000 nano second lon
 **Simulation Output** 
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_RealisticSignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/SIDIS/pythia6-eic/1.0.0/18x275/q2_0to1
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/FULL/25.06.1/epic_craterlake/Bkg_RealisticSignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/SIDIS/pythia6-eic/1.0.0/18x275/q2_0to1
 ```
 
 **Reconstructed Output**
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_RealisticSignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/SIDIS/pythia6-eic/1.0.0/18x275/q2_0to1
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/25.06.1/epic_craterlake/Bkg_RealisticSignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/SIDIS/pythia6-eic/1.0.0/18x275/q2_0to1
 ```
 
 N.B.: Increment the campaign tag (25.06.1) to get the latest campaigns. Reconstructed output is available for every campaign but simulation output is not always preserved to save storage resources.
@@ -132,13 +132,13 @@ A run is a collection of events and each event represents a 2000 nano second lon
 **Simulation Output** 
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/FULL/25.06.1/epic_craterlake/Bkg_OnlyPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/BACKGROUNDS/BEAMGAS/proton/pythia8.306-1.0/275GeV
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/FULL/25.06.1/epic_craterlake/Bkg_OnlyPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/BACKGROUNDS/BEAMGAS/proton/pythia8.306-1.0/275GeV
 ```
 
 **Reconstructed Output**
 
 ```
-root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_OnlyPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/BACKGROUNDS/BEAMGAS/proton/pythia8.306-1.0/275GeV
+root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/25.06.1/epic_craterlake/Bkg_OnlyPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/BACKGROUNDS/BEAMGAS/proton/pythia8.306-1.0/275GeV
 
 ```
 
@@ -173,7 +173,7 @@ and also custom status code provided with
 
 ```
 TChain *T=new TChain("events");
-T->Add("root://dtn-eic.jlab.org//volatile/eic/EPIC/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/*010*");
+T->Add("root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/25.06.1/epic_craterlake/Bkg_1SignalPer2usFrame/Synrad_18GeV_Vac_10000Ahr_Runtime_10ms_Egas_All_18GeV_Hgas_275GeV/DIS/NC/18x275/minQ2=1/*010*");
 T->Draw("MCParticles.generatorStatus", "MCParticles.generatorStatus>0");
 gPad->SetLogy();
 ```

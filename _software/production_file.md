@@ -21,7 +21,7 @@ To see what files are available and how to access it use Rucio.
     $ rucio whoami
     ```
 
-- Files are registered in Rucio with a format similar to xrootd, excluding the base path `/volatile/eic/EPIC`.
+- Files are registered in Rucio with a format similar to xrootd, excluding the base path `/jlab-osdf-ro/eic/EPIC/volatile`.
 - Data Identifiers (DID) are structured as `scope:name`. For "epic," the scope is always `epic`, resulting in DIDs like:
     - `epic:/EVGEN/...` for EVEGEN files
     - `epic:/FULL/...` for FULL simulation files
@@ -70,7 +70,7 @@ To see what files are available and how to access it use Rucio.
     ```shell
      $ rucio replica list file --protocols root --pfns --rses isopenaccess epic:/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root
 
-    root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root
+    root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root
     ```
     If you see multiple replicas you can use any one of those. You can check using `rucio rse list --rses isopenaccess` for a full list of RSE's.
 
@@ -94,28 +94,27 @@ To see what files are available and how to access it use Rucio.
 
 - **Copying with `xrdcp`:**
     ```shell
-    root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root <local destination>
+    root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root <local destination>
     ```
 
 - **Copying with `gfal-copy`:**
     ```shell
-    gfal-copy root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root <local destination>
+    gfal-copy root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root <local destination>
     ```
 
 - **Opening directly with ROOT:**
     ```c++
-    auto f = TFile::Open("root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root")
+    auto f = TFile::Open("root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root")
     ```
     or using Python
     ```python
     import uproot
-    file_path = "root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root"
+    file_path = "root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root"
     root_file = uproot.open(file_path)
     ```
 
     ```python
     import ROOT
-    file_path = "root://dtn-eic.jlab.org:1094//volatile/eic/EPIC//RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root"
+    file_path = "root://dtn2304.jlab.org:8443//jlab-osdf-ro/eic/EPIC/volatile/RECO/26.02.0/epic_craterlake/SINGLE/e+/500MeV/3to50deg/e+_500MeV_3to50deg.0068.eicrecon.edm4eic.root"
     file = ROOT.TFile.Open(file_path, "READ")
     ```
-
