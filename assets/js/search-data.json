@@ -60,6 +60,14 @@ search_exclude: true
     {%- assign emitted = true -%}
   {%- endif -%}
 {%- endfor -%}
+{%- for doc in site.people -%}
+  {%- if doc.name and doc.search_exclude != true -%}
+    {%- if emitted -%},{%- endif -%}
+    {%- capture person_title -%}{{ doc.name }}{%- if doc.role and doc.role != '' %} — {{ doc.role }}{%- endif -%}{%- endcapture -%}
+    {%- include layouts/search_doc.json doc=doc collection='people' title=person_title -%}
+    {%- assign emitted = true -%}
+  {%- endif -%}
+{%- endfor -%}
 {%- for doc in site.about -%}
   {%- if doc.title and doc.search_exclude != true -%}
     {%- if emitted -%},{%- endif -%}

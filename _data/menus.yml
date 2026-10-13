@@ -43,6 +43,12 @@
       full: Plots Monitoring
       link: https://epsciweb.jlab.org/epic_hydra/plotBrowser
      
+### People
+#
+- name: people
+  full: People
+  path: /people/
+
 ### About
 #
 - name: about

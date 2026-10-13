@@ -7,9 +7,17 @@
 <meta name="docsearch:language" content="en">
 <meta name="docsearch:version" content="{{ site.docs_version }}">
 
+{%- comment -%}
+  People profiles carry their role in `title:`, so the tab uses their name.
+{%- endcomment -%}
+{%- if page.collection == 'people' -%}
+  {%- assign head_title = page.name -%}
+{%- else -%}
+  {%- assign head_title = page.title -%}
+{%- endif -%}
 <title>
-  {%- if page.title -%}
-    {{ page.title | smartify }} · {{ site.title | smartify }}
+  {%- if head_title -%}
+    {{ head_title | smartify }} · {{ site.title | smartify }}
   {%- else -%}
     {{ site.title | smartify }} · {{ site.description | smartify }}
   {%- endif -%}
